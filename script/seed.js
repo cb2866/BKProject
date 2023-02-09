@@ -1,3 +1,5 @@
+// import nba from "nba.js";
+const nba = require("nba.js").default;
 const {
   db,
   models: { Game },
@@ -17,6 +19,7 @@ async function seed() {
     games.map((game) =>
       Game.create({
         date: game.date,
+        postseason: game.postseason,
         homeTeam: game.home_team.full_name,
         homeTeamScore: game.home_team_score,
         visitorTeam: game.visitor_team.full_name,
@@ -25,6 +28,20 @@ async function seed() {
     )
   );
 
+  const wutanabeStats = nba.data
+    .playerUberStats({
+      year: 2022,
+
+      personId: 1629139,
+    })
+    .then(function (res) {
+      return res;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+
+  console.log(wutanabeStats);
   console.log(`seeded ${gameSeed.length} games`);
 }
 

@@ -5,6 +5,9 @@ const Game = db.define("game", {
   date: {
     type: DataTypes.DATE,
   },
+  postseason: {
+    type: DataTypes.BOOLEAN,
+  },
   homeTeam: {
     type: DataTypes.STRING,
   },
