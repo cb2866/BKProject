@@ -1,7 +1,8 @@
 const db = require("./db");
-const Game = require("./models/Game");
+const AllGame = require("./models/AllGame");
+const PlayerStat = require("./models/PlayerStat");
 
 module.exports = {
   db,
-  models: { Game },
+  models: { AllGame, PlayerStat },
 };
