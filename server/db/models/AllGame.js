@@ -1,12 +1,15 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-const Game = db.define("game", {
+const AllGame = db.define("allGame", {
+  gameId: {
+    type: DataTypes.STRING,
+  },
+  status: {
+    type: DataTypes.STRING,
+  },
   date: {
     type: DataTypes.DATE,
-  },
-  postseason: {
-    type: DataTypes.BOOLEAN,
   },
   homeTeam: {
     type: DataTypes.STRING,
@@ -14,12 +17,12 @@ const Game = db.define("game", {
   homeTeamScore: {
     type: DataTypes.INTEGER,
   },
-  visitorTeam: {
+  awayTeam: {
     type: DataTypes.STRING,
   },
-  visitorTeamScore: {
+  awayTeamScore: {
     type: DataTypes.INTEGER,
   },
 });
 
-module.exports = Game;
+module.exports = AllGame;
