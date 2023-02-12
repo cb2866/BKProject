@@ -34,6 +34,8 @@ async function seed() {
     )
   );
 
+  console.log(netsGames);
+
   // <-----------seeding indiv player stats ------------->
   //Wutanabe
   const wutanabeResponse = await axios.get(

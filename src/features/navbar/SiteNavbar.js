@@ -14,7 +14,7 @@ const SiteNavbar = () => {
       <Container fluid style={{ paddingLeft: "10px" }}>
         <Navbar.Brand href="/">
           <img
-            src="/navLogo.png"
+            src="/navLogo2.png"
             width="50"
             height="50"
             className="d-inline-block align-top"
@@ -27,15 +27,12 @@ const SiteNavbar = () => {
           aria-labelledby={`offcanvasNavbarLabel-expand-md`}
           placement="end"
         >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md}`}>
-              Offcanvas
-            </Offcanvas.Title>
-          </Offcanvas.Header>
+          <Offcanvas.Header closeButton></Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link href="/game">Sample Game</Nav.Link>
-              <NavDropdown
+              <Nav.Link href="/players">Players</Nav.Link>
+              {/* <NavDropdown
                 title="Dropdown"
                 id={`offcanvasNavbarDropdown-expand-md`}
               >
@@ -47,7 +44,7 @@ const SiteNavbar = () => {
                 <NavDropdown.Item href="#action5">
                   Something else here
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

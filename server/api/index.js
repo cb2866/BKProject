@@ -3,6 +3,7 @@ module.exports = router;
 
 router.use("/games", require("./games"));
 router.use("/players", require("./players"));
+router.use("/playerStats", require("./playerStats"));
 
 router.use((req, res, next) => {
   const error = new Error("Not Found");

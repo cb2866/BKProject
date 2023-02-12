@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   VictoryBar,
@@ -28,8 +27,8 @@ const GameSample = () => {
         <Card className="mx-auto" style={{ maxWidth: "50%" }}>
           <VictoryChart theme={VictoryTheme.material}>
             <VictoryStack>
-              <VictoryBar data={games} x="date" y="homeTeamScore" />
-              <VictoryBar data={games} x="date" y="awayTeamScore" />
+              {/* <VictoryBar data={games} x="date" y="homeTeamScore" />
+              <VictoryBar data={games} x="date" y="awayTeamScore" /> */}
             </VictoryStack>
           </VictoryChart>
         </Card>
