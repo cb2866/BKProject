@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 
 // auth and api routes
-app.use("/auth", require("./auth"));
 app.use("/api", require("./api"));
 
 // static file-serving middleware

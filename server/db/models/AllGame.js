@@ -9,7 +9,7 @@ const AllGame = db.define("allGame", {
     type: DataTypes.STRING,
   },
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
   },
   homeTeam: {
     type: DataTypes.STRING,
