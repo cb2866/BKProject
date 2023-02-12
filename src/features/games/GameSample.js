@@ -8,7 +8,7 @@ import {
   VictoryStack,
   VictoryTheme,
 } from "victory";
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row } from "react-bootstrap";
 
 import { selectGames, fetchPlayedGames } from "./gamesSlice";
 
@@ -24,14 +24,16 @@ const GameSample = () => {
   return (
     <Container>
       <h1>Sample Game Page</h1>
-      <Card>
-        <VictoryChart theme={VictoryTheme.material}>
-          <VictoryStack>
-            <VictoryBar data={games} x="date" y="homeTeamScore" />
-            <VictoryBar data={games} x="date" y="awayTeamScore" />
-          </VictoryStack>
-        </VictoryChart>
-      </Card>
+      <Row>
+        <Card className="mx-auto" style={{ maxWidth: "50%" }}>
+          <VictoryChart theme={VictoryTheme.material}>
+            <VictoryStack>
+              <VictoryBar data={games} x="date" y="homeTeamScore" />
+              <VictoryBar data={games} x="date" y="awayTeamScore" />
+            </VictoryStack>
+          </VictoryChart>
+        </Card>
+      </Row>
     </Container>
   );
 };

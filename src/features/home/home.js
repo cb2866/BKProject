@@ -13,13 +13,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>hold for game data</h1>
-      <ul>
-        {games &&
-          games.map(({ date, id }) => {
-            return <li key={id}>Game Date: {date}</li>;
-          })}
-      </ul>
+      <h1>dashboard</h1>
     </div>
   );
 };
