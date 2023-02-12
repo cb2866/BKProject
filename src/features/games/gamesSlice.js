@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = { games: [], loading: false, error: null };
 
 export const fetchGames = createAsyncThunk("games/allGames", async () => {
-  const { data } = await axios.get("/api/games");
+  const { data } = await axios.get("/api/games/");
   return data;
 });
 

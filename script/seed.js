@@ -1,5 +1,4 @@
 // import nba from "nba.js";
-const nba = require("nba.js").default;
 const {
   db,
   models: { AllGame },
