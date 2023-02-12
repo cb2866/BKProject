@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = { games: [], loading: false, error: null };
 
-export const fetchGames = createAsyncThunk("games/allGames", async () => {
+export const fetchAllGames = createAsyncThunk("games/allGames", async () => {
   const { data } = await axios.get("/api/games/");
   return data;
 });
@@ -22,14 +22,14 @@ const gamesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGames.pending, (state, action) => {
+      .addCase(fetchAllGames.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(fetchGames.fulfilled, (state, action) => {
+      .addCase(fetchAllGames.fulfilled, (state, action) => {
         state.loading = false;
         state.games = action.payload;
       })
-      .addCase(fetchGames.rejected, (state, action) => {
+      .addCase(fetchAllGames.rejected, (state, action) => {
         state.error = action.error;
       })
       .addCase(fetchPlayedGames.pending, (state, action) => {

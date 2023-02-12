@@ -1,12 +1,13 @@
 import React from "react";
-import Navbar from "../features/navbar/Navbar";
+import SiteNavbar from "../features/navbar/SiteNavbar";
 import AppRoutes from "./AppRoutes";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
+      <SiteNavbar />
       <AppRoutes />
     </div>
   );

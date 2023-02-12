@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGames } from "../games/gamesSlice";
+import { fetchAllGames, selectGames } from "../games/gamesSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const games = useSelector((state) => state.games.games);
+  const games = useSelector(selectGames);
   console.log(games);
 
   useEffect(() => {
-    dispatch(fetchGames());
+    dispatch(fetchAllGames());
   }, [dispatch]);
 
   return (
@@ -16,8 +16,8 @@ const Home = () => {
       <h1>hold for game data</h1>
       <ul>
         {games &&
-          games.map((game) => {
-            return <li>Game Date: {game.date}</li>;
+          games.map(({ date, id }) => {
+            return <li key={id}>Game Date: {date}</li>;
           })}
       </ul>
     </div>
