@@ -6060,15 +6060,20 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _features_home_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../features/home/Home */ "./src/features/home/Home.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _features_games_GameSample__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../features/games/GameSample */ "./src/features/games/GameSample.js");
+/* harmony import */ var _features_home_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/home/Home */ "./src/features/home/Home.js");
+
 
 
 
 var AppRoutes = function AppRoutes() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
     path: "*",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_features_home_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_features_home_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/game",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_features_games_GameSample__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (AppRoutes);
@@ -6105,6 +6110,37 @@ var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.configureStore)({
 
 /***/ }),
 
+/***/ "./src/features/games/GameSample.js":
+/*!******************************************!*\
+  !*** ./src/features/games/GameSample.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _gamesSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gamesSlice */ "./src/features/games/gamesSlice.js");
+
+
+
+
+
+var GameSample = function GameSample() {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  var games = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(_gamesSlice__WEBPACK_IMPORTED_MODULE_3__.selectGames);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_gamesSlice__WEBPACK_IMPORTED_MODULE_3__.fetchPlayedGames)());
+  }, [dispatch]);
+  console.log(games);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Sample Game Page"));
+};
+/* harmony default export */ __webpack_exports__["default"] = (GameSample);
+
+/***/ }),
+
 /***/ "./src/features/games/gamesSlice.js":
 /*!******************************************!*\
   !*** ./src/features/games/gamesSlice.js ***!
@@ -6115,6 +6151,7 @@ var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.configureStore)({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchGames": function() { return /* binding */ fetchGames; },
+/* harmony export */   "fetchPlayedGames": function() { return /* binding */ fetchPlayedGames; },
 /* harmony export */   "selectGames": function() { return /* binding */ selectGames; }
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
@@ -6147,6 +6184,23 @@ var fetchGames = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThu
     }
   }, _callee);
 })));
+var fetchPlayedGames = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("games/allPlayedGames", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+  var _yield$axios$get2, data;
+  return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+    while (1) switch (_context2.prev = _context2.next) {
+      case 0:
+        _context2.next = 2;
+        return axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/games/played");
+      case 2:
+        _yield$axios$get2 = _context2.sent;
+        data = _yield$axios$get2.data;
+        return _context2.abrupt("return", data);
+      case 5:
+      case "end":
+        return _context2.stop();
+    }
+  }, _callee2);
+})));
 var gamesSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "games",
   initialState: initialState,
@@ -6158,6 +6212,13 @@ var gamesSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
       state.loading = false;
       state.games = action.payload;
     }).addCase(fetchGames.rejected, function (state, action) {
+      state.error = action.error;
+    }).addCase(fetchPlayedGames.pending, function (state, action) {
+      state.loading = true;
+    }).addCase(fetchPlayedGames.fulfilled, function (state, action) {
+      state.loading = false;
+      state.games = action.payload;
+    }).addCase(fetchPlayedGames.rejected, function (state, action) {
       state.error = action.error;
     });
   }
