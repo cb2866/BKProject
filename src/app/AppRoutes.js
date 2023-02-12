@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import Home from "../features/home/home";
 
 const AppRoutes = () => {
   return (
     <div>
       <Routes>
-        <Route path="*" />
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   );

@@ -1,9 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import gamesSliceReducer from "../features/games/gamesSlice";
+import singleGameReducer from "../features/games/singleGameSlice";
 
-// const store = configureStore({
-//   // reducer: {},
-//   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-// });
+const store = configureStore({
+  reducer: {
+    games: gamesSliceReducer,
+    singleGame: singleGameReducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+});
 
-// export default store;
+export default store;
