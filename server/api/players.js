@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const {
-  models: { PlayerStat },
+  models: { PlayerBasic },
 } = require("../db");
 const { Op } = require("sequelize");
 
-// GET all player stats
+// GET all player basics
 router.get("/", async (req, res, next) => {
   try {
-    const players = await PlayerStat.findAll();
+    const players = await PlayerBasic.findAll();
     if (players) {
       res.json(players);
     } else {
@@ -18,10 +18,10 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET single player stats
-router.get("/:playerId", async (req, res, next) => {
+// GET single player basics
+router.get("/:id", async (req, res, next) => {
   try {
-    const player = await PlayerStat.findByPk(req.params.id);
+    const player = await PlayerBasic.findByPk(req.params.id);
     if (player) {
       res.json(player);
     } else {
@@ -31,5 +31,7 @@ router.get("/:playerId", async (req, res, next) => {
     next(err);
   }
 });
+
+
 
 module.exports = router;

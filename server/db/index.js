@@ -3,7 +3,14 @@ const AllGame = require("./models/AllGame");
 const PlayerBasic = require("./models/PlayerBasics");
 const SeasonPlayerStat = require("./models/SeasonPlayerStats");
 
-SeasonPlayerStat.belongsTo(PlayerBasic);
+// PlayerBasic.hasMany(SeasonPlayerStat, {
+//   as: "playerBasic",
+//   foreignKey: "playerBasicId",
+// });
+// SeasonPlayerStat.belongsTo(PlayerBasic, {
+//   foreignKey: "playerBasicId",
+//   as: "playerBasicStats",
+// });
 // PlayerBasic.belongsTo(SeasonPlayerStat);
 
 module.exports = {

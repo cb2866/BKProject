@@ -14,6 +14,15 @@ const PlayerBasic = db.define("playerBasic", {
   position: {
     type: DataTypes.STRING,
   },
+  heightFt: {
+    type: DataTypes.INTEGER,
+  },
+  heightIn: {
+    type: DataTypes.INTEGER,
+  },
+  weight: {
+    type: DataTypes.INTEGER,
+  },
   // jerseyNumber: {
   //   type: DataTypes.STRING,
   // },

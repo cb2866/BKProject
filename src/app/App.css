@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -29,4 +28,8 @@ nav {
   to {
     transform: rotate(360deg);
   }
+}
+
+h1 {
+  color: white;
 }

@@ -5,11 +5,11 @@ import { fetchAllGames, selectGames } from "../games/gamesSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const games = useSelector(selectGames);
-  console.log(games);
+  // console.log(games);
 
-  useEffect(() => {
-    dispatch(fetchAllGames());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchAllGames());
+  // }, [dispatch]);
 
   return (
     <div>

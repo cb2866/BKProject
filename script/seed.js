@@ -143,6 +143,9 @@ async function seed() {
         firstName: player.first_name,
         lastName: player.last_name,
         position: player.position,
+        heightFt: player.height_feet,
+        heightIn: player.height_inches,
+        weight: player.weight_pounds,
       })
     )
   );
