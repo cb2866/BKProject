@@ -14,8 +14,7 @@ const SiteNavbar = () => {
       <Container fluid style={{ paddingLeft: "10px" }}>
         <Navbar.Brand href="/">
           <img
-            src="/navLogo2.png"
-            width="50"
+            src="/cbmLogo.png"
             height="50"
             className="d-inline-block align-top"
             alt="CBM"

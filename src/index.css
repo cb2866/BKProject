@@ -13,3 +13,11 @@ code {
     monospace;
 }
 
+#playerCard {
+  transition: all 0.6s ease-in-out;
+  border: none;
+}
+
+/* #playerCard:hover {
+  transform: scale(1.1);
+} */
