@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import GameSample from "../features/games/GameSample";
 import Home from "../features/home/Home";
 import AllPlayers from "../features/players/AllPlayers";
+import SinglePlayerCharts from "../features/players/SinglePlayerCharts";
 
 const AppRoutes = () => {
   return (
@@ -11,6 +12,7 @@ const AppRoutes = () => {
         <Route path="*" element={<Home />} />
         <Route path="/game" element={<GameSample />} />
         <Route path="/players" element={<AllPlayers />} />
+        <Route path="/playercharts" element={<SinglePlayerCharts />} />
       </Routes>
     </div>
   );

@@ -1,8 +1,13 @@
+"use strict";
+
 const {
   db,
   models: { AllGame, SeasonPlayerStat, PlayerBasic },
 } = require("../server/db");
 const axios = require("axios");
+const { Op } = require("sequelize");
+const { playerStatsSeed } = require("./playerStatsSeed");
+const { playerBasicSeed } = require("./playerBasicSeed");
 
 async function seed() {
   await db.sync({ force: true });
@@ -33,182 +38,476 @@ async function seed() {
       })
     )
   );
+  SeasonPlayerStat.bulkCreate(playerStatsSeed);
+  PlayerBasic.bulkCreate(playerBasicSeed);
 
+  // const playerDetails = await Promise.all(
+  //   seasonPlayerSeed.map((player) => SeasonPlayerStat.create(player))
+  // );
   // <-----------seeding indiv player stats ------------->
   //Wutanabe
-  const wutanabeResponse = await axios.get(
-    "https://www.balldontlie.io/api/v1/players/470"
-  );
-  const wutanabeGenStats = wutanabeResponse.data;
-
-  //Thomas
-  const thomasResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/17896048`
-  );
-  const thomasGenStats = thomasResponse.data;
-
-  //Sumner
-  const sumnerResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/432`
-  );
-  const sumnerGenStats = sumnerResponse.data;
-
-  //Smith
-  // const smithResponse = await axios.get(
-  //   `https://www.balldontlie.io/api/v1/players/17553942`
+  // const wutanabeResponse = await axios.get(
+  //   "https://www.balldontlie.io/api/v1/players/470"
   // );
-  // const smithGenStats = smithResponse.data;
+  // const wutanabeGenStats = wutanabeResponse.data;
 
-  //Simmons
-  const simmonsResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/417`
-  );
-  const simmonsGenStats = simmonsResponse.data;
+  // //Thomas
+  // const thomasResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/17896048`
+  // );
+  // const thomasGenStats = thomasResponse.data;
 
-  //O'Neale
-  const onealeResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/351`
-  );
-  const onealeGenStats = onealeResponse.data;
+  // //Sumner
+  // const sumnerResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/432`
+  // );
+  // const sumnerGenStats = sumnerResponse.data;
 
-  //Mills
-  const millsResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/319`
-  );
-  const millsGenStats = millsResponse.data;
+  // //Smith
+  // // const smithResponse = await axios.get(
+  // //   `https://www.balldontlie.io/api/v1/players/17553942`
+  // // );
+  // // const smithGenStats = smithResponse.data;
 
-  //Johnson
-  const johnsonResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/666679`
-  );
-  const johnsonGenStats = johnsonResponse.data;
+  // //Simmons
+  // const simmonsResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/417`
+  // );
+  // const simmonsGenStats = simmonsResponse.data;
 
-  //Harris
-  const harrisResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/197`
-  );
-  const harrisGenStats = harrisResponse.data;
+  // //O'Neale
+  // const onealeResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/351`
+  // );
+  // const onealeGenStats = onealeResponse.data;
 
-  //Finney-Smith
-  const finneySmithResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/158`
-  );
-  const finneySmithGenStats = finneySmithResponse.data;
+  // //Mills
+  // const millsResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/319`
+  // );
+  // const millsGenStats = millsResponse.data;
 
-  //Duke Jr.
-  const dukeResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/17896049`
-  );
-  const dukeGenStats = dukeResponse.data;
+  // //Johnson
+  // const johnsonResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/666679`
+  // );
+  // const johnsonGenStats = johnsonResponse.data;
 
-  //Dinwiddie
-  const dinwiddieResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/130`
-  );
-  const dinwiddieGenStats = dinwiddieResponse.data;
+  // //Harris
+  // const harrisResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/197`
+  // );
+  // const harrisGenStats = harrisResponse.data;
 
-  //Curry
-  const curryResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/114`
-  );
-  const curryGenStats = curryResponse.data;
+  // //Finney-Smith
+  // const finneySmithResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/158`
+  // );
+  // const finneySmithGenStats = finneySmithResponse.data;
 
-  //Bridges
-  const bridgesResponse = await axios.get(
-    `https://www.balldontlie.io/api/v1/players/61`
-  );
-  const bridgesGenStats = bridgesResponse.data;
+  // //Duke Jr.
+  // const dukeResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/17896049`
+  // );
+  // const dukeGenStats = dukeResponse.data;
 
-  //Seed file
-  const playerGenStatsArray = [
-    wutanabeGenStats,
-    thomasGenStats,
-    sumnerGenStats,
-    // smithGenStats,
-    simmonsGenStats,
-    onealeGenStats,
-    millsGenStats,
-    johnsonGenStats,
-    harrisGenStats,
-    finneySmithGenStats,
-    dukeGenStats,
-    dinwiddieGenStats,
-    curryGenStats,
-    bridgesGenStats,
-  ];
-  const playerGenStatsSeed = await Promise.all(
-    playerGenStatsArray.map((player) =>
-      PlayerBasic.create({
-        playerId: player.id,
-        firstName: player.first_name,
-        lastName: player.last_name,
-        position: player.position,
-        heightFt: player.height_feet,
-        heightIn: player.height_inches,
-        weight: player.weight_pounds,
-      })
-    )
-  );
+  // //Dinwiddie
+  // const dinwiddieResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/130`
+  // );
+  // const dinwiddieGenStats = dinwiddieResponse.data;
 
-  //seeding 22-23 season player averages
-  const season22Response = await axios.get(
-    `https://www.balldontlie.io/api/v1/season_averages?season=2022&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=17553942&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
-  );
-  const season22ResponseStat = season22Response.data.data;
+  // //Curry
+  // const curryResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/114`
+  // );
+  // const curryGenStats = curryResponse.data;
 
-  const season22PlayerStatSeed = await Promise.all(
-    season22ResponseStat.map((player) =>
-      SeasonPlayerStat.create({
-        season: "2022-2023",
-        playerId: player.player_id,
-        minutesPlayed: player.min,
-        pointsMade: player.pts,
-        threePointMade: player.fg3m,
-        threePointAttempt: player.fg3a,
-        threePointPercent: player.fg3_pct,
-      })
-    )
-  );
+  // //Bridges
+  // const bridgesResponse = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/players/61`
+  // );
+  // const bridgesGenStats = bridgesResponse.data;
 
-  //seeding 21-22 season player averages
-  const season21Response = await axios.get(
-    ` https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
-  );
-  const season21ResponseStat = season21Response.data.data;
+  // //Seed file
+  // const playerGenStatsArray = [
+  //   wutanabeGenStats,
+  //   thomasGenStats,
+  //   sumnerGenStats,
+  //   // smithGenStats,
+  //   simmonsGenStats,
+  //   onealeGenStats,
+  //   millsGenStats,
+  //   johnsonGenStats,
+  //   harrisGenStats,
+  //   finneySmithGenStats,
+  //   dukeGenStats,
+  //   dinwiddieGenStats,
+  //   curryGenStats,
+  //   bridgesGenStats,
+  // ];
+  // const playerGenStatsSeed = await Promise.all(
+  //   playerGenStatsArray.map((player) =>
+  //     PlayerBasic.create({
+  //       playerId: player.id,
+  //       firstName: player.first_name,
+  //       lastName: player.last_name,
+  //       position: player.position,
+  //       heightFt: player.height_feet,
+  //       heightIn: player.height_inches,
+  //       weight: player.weight_pounds,
+  //     })
+  //   )
+  // );
 
-  const season21PlayerStatSeed = await Promise.all(
-    season21ResponseStat.map((player) =>
-      SeasonPlayerStat.create({
-        season: "2021-2022",
-        playerId: player.player_id,
-        minutesPlayed: player.min,
-        pointsMade: player.pts,
-        threePointMade: player.fg3m,
-        threePointAttempt: player.fg3a,
-        threePointPercent: player.fg3_pct,
-      })
-    )
-  );
+  // let data = playerGenStatsSeed.map((playerBasic) => {
+  //   return console.log(playerBasic.dataValues);
+  // });
 
-  //seeding 20-21 season player averages
-  const season20Response = await axios.get(
-    ` https://www.balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
-  );
-  const season20ResponseStat = season20Response.data.data;
+  // <---------------------filling in images & missing stats--------------------------_>
+  //bridges
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1628969.png`,
+  //   },
 
-  const season20PlayerStatSeed = await Promise.all(
-    season20ResponseStat.map((player) =>
-      SeasonPlayerStat.create({
-        season: "2020-2021",
-        playerId: player.player_id,
-        minutesPlayed: player.min,
-        pointsMade: player.pts,
-        threePointMade: player.fg3m,
-        threePointAttempt: player.fg3a,
-        threePointPercent: player.fg3_pct,
-      })
-    )
-  );
+  //   {
+  //     where: {
+  //       playerId: 61,
+  //     },
+  //   }
+  // );
+  // //curry
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/203552.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 114,
+  //     },
+  //   }
+  // );
+  // //dinwiddie
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/203915.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 130,
+  //     },
+  //   }
+  // );
+  // //duke basic stats
+  // PlayerBasic.update(
+  //   {
+  //     weight: 204,
+  //     heightFt: 6,
+  //     heightIn: 4,
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1630561.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 17896049,
+  //     },
+  //   }
+  // );
+  // //finney-smith
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1627827.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 158,
+  //     },
+  //   }
+  // );
+  // //harris
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/203925.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 197,
+  //     },
+  //   }
+  // );
+  // //johnson basic stats
+  // PlayerBasic.update(
+  //   {
+  //     weight: 210,
+  //     heightFt: 6,
+  //     heightIn: 8,
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1629661.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 666679,
+  //     },
+  //   }
+  // );
+  // //mills
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/201988.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 319,
+  //     },
+  //   }
+  // );
+  // //o'neale
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1626220.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 351,
+  //     },
+  //   }
+  // );
+  // //simmons
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1627732.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 417,
+  //     },
+  //   }
+  // );
+  // //sumner
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1628410.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 432,
+  //     },
+  //   }
+  // );
+  // //thomas basic stats
+  // PlayerBasic.update(
+  //   {
+  //     weight: 210,
+  //     heightFt: 6,
+  //     heightIn: 3,
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1630560.png`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 17896048,
+  //     },
+  //   }
+  // );
+  // //watanabe
+  // PlayerBasic.update(
+  //   {
+  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1629139.png?imwidth=1040&imheight=760`,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 470,
+  //     },
+  //   }
+  // );
+
+  // <--------------------- seeding 22-23 season player averages--------------------->
+  // const season22Response = await axios.get(
+  //   `https://www.balldontlie.io/api/v1/season_averages?season=2022&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=17553942&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
+  // );
+  // const season22ResponseStat = season22Response.data.data;
+
+  // const season22PlayerStatSeed = await Promise.all(
+  //   season22ResponseStat.map((player) =>
+  //     SeasonPlayerStat.create({
+  //       season: "2022-2023",
+  //       playerId: player.player_id,
+  //       minutesPlayed: player.min,
+  //       pointsMade: player.pts,
+  //       threePointMade: player.fg3m,
+  //       threePointAttempt: player.fg3a,
+  //       threePointPercent: player.fg3_pct,
+  //     })
+  //   )
+  // );
+
+  //<-------------------------- seeding 21-22 season player averages---------------------->
+  // const season21Response = await axios.get(
+  //   ` https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
+  // );
+  // const season21ResponseStat = season21Response.data.data;
+
+  // const season21PlayerStatSeed = await Promise.all(
+  //   season21ResponseStat.map((player) =>
+  //     SeasonPlayerStat.create({
+  //       season: "2021-2022",
+  //       playerId: player.player_id,
+  //       minutesPlayed: player.min,
+  //       pointsMade: player.pts,
+  //       threePointMade: player.fg3m,
+  //       threePointAttempt: player.fg3a,
+  //       threePointPercent: player.fg3_pct,
+  //     })
+  //   )
+  // );
+
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: "Dinwiddie",
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 130,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 1,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 470,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 2,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 432,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 3,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 417,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 4,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 1796048,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 5,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 351,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 6,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 319,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 7,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 666679,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 8,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 197,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 10,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 158,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 9,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 17896049,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 11,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 130,
+  //     },
+  //   }
+  // );
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 12,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 114,
+  //     },
+  //   }
+  // );
+  //<-------------------------seeding 20-21 season player averages----------------------->
+  // const season20Response = await axios.get(
+  //   ` https://www.balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
+  // );
+  // const season20ResponseStat = season20Response.data.data;
+
+  // const season20PlayerStatSeed = await Promise.all(
+  //   season20ResponseStat.map((player) =>
+  //     SeasonPlayerStat.create({
+  //       season: "2020-2021",
+  //       playerId: player.player_id,
+  //       minutesPlayed: player.min,
+  //       pointsMade: player.pts,
+  //       threePointMade: player.fg3m,
+  //       threePointAttempt: player.fg3a,
+  //       threePointPercent: player.fg3_pct,
+  //     })
+  //   )
+  // );
 }
 
 async function runSeed() {

@@ -23,9 +23,9 @@ const PlayerBasic = db.define("playerBasic", {
   weight: {
     type: DataTypes.INTEGER,
   },
-  // jerseyNumber: {
-  //   type: DataTypes.STRING,
-  // },
+  imageUrl: {
+    type: DataTypes.STRING,
+  },
 });
 
 module.exports = PlayerBasic;
