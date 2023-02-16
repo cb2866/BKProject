@@ -1,6 +1,5 @@
-import { QueuePlayNextRounded } from "@mui/icons-material";
 import React, { useEffect } from "react";
-import { Container, Card, Row, Col, OverlayTrigger } from "react-bootstrap";
+import { Container, Card, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectPlayerBasicInfo,
@@ -12,7 +11,7 @@ import {
 const AllPlayers = () => {
   const dispatch = useDispatch();
   const playersBasicInfo = useSelector(selectPlayerBasicInfo);
-  const playerSeasonStats = useSelector(selectPlayerStats);
+
 
   useEffect(() => {
     dispatch(fetchAllPlayerBasicInfo());
@@ -34,6 +33,7 @@ const AllPlayers = () => {
               heightFt,
               heightIn,
               weight,
+              imageUrl,
               position,
             }) => {
               return (
@@ -47,16 +47,23 @@ const AllPlayers = () => {
                     boxShadow: "0px 0px 10px 0px rgba(200,200,200,0.75)",
                   }}
                 >
+                  <Card.Body>
+                    <img
+                      style={{ maxWidth: "100%" }}
+                      src={imageUrl}
+                      alt={`Nets Player: ${firstName} ${lastName}`}
+                    />
+                  </Card.Body>
                   <Card.Header
                     style={{
                       backgroundColor: "gray",
                       color: "white",
                       border: "none",
+                      fontWeight: "bold",
                     }}
                   >
                     {firstName.toUpperCase()} {lastName.toUpperCase()}
                   </Card.Header>
-                  <Card.Body>Player Data</Card.Body>
                   <Card.Footer className="d-flex justify-content-between">
                     <p
                       className="text-muted"

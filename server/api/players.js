@@ -3,11 +3,14 @@ const {
   models: { PlayerBasic },
 } = require("../db");
 const { Op } = require("sequelize");
+const SeasonPlayerStat = require("../db/models/SeasonPlayerStats");
 
 // GET all player basics
 router.get("/", async (req, res, next) => {
   try {
-    const players = await PlayerBasic.findAll();
+    const players = await PlayerBasic.findAll({
+      include: [SeasonPlayerStat],
+    });
     if (players) {
       res.json(players);
     } else {
@@ -31,7 +34,5 @@ router.get("/:id", async (req, res, next) => {
     next(err);
   }
 });
-
-
 
 module.exports = router;
