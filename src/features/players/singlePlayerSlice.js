@@ -11,7 +11,7 @@ const initialState = {
 export const fetchSinglePlayerStats = createAsyncThunk(
   "singlePlayerStats/fetchSinglePlayerStats",
   async (playerId) => {
-    const { data } = await axios.get(`/api/players/${playerId}`);
+    const { data } = await axios.get(`/api/playerStats/${playerId}`);
     return data;
   }
 );
@@ -19,7 +19,7 @@ export const fetchSinglePlayerStats = createAsyncThunk(
 export const fetchSinglePlayerBasicInfo = createAsyncThunk(
   "singlePlayerBasic/fetchSinglePlayerBasicInfo",
   async (playerId) => {
-    const { data } = await axios.get(`/api/playerStats/${playerId}`);
+    const { data } = await axios.get(`/api/players/${playerId}`);
     return data;
   }
 );

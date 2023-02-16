@@ -24,7 +24,9 @@ router.get("/", async (req, res, next) => {
 // GET single player basics
 router.get("/:id", async (req, res, next) => {
   try {
-    const player = await PlayerBasic.findByPk(req.params.id);
+    const player = await PlayerBasic.findByPk(req.params.id, {
+      include: [SeasonPlayerStat],
+    });
     if (player) {
       res.json(player);
     } else {
