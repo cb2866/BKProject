@@ -12,7 +12,7 @@ const AppRoutes = () => {
         <Route path="*" element={<Home />} />
         <Route path="/game" element={<GameSample />} />
         <Route path="/players" element={<AllPlayers />} />
-        <Route path="/playercharts" element={<SinglePlayerCharts />} />
+        <Route path="/players/:id" element={<SinglePlayerCharts />} />÷
       </Routes>
     </div>
   );

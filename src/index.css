@@ -21,3 +21,7 @@ code {
 /* #playerCard:hover {
   transform: scale(1.1);
 } */
+
+#table-header {
+  font-weight: bold;
+}
