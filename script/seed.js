@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { AllGame, SeasonPlayerStat, PlayerBasic },
+  models: { AllGame, SeasonPlayerStat, PlayerBasic, GamePlayerStat },
 } = require("../server/db");
 const axios = require("axios");
 const { Op } = require("sequelize");
@@ -15,29 +15,74 @@ async function seed() {
 
   // <-------- creating a record of each Nets game from 2022-23 season------->
   const response = await axios.get(
-    "https://api.sportradar.com/nba/trial/v7/en/games/2022/REG/schedule.json?api_key=gb32978pvtpyam75whhsvpk8"
+    "https://www.balldontlie.io/api/v1/games?seasons%5B%5D=2022&team_ids%5B%5D=3&per_page=100"
   );
 
-  const allGames = response.data.games;
-  const netsGames = allGames.filter((game) => {
-    return (
-      game.home.name === "Brooklyn Nets" || game.away.name === "Brooklyn Nets"
-    );
-  });
+  const allGames = response.data.data;
 
   const gameSeed = await Promise.all(
-    netsGames.map((game) =>
+    allGames.map((game) =>
       AllGame.create({
         gameId: game.id,
         status: game.status,
-        date: game.scheduled,
-        homeTeam: game.home.name,
-        homeTeamScore: game.home_points,
-        awayTeam: game.away.name,
-        awayTeamScore: game.away_points,
+        date: game.date,
+        homeTeam: game.home_team.full_name,
+        homeTeamScore: game.home_team_score,
+        awayTeam: game.visitor_team.full_name,
+        awayTeamScore: game.visitor_team_score,
       })
     )
   );
+
+  // <------------------grabbing individual player stats per game--------------------_>
+  const gameResponse1 = await axios.get(
+    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=61&player_ids[]=114&player_ids[]=130&player_ids[]=17896049&player_ids[]=158&player_ids[]=197&player_ids[]=666679&player_ids[]=319&player_ids[]=351&player_ids[]=417&player_ids[]=17553942&player_ids[]=432&player_ids[]=17896048&player_ids[]=470&per_page=100" // "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&season[]=2021&seasons[]=2020"
+  );
+
+  const gameResponseData1 = gameResponse1.data.data;
+
+  const gamePlayerStatSeed1 = await Promise.all(
+    gameResponseData1.map((game) =>
+      GamePlayerStat.create({
+        season: game.game.season,
+        playerId: game.player.id,
+        playerFirstName: game.player.first_name,
+        playerLastName: game.player.last_name,
+        teamName: game.team.full_name,
+        gameId: game.game.id,
+        gameDate: game.game.date,
+        minutesPlayed: game.min,
+        pointsMade: game.pts,
+        threePointMade: game.fg3m,
+        threePointAttempt: game.fg3a,
+        threePointPercent: game.fg_pct,
+      })
+    )
+  );
+
+  const gameResponse2 = await axios.get(
+    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=61&player_ids[]=114&player_ids[]=130&player_ids[]=17896049&player_ids[]=158&player_ids[]=197&player_ids[]=666679&player_ids[]=319&player_ids[]=351&player_ids[]=417&player_ids[]=17553942&player_ids[]=432&player_ids[]=17896048&player_ids[]=470&per_page=100&page=2"
+  );
+  const gameResponseData2 = gameResponse2.data.data;
+  const gamePlayerStateSeed2 = await Promise.all(
+    gameResponseData2.map((game) =>
+      GamePlayerStat.create({
+        season: game.game.season,
+        playerId: game.player.id,
+        playerFirstName: game.player.first_name,
+        playerLastName: game.player.last_name,
+        teamName: game.team.full_name,
+        gameId: game.game.id,
+        gameDate: game.game.date,
+        minutesPlayed: game.min,
+        pointsMade: game.pts,
+        threePointMade: game.fg3m,
+        threePointAttempt: game.fg3a,
+        threePointPercent: game.fg_pct,
+      })
+    )
+  );
+
   SeasonPlayerStat.bulkCreate(playerStatsSeed);
   PlayerBasic.bulkCreate(playerBasicSeed);
 
@@ -163,161 +208,6 @@ async function seed() {
   // let data = playerGenStatsSeed.map((playerBasic) => {
   //   return console.log(playerBasic.dataValues);
   // });
-
-  // <---------------------filling in images & missing stats--------------------------_>
-  //bridges
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1628969.png`,
-  //   },
-
-  //   {
-  //     where: {
-  //       playerId: 61,
-  //     },
-  //   }
-  // );
-  // //curry
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/203552.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 114,
-  //     },
-  //   }
-  // );
-  // //dinwiddie
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/203915.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 130,
-  //     },
-  //   }
-  // );
-  // //duke basic stats
-  // PlayerBasic.update(
-  //   {
-  //     weight: 204,
-  //     heightFt: 6,
-  //     heightIn: 4,
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1630561.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 17896049,
-  //     },
-  //   }
-  // );
-  // //finney-smith
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1627827.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 158,
-  //     },
-  //   }
-  // );
-  // //harris
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/203925.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 197,
-  //     },
-  //   }
-  // );
-  // //johnson basic stats
-  // PlayerBasic.update(
-  //   {
-  //     weight: 210,
-  //     heightFt: 6,
-  //     heightIn: 8,
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1629661.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 666679,
-  //     },
-  //   }
-  // );
-  // //mills
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/201988.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 319,
-  //     },
-  //   }
-  // );
-  // //o'neale
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1626220.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 351,
-  //     },
-  //   }
-  // );
-  // //simmons
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1627732.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 417,
-  //     },
-  //   }
-  // );
-  // //sumner
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1628410.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 432,
-  //     },
-  //   }
-  // );
-  // //thomas basic stats
-  // PlayerBasic.update(
-  //   {
-  //     weight: 210,
-  //     heightFt: 6,
-  //     heightIn: 3,
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1630560.png`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 17896048,
-  //     },
-  //   }
-  // );
-  // //watanabe
-  // PlayerBasic.update(
-  //   {
-  //     imageUrl: `https://cdn.nba.com/headshots/nba/latest/1040x760/1629139.png?imwidth=1040&imheight=760`,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 470,
-  //     },
-  //   }
-  // );
 
   // <--------------------- seeding 22-23 season player averages--------------------->
   // const season22Response = await axios.get(

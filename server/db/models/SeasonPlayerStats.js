@@ -11,6 +11,9 @@ const SeasonPlayerStat = db.define("seasonPlayerStat", {
   minutesPlayed: {
     type: DataTypes.STRING,
   },
+  // gamesPlayed: {
+  //   type: DataTypes.INTEGER,
+  // },
   pointsMade: {
     type: DataTypes.DECIMAL(10, 2),
   },
