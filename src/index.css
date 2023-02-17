@@ -13,15 +13,33 @@ code {
     monospace;
 }
 
-#playerCard {
+#playerImg {
   transition: all 0.6s ease-in-out;
   border: none;
 }
 
-/* #playerCard:hover {
+#playerImg:hover {
   transform: scale(1.1);
-} */
+}
 
 #table-header {
-  font-weight: bold;
+  font-weight: 300;
+}
+#table-data {
+  font-weight: 200;
+}
+.nav.nav-pills .nav-link.active {
+  background-color: black;
+  color: white;
+}
+
+.nav.nav-pills .nav-link {
+  color: black;
+}
+
+.cropped {
+  /* width: 100%; /* width of container */
+  /* height: 100%; height of container */
+  /* object-fit: cover; */
+  object-position: 140px 10px; /* try 20px 10px */
 }

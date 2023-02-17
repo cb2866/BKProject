@@ -29,7 +29,7 @@ const SiteNavbar = () => {
           <Offcanvas.Header closeButton></Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              {/* <Nav.Link href="/game">Sample Game</Nav.Link> */}
+              <Nav.Link href="/games">Games</Nav.Link>
               <Nav.Link href="/players">Players</Nav.Link>
               {/* <Nav.Link href="/playercharts">Player Charts</Nav.Link> */}
             </Nav>

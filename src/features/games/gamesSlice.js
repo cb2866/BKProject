@@ -8,14 +8,6 @@ export const fetchAllGames = createAsyncThunk("games/allGames", async () => {
   return data;
 });
 
-export const fetchPlayedGames = createAsyncThunk(
-  "games/allPlayedGames",
-  async () => {
-    const { data } = await axios.get("/api/games/played");
-    return data;
-  }
-);
-
 const gamesSlice = createSlice({
   name: "games",
   initialState,
@@ -30,16 +22,6 @@ const gamesSlice = createSlice({
         state.games = action.payload;
       })
       .addCase(fetchAllGames.rejected, (state, action) => {
-        state.error = action.error;
-      })
-      .addCase(fetchPlayedGames.pending, (state, action) => {
-        state.loading = true;
-      })
-      .addCase(fetchPlayedGames.fulfilled, (state, action) => {
-        state.loading = false;
-        state.games = action.payload;
-      })
-      .addCase(fetchPlayedGames.rejected, (state, action) => {
         state.error = action.error;
       });
   },

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, Card, Container, Row } from "react-bootstrap";
+
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -35,26 +36,42 @@ const AllPlayers = () => {
               return (
                 <Card
                   id="playerCard"
-                  className="mx-auto m-2"
+                  className="mx-auto me-2"
                   key={id}
                   style={{
                     width: "18rem",
-                    padding: "0",
+                    margin: "5px",
+                    padding: "0px",
                     boxShadow: "0px 0px 10px 0px rgba(200,200,200,0.75)",
                   }}
                 >
                   <Button
-                    style={{ backgroundColor: "inherit" }}
+                    style={{ backgroundColor: "inherit", padding: "0px" }}
                     onClick={() => navigate(`/players/${id}`)}
                   >
-                    <Card.Body>
-                      <img
-                        style={{ maxWidth: "100%" }}
-                        src={imageUrl}
-                        alt={`Nets Player: ${firstName} ${lastName}`}
-                      />
+                    <Card.Body style={{ padding: "0px", margin: "0px" }}>
+                      <Col>
+                        <h3 style={{ color: "black" }}>
+                          {firstName.toUpperCase()}
+                          <br /> {lastName.toUpperCase()}
+                        </h3>
+                      </Col>
+
+                      <Col>
+                        <img
+                          className="cropped"
+                          id="playerImg"
+                          style={{
+                            maxWidth: "100%",
+                            minHeight: "15rem",
+                            padding: "0px",
+                          }}
+                          src={imageUrl}
+                          alt={`Nets Player: ${firstName} ${lastName}`}
+                        />
+                      </Col>
                     </Card.Body>
-                    <Card.Header
+                    {/* <Card.Header
                       style={{
                         backgroundColor: "gray",
                         color: "white",
@@ -63,28 +80,12 @@ const AllPlayers = () => {
                       }}
                     >
                       {firstName.toUpperCase()} {lastName.toUpperCase()}
-                    </Card.Header>
-                    <Card.Footer className="d-flex justify-content-between">
-                      <p
-                        className="text-muted"
-                        style={{
-                          fontSize: "10px",
-                          padding: "0px",
-                          margin: "1px",
-                        }}
-                      >
-                        Height: {heightFt}`{heightIn}
-                      </p>
-                      <p
-                        style={{
-                          fontSize: "10px",
-                          padding: "0px",
-                          margin: "1px",
-                        }}
-                        className="text-muted"
-                      >
-                        Weight: {weight} pounds
-                      </p>
+                    </Card.Header> */}
+                    <Card.Footer
+                      className="d-flex justify-content-between"
+                      style={{ color: "black" }}
+                    >
+                      What info should I place here?{" "}
                     </Card.Footer>{" "}
                   </Button>
                 </Card>
