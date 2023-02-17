@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion, useScroll, useInView } from "framer-motion";
 import { fetchAllGames, selectGames } from "../games/gamesSlice";
 import AllPlayers from "../players/AllPlayers";
+import AllGames from "../games/AllGames";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,10 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>dashboard</h1> <h1>dashboard</h1> <h1>dashboard</h1>{" "}
-      <h1>dashboard</h1> <h1>dashboard</h1> <h1>dashboard</h1>{" "}
-      <h1>dashboard</h1> <h1>dashboard</h1> <h1>dashboard</h1>{" "}
-      <h1>dashboard</h1>
+      <AllGames />
       <motion.div
         transition={{ delay: 0.4 }}
         initial={fadeInUp.start}

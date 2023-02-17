@@ -28,6 +28,12 @@ code {
 #table-data {
   font-weight: 200;
 }
+
+#games-table {
+  font-weight: 200;
+  font-size: 12px;
+}
+
 .nav.nav-pills .nav-link.active {
   background-color: black;
   color: white;

@@ -19,8 +19,7 @@ const AllPlayers = () => {
 
   return (
     <Container fluid>
-      <Row className="m-2"></Row>
-      <Row className="mx-auto">
+      <Row>
         {playersBasicInfo.length &&
           playersBasicInfo.map(
             ({
@@ -36,11 +35,11 @@ const AllPlayers = () => {
               return (
                 <Card
                   id="playerCard"
-                  className="mx-auto me-2"
+                  className="mx-auto"
                   key={id}
                   style={{
                     width: "18rem",
-                    margin: "5px",
+
                     padding: "0px",
                     boxShadow: "0px 0px 10px 0px rgba(200,200,200,0.75)",
                   }}

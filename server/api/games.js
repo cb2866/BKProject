@@ -7,7 +7,9 @@ const { Op } = require("sequelize");
 //GET all games
 router.get("/", async (req, res, next) => {
   try {
-    const games = await AllGame.findAll();
+    const games = await AllGame.findAll({
+      order: ["date"],
+    });
     if (games) {
       res.json(games);
     } else {
