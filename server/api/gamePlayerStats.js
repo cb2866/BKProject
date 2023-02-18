@@ -1,17 +1,14 @@
 const router = require("express").Router();
 const {
-  models: { AllGame },
+  models: { GamePlayerStat },
 } = require("../db");
 const { Op } = require("sequelize");
 
-//GET all games
 router.get("/", async (req, res, next) => {
   try {
-    const games = await AllGame.findAll({
-      order: ["date"],
-    });
-    if (games) {
-      res.json(games);
+    const gameDetails = await GamePlayerStat.findAll();
+    if (gameDetails) {
+      res.json(gameDetails);
     } else {
       res.sendStatus(404);
     }
@@ -20,17 +17,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//GET single game
-
 router.get("/:gameId", async (req, res, next) => {
   try {
-    const game = await AllGame.findOne({
+    const gameDetails = await GamePlayerStat.findAll({
       where: {
         gameId: req.params.gameId,
       },
     });
-    if (game) {
-      res.json(game);
+    if (gameDetails) {
+      res.json(gameDetails);
     } else {
       res.sendStatus(404);
     }

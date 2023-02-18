@@ -145,3 +145,122 @@ const playerBasicSeed = [
 ];
 
 module.exports = { playerBasicSeed };
+
+// const playerDetails = await Promise.all(
+//   seasonPlayerSeed.map((player) => SeasonPlayerStat.create(player))
+// );
+// <-----------seeding indiv player stats ------------->
+//Wutanabe
+// const wutanabeResponse = await axios.get(
+//   "https://www.balldontlie.io/api/v1/players/470"
+// );
+// const wutanabeGenStats = wutanabeResponse.data;
+
+// //Thomas
+// const thomasResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/17896048`
+// );
+// const thomasGenStats = thomasResponse.data;
+
+// //Sumner
+// const sumnerResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/432`
+// );
+// const sumnerGenStats = sumnerResponse.data;
+
+// //Smith
+// // const smithResponse = await axios.get(
+// //   `https://www.balldontlie.io/api/v1/players/17553942`
+// // );
+// // const smithGenStats = smithResponse.data;
+
+// //Simmons
+// const simmonsResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/417`
+// );
+// const simmonsGenStats = simmonsResponse.data;
+
+// //O'Neale
+// const onealeResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/351`
+// );
+// const onealeGenStats = onealeResponse.data;
+
+// //Mills
+// const millsResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/319`
+// );
+// const millsGenStats = millsResponse.data;
+
+// //Johnson
+// const johnsonResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/666679`
+// );
+// const johnsonGenStats = johnsonResponse.data;
+
+// //Harris
+// const harrisResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/197`
+// );
+// const harrisGenStats = harrisResponse.data;
+
+// //Finney-Smith
+// const finneySmithResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/158`
+// );
+// const finneySmithGenStats = finneySmithResponse.data;
+
+// //Duke Jr.
+// const dukeResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/17896049`
+// );
+// const dukeGenStats = dukeResponse.data;
+
+// //Dinwiddie
+// const dinwiddieResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/130`
+// );
+// const dinwiddieGenStats = dinwiddieResponse.data;
+
+// //Curry
+// const curryResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/114`
+// );
+// const curryGenStats = curryResponse.data;
+
+// //Bridges
+// const bridgesResponse = await axios.get(
+//   `https://www.balldontlie.io/api/v1/players/61`
+// );
+// const bridgesGenStats = bridgesResponse.data;
+
+// //Seed file
+// const playerGenStatsArray = [
+//   wutanabeGenStats,
+//   thomasGenStats,
+//   sumnerGenStats,
+//   // smithGenStats,
+//   simmonsGenStats,
+//   onealeGenStats,
+//   millsGenStats,
+//   johnsonGenStats,
+//   harrisGenStats,
+//   finneySmithGenStats,
+//   dukeGenStats,
+//   dinwiddieGenStats,
+//   curryGenStats,
+//   bridgesGenStats,
+// ];
+// const playerGenStatsSeed = await Promise.all(
+//   playerGenStatsArray.map((player) =>
+//     PlayerBasic.create({
+//       playerId: player.id,
+//       firstName: player.first_name,
+//       lastName: player.last_name,
+//       position: player.position,
+//       heightFt: player.height_feet,
+//       heightIn: player.height_inches,
+//       weight: player.weight_pounds,
+//     })
+//   )
+// );

@@ -1,111 +1,102 @@
 import React, { useEffect } from "react";
-import { Button, Card, Container, Row, Col, Table } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import PendingGames from "./PendingGames";
+import CompletedGames from "./CompletedGames";
 import { fetchAllGames, selectGames } from "./gamesSlice";
 
 const AllGames = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const games = useSelector(selectGames);
-  const completedGames = games.filter((game) => {
-    return game.status === "Final";
-  });
-  const pendingGames = games.filter((game) => {
-    return game.status !== "Final";
-  });
 
   useEffect(() => {
     dispatch(fetchAllGames());
   }, [dispatch]);
 
+  const games = useSelector(selectGames);
+  const completedGames = games.filter((game) => {
+    return game.status === "Final";
+  });
+
+  const pendingGames = games.filter((game) => {
+    return game.status !== "Final";
+  });
+  // const homeGames = completedGames.filter((game) => {
+  //   return game.homeTeam === "Brooklyn Nets";
+  // });
+  // const awayGames = completedGames.filter((game) => {
+  //   return game.awayTeam === "Brooklyn Nets";
+  // });
+
   return (
-    <Container>
+    <Container fluid style={{ backgroundColor: "white" }}>
       <h1>2022-2023</h1>
-      <Row>
-        <Col xs={6}>
-          <Table
-            id="games-table"
-            borderless
-            hover
-            responsive="sm"
-            style={{ backgroundColor: "white", textAlign: "left" }}
+
+      <Row className="mx-auto">
+        {/* <Col xs={6}>
+          <h4>Remaining Games for the Season</h4>
+          <PendingGames pendingGames={pendingGames} />
+        </Col>{" "} */}
+        {/* <---------------------------- nets home games -------------------------> */}
+        <Col>
+          <h4>Previous Games Performance</h4>
+          <CompletedGames completedGames={completedGames} />
+          {/* <ResponsiveContainer maxWidth={700} maxHeight="50%"> */}
+          {/* <LineChart
+            className="mx-auto"
+            backgroundColor="white"
+            width={500}
+            height={300}
+            data={homeGames}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
           >
-            <thead>
-              <tr>
-                <th colSpan={3} className="text-center">
-                  Upcoming Games
-                </th>
-              </tr>
-              <tr>
-                <th>Date</th>
-                <th>Home</th>
-                <th>Away</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pendingGames.length &&
-                pendingGames.map(({ id, date, awayTeam, homeTeam }) => {
-                  return (
-                    <tr key={id}>
-                      <td>{date}</td>
-                      <td>{homeTeam}</td>
-                      <td>{awayTeam}</td>
-                    </tr>
-                  );
-                })}
-              <td></td>
-            </tbody>
-          </Table>
-        </Col>{" "}
-        <Col xs={6}>
-          <Table
-            id="games-table"
-            borderless
-            hover
-            responsive="sm"
-            style={{ backgroundColor: "white", textAlign: "left" }}
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="homeTeamScore"
+              stroke="#8884d8"
+              //   dot={<customDot />}
+            />
+            <Line type="monotone" dataKey="awayTeamScore" stroke="#82ca9d" />
+          </LineChart>
+
+          {/* <---------------------------- nets away games -------------------------> */}
+          {/* <ResponsiveContainer maxWidth={700} maxHeight="50%"> */}
+          {/* <LineChart
+            className="mx-auto"
+            backgroundColor="white"
+            width={500}
+            height={300}
+            data={awayGames}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
           >
-            <thead>
-              <tr>
-                <th colSpan={5} className="text-center">
-                  Past Games
-                </th>
-              </tr>
-              <tr>
-                <th>Date</th>
-                <th>Home</th>
-                <th>Home Score</th>
-                <th>Away</th>
-                <th>Away Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              {completedGames.length &&
-                completedGames.map(
-                  ({
-                    id,
-                    date,
-                    awayTeam,
-                    awayTeamScore,
-                    homeTeam,
-                    homeTeamScore,
-                  }) => {
-                    return (
-                      <tr key={id}>
-                        <td>{date}</td>
-                        <td>{homeTeam}</td>
-                        <td>{homeTeamScore}</td>
-                        <td>{awayTeam}</td>
-                        <td>{awayTeamScore}</td>
-                      </tr>
-                    );
-                  }
-                )}
-              <td></td>
-            </tbody>
-          </Table>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="homeTeamScore"
+              stroke="#8884d8"
+              //   dot={<customDot />}
+            />
+            <Line type="monotone" dataKey="awayTeamScore" stroke="#82ca9d" />
+          </LineChart> */}{" "}
+          {/* </ResponsiveContainer> */}
         </Col>
       </Row>
     </Container>

@@ -1,16 +1,15 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  Nav,
-  Navbar,
-  NavDropdown,
-  Container,
-  Offcanvas,
-} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Nav, Navbar, Container, Offcanvas } from "react-bootstrap";
 
 const SiteNavbar = () => {
   return (
-    <Navbar expand={`md`} bg="light" variant="light" style={{ padding: "0px" }}>
+    <Navbar
+      expand={`md`}
+      bg="dark"
+      variant="dark"
+      style={{ padding: "0px", color: "white" }}
+    >
       <Container fluid style={{ paddingLeft: "10px" }}>
         <Navbar.Brand href="/">
           <img
@@ -31,7 +30,6 @@ const SiteNavbar = () => {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link href="/games">Games</Nav.Link>
               <Nav.Link href="/players">Players</Nav.Link>
-              {/* <Nav.Link href="/playercharts">Player Charts</Nav.Link> */}
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
