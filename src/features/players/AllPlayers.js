@@ -51,7 +51,7 @@ const AllPlayers = () => {
                   className="mx-auto"
                   key={id}
                   style={{
-                    width: "18rem",
+                    width: "20rem",
                     marginRight: "5px",
                     marginLeft: "5px",
                     marginBottom: "20px",
@@ -67,32 +67,52 @@ const AllPlayers = () => {
                     }}
                     onClick={() => navigate(`/players/${id}`)}
                   >
-                    <Card.Body style={{ padding: "0px", margin: "0px" }}>
-                      <Col>
-                        <h3 style={{ color: "black" }}>
-                          {firstName.toUpperCase()}
-                          <br /> {lastName.toUpperCase()}
+                    <Card.Body
+                      style={{
+                        paddingLeft: "5px",
+                        margin: "0px",
+                        paddingTop: "0px",
+                        paddingBottom: "0px",
+                        paddingRight: "10px",
+                      }}
+                    >
+                      <Row>
+                        {/* <Col xs={4}> */}
+                        <h3
+                          style={{ color: "black", padding: "5px" }}
+                          className="d-flex justify-content-end"
+                        >
+                          {firstName.toUpperCase()} {lastName.toUpperCase()}
                         </h3>
-                      </Col>
-
-                      <Col>
-                        <img
-                          className="mx-auto"
-                          style={{
-                            maxWidth: "100%",
-                            maxHeight: "15rem",
-                            padding: "0px",
-                          }}
-                          src={imageUrl}
-                          alt={`Nets Player: ${firstName} ${lastName}`}
-                        />
-                      </Col>
+                        {/* </Col> */}
+                        <Col xs={6}>
+                          <img
+                            className="d-flex justify-content-end"
+                            style={{
+                              maxWidth: "12rem",
+                              objectFit: "cover",
+                              height: "100%",
+                              padding: "0px",
+                            }}
+                            src={imageUrl}
+                            alt={`Nets Player: ${firstName} ${lastName}`}
+                          />{" "}
+                          '
+                        </Col>
+                        <Col>
+                          <p id="player-card">
+                            {" "}
+                            Height: {heightFt}`{heightIn}
+                          </p>
+                          <p id="player-card"> Weight: {weight} lbs</p>
+                        </Col>
+                      </Row>
                     </Card.Body>
                     <Card.Footer
                       className="d-flex justify-content-between"
                       style={{ color: "black" }}
                     >
-                      <p
+                      {/* <p
                         style={{
                           fontSize: "10px",
                           padding: "0px",
@@ -101,8 +121,8 @@ const AllPlayers = () => {
                         className="text-muted"
                       >
                         Height: {heightFt}`{heightIn}"
-                      </p>
-                      <p
+                      </p> */}
+                      {/* <p
                         style={{
                           fontSize: "10px",
                           padding: "0px",
@@ -111,7 +131,7 @@ const AllPlayers = () => {
                         className="text-muted"
                       >
                         Weight: {weight} pounds
-                      </p>
+                      </p> */}
                     </Card.Footer>
                   </Button>
                 </Card>

@@ -43,9 +43,16 @@ code {
   color: black;
 }
 
-.cropped {
-  /* width: 100%; /* width of container */
-  /* height: 100%; height of container */
-  /* object-fit: cover; */
-  object-position: 140px 10px; /* try 20px 10px */
+.vertical-text {
+  transform: rotate(270deg);
+  vertical-align: middle;
+  justify-content: center;
+  /* transform-origin: left 50 top; */
+}
+
+#player-card {
+  color: black;
+  font-size: 10px;
+  text-align: right;
+  margin-bottom: 0%;
 }

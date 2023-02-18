@@ -9584,7 +9584,7 @@ var AllPlayers = function AllPlayers() {
       className: "mx-auto",
       key: id,
       style: {
-        width: "18rem",
+        width: "20rem",
         marginRight: "5px",
         marginLeft: "5px",
         marginBottom: "20px",
@@ -9602,42 +9602,40 @@ var AllPlayers = function AllPlayers() {
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
       style: {
-        padding: "0px",
-        margin: "0px"
+        paddingLeft: "5px",
+        margin: "0px",
+        paddingTop: "0px",
+        paddingBottom: "0px",
+        paddingRight: "10px"
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
       style: {
-        color: "black"
-      }
-    }, firstName.toUpperCase(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " ", lastName.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      className: "mx-auto",
+        color: "black",
+        padding: "5px"
+      },
+      className: "d-flex justify-content-end"
+    }, firstName.toUpperCase(), " ", lastName.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      xs: 6
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      className: "d-flex justify-content-end",
       style: {
-        maxWidth: "100%",
-        maxHeight: "15rem",
+        maxWidth: "12rem",
+        objectFit: "cover",
+        height: "100%",
         padding: "0px"
       },
       src: imageUrl,
       alt: "Nets Player: ".concat(firstName, " ").concat(lastName)
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
+    }), " ", "'"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      id: "player-card"
+    }, " ", "Height: ", heightFt, "`", heightIn), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      id: "player-card"
+    }, " Weight: ", weight, " lbs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
       className: "d-flex justify-content-between",
       style: {
         color: "black"
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-      style: {
-        fontSize: "10px",
-        padding: "0px",
-        marginBottom: "2px"
-      },
-      className: "text-muted"
-    }, "Height: ", heightFt, "`", heightIn, "\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-      style: {
-        fontSize: "10px",
-        padding: "0px",
-        margin: "1px"
-      },
-      className: "text-muted"
-    }, "Weight: ", weight, " pounds"))));
+    })));
   })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (AllPlayers);
@@ -10127,7 +10125,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n.cropped {\n  /* width: 100%; /* width of container */\n  /* height: 100%; height of container */\n  /* object-fit: cover; */\n  object-position: 140px 10px; /* try 20px 10px */\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT;;cAEY;EACZ,mCAAmC;EACnC,kCAAkC;EAClC,uBAAuB;AACzB;;AAEA;EACE;aACW;AACb;;AAEA;EACE,gCAAgC;EAChC,YAAY;AACd;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,uCAAuC;EACvC,sCAAsC;EACtC,uBAAuB;EACvB,2BAA2B,EAAE,kBAAkB;AACjD","sourcesContent":["body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n.cropped {\n  /* width: 100%; /* width of container */\n  /* height: 100%; height of container */\n  /* object-fit: cover; */\n  object-position: 140px 10px; /* try 20px 10px */\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n.vertical-text {\n  transform: rotate(270deg);\n  vertical-align: middle;\n  justify-content: center;\n  /* transform-origin: left 50 top; */\n}\n\n#player-card {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT;;cAEY;EACZ,mCAAmC;EACnC,kCAAkC;EAClC,uBAAuB;AACzB;;AAEA;EACE;aACW;AACb;;AAEA;EACE,gCAAgC;EAChC,YAAY;AACd;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,yBAAyB;EACzB,sBAAsB;EACtB,uBAAuB;EACvB,mCAAmC;AACrC;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,iBAAiB;AACnB","sourcesContent":["body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n.vertical-text {\n  transform: rotate(270deg);\n  vertical-align: middle;\n  justify-content: center;\n  /* transform-origin: left 50 top; */\n}\n\n#player-card {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
