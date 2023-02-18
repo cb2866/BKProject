@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,16 +12,29 @@ const AllPlayers = () => {
   const navigate = useNavigate();
   const playersBasicInfo = useSelector(selectPlayerBasicInfo);
 
+  //sort players by who has the higher attempt/success ratio from 2022-23 season
+  const sortedPlayersBy3PP = [...playersBasicInfo].sort((a, b) => {
+    return (
+      b.seasonPlayerStats[b.seasonPlayerStats.length - 1].threePointPercent -
+      a.seasonPlayerStats[a.seasonPlayerStats.length - 1].threePointPercent
+    );
+  });
+  console.log(sortedPlayersBy3PP);
+
   useEffect(() => {
     dispatch(fetchAllPlayerBasicInfo());
   }, [dispatch]);
 
   return (
-    <Container fluid>
-      <Row className="m-2"></Row>
-      <Row className="mx-auto">
-        {playersBasicInfo.length &&
-          playersBasicInfo.map(
+    <Container fluid className="p-4">
+      <Row>
+        <p style={{ color: "white" }}>
+          Players are currently sorted by 2022-2023 3PP
+        </p>
+      </Row>
+      <Row className="me-2">
+        {sortedPlayersBy3PP.length &&
+          sortedPlayersBy3PP.map(
             ({
               id,
               firstName,
@@ -36,17 +48,23 @@ const AllPlayers = () => {
               return (
                 <Card
                   id="playerCard"
-                  className="mx-auto me-2"
+                  className="mx-auto"
                   key={id}
                   style={{
                     width: "18rem",
-                    margin: "5px",
-                    padding: "0px",
+                    marginRight: "5px",
+                    marginLeft: "5px",
+                    marginBottom: "20px",
+                    padding: "0",
                     boxShadow: "0px 0px 10px 0px rgba(200,200,200,0.75)",
                   }}
                 >
                   <Button
-                    style={{ backgroundColor: "inherit", padding: "0px" }}
+                    style={{
+                      backgroundColor: "inherit",
+                      padding: "0px",
+                      borderColor: "inherit",
+                    }}
                     onClick={() => navigate(`/players/${id}`)}
                   >
                     <Card.Body style={{ padding: "0px", margin: "0px" }}>
@@ -59,11 +77,10 @@ const AllPlayers = () => {
 
                       <Col>
                         <img
-                          className="cropped"
-                          id="playerImg"
+                          className="mx-auto"
                           style={{
                             maxWidth: "100%",
-                            minHeight: "15rem",
+                            maxHeight: "15rem",
                             padding: "0px",
                           }}
                           src={imageUrl}
@@ -71,22 +88,31 @@ const AllPlayers = () => {
                         />
                       </Col>
                     </Card.Body>
-                    {/* <Card.Header
-                      style={{
-                        backgroundColor: "gray",
-                        color: "white",
-                        border: "none",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {firstName.toUpperCase()} {lastName.toUpperCase()}
-                    </Card.Header> */}
                     <Card.Footer
                       className="d-flex justify-content-between"
                       style={{ color: "black" }}
                     >
-                      What info should I place here?{" "}
-                    </Card.Footer>{" "}
+                      <p
+                        style={{
+                          fontSize: "10px",
+                          padding: "0px",
+                          marginBottom: "2px",
+                        }}
+                        className="text-muted"
+                      >
+                        Height: {heightFt}`{heightIn}"
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "10px",
+                          padding: "0px",
+                          margin: "1px",
+                        }}
+                        className="text-muted"
+                      >
+                        Weight: {weight} pounds
+                      </p>
+                    </Card.Footer>
                   </Button>
                 </Card>
               );

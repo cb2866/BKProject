@@ -1,39 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, useScroll, useInView } from "framer-motion";
 import { fetchAllGames, selectGames } from "../games/gamesSlice";
 import AllPlayers from "../players/AllPlayers";
+import AllGames from "../games/AllGames";
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const fadeInUp = {
-    start: {
-      opacity: 0,
-
-      translateX: 0,
-      ranslateY: 100,
-      ranslateZ: 0,
-    },
-    end: {
-      opacity: 1,
-      ranslateZ: 0,
-    },
-  };
+function Section({ children }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
-    <div>
-      <h1>dashboard</h1> <h1>dashboard</h1> <h1>dashboard</h1>{" "}
-      <h1>dashboard</h1> <h1>dashboard</h1> <h1>dashboard</h1>{" "}
-      <h1>dashboard</h1> <h1>dashboard</h1> <h1>dashboard</h1>{" "}
-      <h1>dashboard</h1>
-      <motion.div
-        transition={{ delay: 0.4 }}
-        initial={fadeInUp.start}
-        whileInView={fadeInUp.end}
+    <section ref={ref}>
+      <span
+        style={{
+          transform: isInView ? "none" : "translateX(-200px)",
+          opacity: isInView ? 1 : 0,
+          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+        }}
       >
+        {children}
+      </span>
+    </section>
+  );
+}
+
+const Home = () => {
+  return (
+    <>
+      <Section>
+        <AllGames />
+      </Section>
+      <Section>
         <AllPlayers />
-      </motion.div>
-    </div>
+      </Section>
+    </>
   );
 };
 

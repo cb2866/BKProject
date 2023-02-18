@@ -16,6 +16,17 @@ import {
   fetchSinglePlayerBasicInfo,
   selectSinglePlayerBasicInfo,
 } from "./singlePlayerSlice";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 const SinglePlayerCharts = () => {
   const dispatch = useDispatch();
@@ -32,6 +43,7 @@ const SinglePlayerCharts = () => {
     seasonPlayerStats,
     weight,
   } = playerData;
+  console.log(playerData.seasonPlayerStats);
 
   useEffect(() => {
     dispatch(fetchSinglePlayerBasicInfo(id));
@@ -60,28 +72,6 @@ const SinglePlayerCharts = () => {
                   style={{ maxWidth: "100%", maxHeight: "90%" }}
                   alt={`${firstName} ${lastName}`}
                 />
-                <Card.Header className="d-flex justify-content-between">
-                  <p
-                    style={{
-                      fontSize: "10px",
-                      padding: "0px",
-                      marginBottom: "2px",
-                    }}
-                    className="text-muted"
-                  >
-                    Height: {heightFt}`{heightIn}"
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "10px",
-                      padding: "0px",
-                      margin: "1px",
-                    }}
-                    className="text-muted"
-                  >
-                    Weight: {weight} pounds
-                  </p>
-                </Card.Header>
               </Col>
             </Row>
             <Row>
@@ -134,6 +124,33 @@ const SinglePlayerCharts = () => {
                         </Tab.Pane>
                       );
                     })}
+                    {/* <------------------------------graph----------------------------------> */}
+                    {/* <Tab.Pane eventKey={{ seasonPlayerStats }.length + 1}>
+                      <BarChart
+                        width={400}
+                        height={300}
+                        data={playerData.seasonPlayerStats}
+                        margin={{
+                          top: 10,
+                          right: 30,
+                          left: 10,
+                          bottom: 2,
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="season" />
+                        <YAxis />
+                        <Bar
+                          dataKey="threePointAttempt"
+                          stackId="a"
+                          fill="black"
+                        />
+                        <Bar dataKey="threePointMade" stackId="a" fill="gray" />
+
+                        <Tooltip />
+                        <Legend />
+                      </BarChart>
+                    </Tab.Pane> */}
                   </Tab.Content>
                 </Col>
                 <Col
@@ -150,6 +167,11 @@ const SinglePlayerCharts = () => {
                         </Nav.Item>
                       );
                     })}
+                    {/* <Nav.Item>
+                      <Nav.Link eventKey={{ seasonPlayerStats }.length + 1}>
+                        All
+                      </Nav.Link>
+                    </Nav.Item> */}
                   </Nav>
                 </Col>
               </Tab.Container>
