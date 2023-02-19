@@ -22,7 +22,7 @@ const AllPlayers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
-  const [modalData, setModalData] = useState(null);
+  const [modalData, setModalData] = useState([]);
   console.log(modalData);
   const playersBasicInfo = useSelector(selectPlayerBasicInfo);
 
@@ -112,10 +112,9 @@ const AllPlayers = () => {
                     }}
                     onClick={() => {
                       console.log("clicked");
-                      setModalData(id);
+                      setModalData({ id, firstName, lastName });
                       setModalShow(true);
                     }}
-                    // onClick={() => navigate(`/players/${id}`)}
                   >
                     <Card.Body
                       style={{
@@ -166,9 +165,11 @@ const AllPlayers = () => {
         size="lg"
         centered
       >
-        <Modal.Header closeButton />
-        <Modal.Body>
-          <SinglePlayerCharts id={modalData} />
+        <Modal.Header closeButton id="modal-header">
+          {modalData.firstName} {modalData.lastName}
+        </Modal.Header>
+        <Modal.Body id="modal-body">
+          <SinglePlayerCharts id={modalData.id} />
         </Modal.Body>
       </Modal>
     </Container>

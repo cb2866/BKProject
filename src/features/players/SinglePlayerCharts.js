@@ -1,49 +1,16 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Container,
-  Card,
-  Row,
-  Col,
-  Stack,
-  Nav,
-  Tab,
-  Table,
-  TabContainer,
-} from "react-bootstrap";
+import { Container, Card, Row, Col, Nav, Tab, Table } from "react-bootstrap";
 import {
   fetchSinglePlayerBasicInfo,
   selectSinglePlayerBasicInfo,
 } from "./singlePlayerSlice";
-import {
-  BarChart,
-  Bar,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
 
 const SinglePlayerCharts = ({ id }) => {
   const dispatch = useDispatch();
   const playerData = useSelector(selectSinglePlayerBasicInfo);
-  console.log(playerData);
-  console.log(id);
 
-  const {
-    firstName,
-    lastName,
-    heightFt,
-    heightIn,
-    imageUrl,
-    position,
-    seasonPlayerStats,
-    weight,
-  } = playerData;
+  const { firstName, lastName, imageUrl, seasonPlayerStats } = playerData;
   console.log(playerData.seasonPlayerStats);
 
   useEffect(() => {
@@ -53,22 +20,12 @@ const SinglePlayerCharts = ({ id }) => {
   return (
     <Container fluid>
       {playerData && (
-        <Card
-          id="modal-player"
-          style={{
-            backgroundColor: "white",
-            width: "100%",
-            // minWidth: "20rem",
-            marginTop: "1rem",
-          }}
-          className="mx-auto"
-        >
-          <Card.Header>
+        <Card id="modal-player" className="mx-auto">
+          {/* <Card.Header>
             <Card.Title>
-              {" "}
               {firstName} {lastName}
             </Card.Title>
-          </Card.Header>
+          </Card.Header> */}
           <Card.Body className="me-auto">
             <Row>
               <Col>
@@ -78,8 +35,7 @@ const SinglePlayerCharts = ({ id }) => {
                   alt={`${firstName} ${lastName}`}
                 />
               </Col>
-              {/* </Row> */}
-              {/* <Row> */}
+
               <Tab.Container defaultActiveKey="0">
                 <Col sm={8}>
                   <Tab.Content>
@@ -129,33 +85,6 @@ const SinglePlayerCharts = ({ id }) => {
                         </Tab.Pane>
                       );
                     })}
-                    {/* <------------------------------graph----------------------------------> */}
-                    {/* <Tab.Pane eventKey={{ seasonPlayerStats }.length + 1}>
-                      <BarChart
-                        width={400}
-                        height={300}
-                        data={playerData.seasonPlayerStats}
-                        margin={{
-                          top: 10,
-                          right: 30,
-                          left: 10,
-                          bottom: 2,
-                        }}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="season" />
-                        <YAxis />
-                        <Bar
-                          dataKey="threePointAttempt"
-                          stackId="a"
-                          fill="black"
-                        />
-                        <Bar dataKey="threePointMade" stackId="a" fill="gray" />
-
-                        <Tooltip />
-                        <Legend />
-                      </BarChart>
-                    </Tab.Pane> */}
                   </Tab.Content>
                 </Col>
                 <Col
@@ -172,11 +101,6 @@ const SinglePlayerCharts = ({ id }) => {
                         </Nav.Item>
                       );
                     })}
-                    {/* <Nav.Item>
-                      <Nav.Link eventKey={{ seasonPlayerStats }.length + 1}>
-                        All
-                      </Nav.Link>
-                    </Nav.Item> */}
                   </Nav>
                 </Col>
               </Tab.Container>

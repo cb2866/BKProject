@@ -13280,9 +13280,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Navbar.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Offcanvas.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
-
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Nav.js");
 
 
 var SiteNavbar = function SiteNavbar() {
@@ -13291,28 +13289,20 @@ var SiteNavbar = function SiteNavbar() {
     variant: "dark",
     style: {
       padding: "0px",
-      color: "white"
+      position: "absolute"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
     fluid: true,
     style: {
       paddingLeft: "10px"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Toggle, {
-    "aria-controls": "offcanvasNavbar-expand-md"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Offcanvas, {
-    id: "offcanvasNavbar-expand-md",
-    "aria-labelledby": "offcanvasNavbarLabel-expand-md",
-    placement: "end"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Header, {
-    closeButton: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    className: "justify-content-end flex-grow-1 pe-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "d-flex justify-content-end"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Link, {
     href: "/games"
-  }, "Games"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Link, {
+  }, "Games"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Link, {
     href: "/players"
-  }, "Players"))))));
+  }, "Players"))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (SiteNavbar);
 
@@ -13364,7 +13354,7 @@ var AllPlayers = function AllPlayers() {
     _useState2 = _slicedToArray(_useState, 2),
     modalShow = _useState2[0],
     setModalShow = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState4 = _slicedToArray(_useState3, 2),
     modalData = _useState4[0],
     setModalData = _useState4[1];
@@ -13446,10 +13436,13 @@ var AllPlayers = function AllPlayers() {
       },
       onClick: function onClick() {
         console.log("clicked");
-        setModalData(id);
+        setModalData({
+          id: id,
+          firstName: firstName,
+          lastName: lastName
+        });
         setModalShow(true);
       }
-      // onClick={() => navigate(`/players/${id}`)}
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Body, {
       style: {
         paddingLeft: "5px",
@@ -13489,9 +13482,12 @@ var AllPlayers = function AllPlayers() {
     size: "lg",
     centered: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Header, {
-    closeButton: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePlayerCharts__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    id: modalData
+    closeButton: true,
+    id: "modal-header"
+  }, modalData.firstName, " ", modalData.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Body, {
+    id: "modal-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePlayerCharts__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    id: modalData.id
   }))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (AllPlayers);
@@ -13521,22 +13517,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 var SinglePlayerCharts = function SinglePlayerCharts(_ref) {
   var id = _ref.id;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var playerData = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_singlePlayerSlice__WEBPACK_IMPORTED_MODULE_2__.selectSinglePlayerBasicInfo);
-  console.log(playerData);
-  console.log(id);
   var firstName = playerData.firstName,
     lastName = playerData.lastName,
-    heightFt = playerData.heightFt,
-    heightIn = playerData.heightIn,
     imageUrl = playerData.imageUrl,
-    position = playerData.position,
-    seasonPlayerStats = playerData.seasonPlayerStats,
-    weight = playerData.weight;
+    seasonPlayerStats = playerData.seasonPlayerStats;
   console.log(playerData.seasonPlayerStats);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_singlePlayerSlice__WEBPACK_IMPORTED_MODULE_2__.fetchSinglePlayerBasicInfo)(id));
@@ -13545,14 +13533,8 @@ var SinglePlayerCharts = function SinglePlayerCharts(_ref) {
     fluid: true
   }, playerData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     id: "modal-player",
-    style: {
-      backgroundColor: "white",
-      width: "100%",
-      // minWidth: "20rem",
-      marginTop: "1rem"
-    },
     className: "mx-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, " ", firstName, " ", lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, {
     className: "me-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: imageUrl,
@@ -13987,7 +13969,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n  background-color: transparent;\n  text-align: left;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n#player-card {\n  width: 20rem;\n  padding: 0;\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 20px;\n}\n\n#player-card-text {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n\n#player-sort-dropdown {\n  margin-left: 5px;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  font-size: 15px;\n}\n\n#hero-description {\n  text-align: left;\n  color: white;\n  font-weight: 200;\n}\n\n#hero-header {\n  text-align: left;\n  color: white;\n  font-weight: 600;\n}\n\n#hero-container {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-size: cover;\n  background-position: center center;\n  min-height: 100vh;\n}\n\n#hero-row {\n  height: 50%;\n  margin-left: 5%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#players-container {\n  background-color: black;\n  padding-top: 2%;\n}\n\n#games-container {\n  min-height: 100vh;\n  background-color: #dddcdb;\n}\n\n#games-row1 {\n  height: 50%;\n  display: flex;\n  margin-right: 5%;\n  padding-top: 5%;\n}\n\n#games-row2 {\n  height: 50%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 2%;\n  padding-bottom: 2%;\n}\n\n#games-card {\n  /* border: none; */\n  width: 60%;\n  padding: 10px;\n  background-color: transparent;\n}\n\n#games-tab {\n  margin-bottom: 5%;\n  background-color: transparent;\n}\n\n#games-header {\n  text-align: right;\n  color: black;\n  margin-right: 5%;\n}\nth {\n  text-align: right;\n}\ntd {\n  flex: content;\n  vertical-align: middle;\n  text-align: right;\n}\nnav {\n  background-color: black;\n  color: white;\n}\n.nav-tabs .nav-link.active {\n  background-color: black;\n  text-align: right;\n  justify-content: end;\n  color: white;\n  font-weight: bold;\n}\n\n.nav-tabs .nav-link {\n  color: black;\n  text-align: right;\n  justify-content: end;\n  font-weight: bold;\n}\n\n#modal-player {\n  border: none;\n  padding: 0;\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT;;cAEY;EACZ,mCAAmC;EACnC,kCAAkC;EAClC,uBAAuB;AACzB;;AAEA;EACE;aACW;AACb;;AAEA;EACE,gCAAgC;EAChC,YAAY;AACd;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,6BAA6B;EAC7B,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,UAAU;EACV,iBAAiB;EACjB,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,gBAAgB;EAChB,mBAAmB;EACnB,eAAe;AACjB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,yDAAsC;EACtC,sBAAsB;EACtB,kCAAkC;EAClC,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,yBAAyB;AAC3B;;AAEA;EACE,WAAW;EACX,aAAa;EACb,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,UAAU;EACV,aAAa;EACb,6BAA6B;AAC/B;;AAEA;EACE,iBAAiB;EACjB,6BAA6B;AAC/B;;AAEA;EACE,iBAAiB;EACjB,YAAY;EACZ,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,iBAAiB;AACnB;AACA;EACE,uBAAuB;EACvB,YAAY;AACd;AACA;EACE,uBAAuB;EACvB,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,oBAAoB;EACpB,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,UAAU;AACZ","sourcesContent":["body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n  background-color: transparent;\n  text-align: left;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n#player-card {\n  width: 20rem;\n  padding: 0;\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 20px;\n}\n\n#player-card-text {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n\n#player-sort-dropdown {\n  margin-left: 5px;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  font-size: 15px;\n}\n\n#hero-description {\n  text-align: left;\n  color: white;\n  font-weight: 200;\n}\n\n#hero-header {\n  text-align: left;\n  color: white;\n  font-weight: 600;\n}\n\n#hero-container {\n  background-image: url(\"/public/2.svg\");\n  background-size: cover;\n  background-position: center center;\n  min-height: 100vh;\n}\n\n#hero-row {\n  height: 50%;\n  margin-left: 5%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#players-container {\n  background-color: black;\n  padding-top: 2%;\n}\n\n#games-container {\n  min-height: 100vh;\n  background-color: #dddcdb;\n}\n\n#games-row1 {\n  height: 50%;\n  display: flex;\n  margin-right: 5%;\n  padding-top: 5%;\n}\n\n#games-row2 {\n  height: 50%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 2%;\n  padding-bottom: 2%;\n}\n\n#games-card {\n  /* border: none; */\n  width: 60%;\n  padding: 10px;\n  background-color: transparent;\n}\n\n#games-tab {\n  margin-bottom: 5%;\n  background-color: transparent;\n}\n\n#games-header {\n  text-align: right;\n  color: black;\n  margin-right: 5%;\n}\nth {\n  text-align: right;\n}\ntd {\n  flex: content;\n  vertical-align: middle;\n  text-align: right;\n}\nnav {\n  background-color: black;\n  color: white;\n}\n.nav-tabs .nav-link.active {\n  background-color: black;\n  text-align: right;\n  justify-content: end;\n  color: white;\n  font-weight: bold;\n}\n\n.nav-tabs .nav-link {\n  color: black;\n  text-align: right;\n  justify-content: end;\n  font-weight: bold;\n}\n\n#modal-player {\n  border: none;\n  padding: 0;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n  background-color: transparent;\n  text-align: left;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n#player-card {\n  width: 20rem;\n  padding: 0;\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 20px;\n}\n\n#player-card-text {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n\n#player-sort-dropdown {\n  margin-left: 5px;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  font-size: 15px;\n}\n\n#hero-description {\n  text-align: left;\n  color: white;\n  font-weight: 200;\n}\n\n#hero-header {\n  text-align: left;\n  color: white;\n  font-weight: 600;\n}\n\n#hero-container {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-size: cover;\n  background-position: center center;\n  min-height: 100vh;\n}\n\n#hero-row {\n  height: 50%;\n  margin-left: 5%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#players-container {\n  background-color: black;\n  padding-top: 2%;\n}\n\n#games-container {\n  min-height: 100vh;\n  background-color: #dddcdb;\n}\n\n#games-row1 {\n  height: 50%;\n  display: flex;\n  margin-right: 5%;\n  padding-top: 5%;\n}\n\n#games-row2 {\n  height: 50%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 2%;\n  padding-bottom: 2%;\n}\n\n#games-card {\n  /* border: none; */\n  width: 60%;\n  padding: 10px;\n  background-color: transparent;\n}\n\n#games-tab {\n  margin-bottom: 5%;\n  background-color: transparent;\n}\n\n#games-header {\n  text-align: right;\n  color: black;\n  margin-right: 5%;\n}\nth {\n  text-align: right;\n}\ntd {\n  flex: content;\n  vertical-align: middle;\n  text-align: right;\n}\nnav {\n  background-color: transparent;\n  color: white;\n  /* align-items: flex-end; */\n}\n.nav-tabs .nav-link.active {\n  background-color: black;\n  text-align: right;\n  justify-content: end;\n  color: white;\n  font-weight: bold;\n}\n\n.nav-tabs .nav-link {\n  color: black;\n  text-align: right;\n  justify-content: end;\n  font-weight: bold;\n}\n\n#modal-player {\n  border: none;\n  padding: 0;\n}\n\n#modal-header {\n  background-color: rgb(244, 240, 240);\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT;;cAEY;EACZ,mCAAmC;EACnC,kCAAkC;EAClC,uBAAuB;AACzB;;AAEA;EACE;aACW;AACb;;AAEA;EACE,gCAAgC;EAChC,YAAY;AACd;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,6BAA6B;EAC7B,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,UAAU;EACV,iBAAiB;EACjB,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,gBAAgB;EAChB,mBAAmB;EACnB,eAAe;AACjB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,yDAAsC;EACtC,sBAAsB;EACtB,kCAAkC;EAClC,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,yBAAyB;AAC3B;;AAEA;EACE,WAAW;EACX,aAAa;EACb,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,UAAU;EACV,aAAa;EACb,6BAA6B;AAC/B;;AAEA;EACE,iBAAiB;EACjB,6BAA6B;AAC/B;;AAEA;EACE,iBAAiB;EACjB,YAAY;EACZ,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,iBAAiB;AACnB;AACA;EACE,6BAA6B;EAC7B,YAAY;EACZ,2BAA2B;AAC7B;AACA;EACE,uBAAuB;EACvB,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,oBAAoB;EACpB,iBAAiB;AACnB;;AAEA;EACE,YAAY;EACZ,UAAU;AACZ;;AAEA;EACE,oCAAoC;AACtC","sourcesContent":["body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n  background-color: transparent;\n  text-align: left;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n#player-card {\n  width: 20rem;\n  padding: 0;\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 20px;\n}\n\n#player-card-text {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n\n#player-sort-dropdown {\n  margin-left: 5px;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  font-size: 15px;\n}\n\n#hero-description {\n  text-align: left;\n  color: white;\n  font-weight: 200;\n}\n\n#hero-header {\n  text-align: left;\n  color: white;\n  font-weight: 600;\n}\n\n#hero-container {\n  background-image: url(\"/public/2.svg\");\n  background-size: cover;\n  background-position: center center;\n  min-height: 100vh;\n}\n\n#hero-row {\n  height: 50%;\n  margin-left: 5%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#players-container {\n  background-color: black;\n  padding-top: 2%;\n}\n\n#games-container {\n  min-height: 100vh;\n  background-color: #dddcdb;\n}\n\n#games-row1 {\n  height: 50%;\n  display: flex;\n  margin-right: 5%;\n  padding-top: 5%;\n}\n\n#games-row2 {\n  height: 50%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 2%;\n  padding-bottom: 2%;\n}\n\n#games-card {\n  /* border: none; */\n  width: 60%;\n  padding: 10px;\n  background-color: transparent;\n}\n\n#games-tab {\n  margin-bottom: 5%;\n  background-color: transparent;\n}\n\n#games-header {\n  text-align: right;\n  color: black;\n  margin-right: 5%;\n}\nth {\n  text-align: right;\n}\ntd {\n  flex: content;\n  vertical-align: middle;\n  text-align: right;\n}\nnav {\n  background-color: transparent;\n  color: white;\n  /* align-items: flex-end; */\n}\n.nav-tabs .nav-link.active {\n  background-color: black;\n  text-align: right;\n  justify-content: end;\n  color: white;\n  font-weight: bold;\n}\n\n.nav-tabs .nav-link {\n  color: black;\n  text-align: right;\n  justify-content: end;\n  font-weight: bold;\n}\n\n#modal-player {\n  border: none;\n  padding: 0;\n}\n\n#modal-header {\n  background-color: rgb(244, 240, 240);\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

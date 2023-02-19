@@ -145,8 +145,9 @@ td {
   text-align: right;
 }
 nav {
-  background-color: black;
+  background-color: transparent;
   color: white;
+  /* align-items: flex-end; */
 }
 .nav-tabs .nav-link.active {
   background-color: black;
@@ -166,4 +167,8 @@ nav {
 #modal-player {
   border: none;
   padding: 0;
+}
+
+#modal-header {
+  background-color: rgb(244, 240, 240);
 }
