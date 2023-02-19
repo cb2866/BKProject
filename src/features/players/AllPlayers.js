@@ -14,58 +14,69 @@ import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import {
   fetchAllPlayerBasicInfo,
+  fetchAllPlayerStats,
   selectPlayerBasicInfo,
+  selectPlayerStats,
 } from "./allPlayersSlice";
 import SinglePlayerCharts from "./SinglePlayerCharts";
+import {
+  fetchSinglePlayerStats,
+  selectSinglePlayerStats,
+} from "./singlePlayerSlice";
 
 const AllPlayers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
-  const [modalData, setModalData] = useState(null);
-  console.log(modalData);
-  const playersBasicInfo = useSelector(selectPlayerBasicInfo);
-
-  const dropdownOptions = ["2022-2023", "2021-2022", "2020-2021"];
+  const [modalData, setModalData] = useState([]);
+  const playerStats = useSelector(selectPlayerStats);
 
   useEffect(() => {
     dispatch(fetchAllPlayerBasicInfo());
+    dispatch(fetchAllPlayerStats());
   }, [dispatch]);
 
-  // console.log(playersBasicInfo);
-
-  // const [sortedPlayersBy3PP, setSortedPlayersBy3PP] =
-  //   useState(playersBasicInfo);
-
-  // const S23 = [...playersBasicInfo].filter((season)=> {
-  //   return (
-
-  //   )
-
-  // })
-  // console.log(sortedPlayersBy3PP);
-
-  //sort players by who has the higher attempt/success ratio from 2022-23 season
-  const sortedPlayersBy3PP = [...playersBasicInfo].sort((a, b) => {
-    return (
-      b.seasonPlayerStats[b.seasonPlayerStats.length - 1].threePointPercent -
-      a.seasonPlayerStats[a.seasonPlayerStats.length - 1].threePointPercent
+  const stats23 = [...playerStats]
+    .filter((instance) => {
+      return instance.season === "2022-2023";
+    })
+    .sort((a, b) =>
+      a.playerBasic.lastName.localeCompare(b.playerBasic.lastName)
     );
+
+  const stats22 = [...playerStats].filter((instance) => {
+    return instance.season === "2021-2022";
   });
-  console.log(sortedPlayersBy3PP);
+  const stats21 = [...playerStats].filter((instance) => {
+    return instance.season === "2020-2021";
+  });
 
-  // const sortPlayerButton = (ev) => {
-  //   let category = ev;
-  //   console.log("clicked", ev);
-  //   if (ev === '2022-2023') {
-  //     [...playersBasicInfo].filter((
+  const dropdownOptions = ["2022-2023", "2021-2022", "2020-2021"];
+  const [playersDisplayedInfo, setPlayersDisplayedInfo] = useState(null);
 
-  //     ))
-
-  //   }
-
-  //   setSortedPlayersBy3PP(sorted);
-  // };
+  const sortPlayerButton = (ev) => {
+    if (ev === "2022-2023") {
+      setPlayersDisplayedInfo(
+        stats23?.sort((a, b) => {
+          return b.threePointPercent - a.threePointPercent;
+        })
+      );
+    } else if (ev === "2021-2022") {
+      setPlayersDisplayedInfo(
+        stats22?.sort((a, b) => {
+          return b.threePointPercent - a.threePointPercent;
+        })
+      );
+    } else if (ev === "2020-2021") {
+      setPlayersDisplayedInfo(
+        stats21?.sort((a, b) => {
+          return b.threePointPercent - a.threePointPercent;
+        })
+      );
+    } else {
+      setPlayersDisplayedInfo(stats23);
+    }
+  };
 
   return (
     <Container fluid id="players-container">
@@ -75,7 +86,7 @@ const AllPlayers = () => {
           title="Sort by"
           variant="secondary"
           className="d-flex justify-content-center"
-          // onSelect={(ev) => sortPlayerButton(ev)}
+          onSelect={(ev) => sortPlayerButton(ev)}
         >
           {dropdownOptions.map((option, idx) => {
             return (
@@ -90,20 +101,10 @@ const AllPlayers = () => {
         </p>
       </Row>
       <Row>
-        {sortedPlayersBy3PP.length &&
-          sortedPlayersBy3PP.map(
-            ({
-              id,
-              firstName,
-              lastName,
-              heightFt,
-              heightIn,
-              weight,
-              imageUrl,
-              position,
-            }) => {
+        {playersDisplayedInfo?.length
+          ? playersDisplayedInfo?.map((player) => {
               return (
-                <Card id="player-card" className="mx-auto" key={id}>
+                <Card id="player-card" className="mx-auto" key={player.id}>
                   <Button
                     style={{
                       backgroundColor: "inherit",
@@ -112,10 +113,9 @@ const AllPlayers = () => {
                     }}
                     onClick={() => {
                       console.log("clicked");
-                      setModalData(id);
+                      setModalData(player);
                       setModalShow(true);
                     }}
-                    // onClick={() => navigate(`/players/${id}`)}
                   >
                     <Card.Body
                       style={{
@@ -131,7 +131,8 @@ const AllPlayers = () => {
                           style={{ color: "black", padding: "5px" }}
                           className="d-flex justify-content-end"
                         >
-                          {firstName.toUpperCase()} {lastName.toUpperCase()}
+                          {player.playerBasic.firstName.toUpperCase()}{" "}
+                          {player.playerBasic.lastName.toUpperCase()}
                         </h3>
                         <Col xs={6}>
                           <img
@@ -142,23 +143,87 @@ const AllPlayers = () => {
                               height: "100%",
                               padding: "0px",
                             }}
-                            src={imageUrl}
-                            alt={`Nets Player: ${firstName} ${lastName}`}
+                            src={player.playerBasic.imageUrl}
+                            alt={`Nets Player: ${player.playerBasic.firstName} ${player.playerBasic.lastName}`}
                           />{" "}
                         </Col>
                         <Col>
                           <p id="player-card-text">
-                            Height: {heightFt}`{heightIn}
+                            Height: {player.playerBasic.heightFt}`
+                            {player.playerBasic.heightIn}
                           </p>
-                          <p id="player-card-text"> Weight: {weight} lbs</p>
+                          <p id="player-card-text">
+                            {" "}
+                            Weight: {player.playerBasic.weight} lbs
+                          </p>
                         </Col>
                       </Row>
                     </Card.Body>
                   </Button>
                 </Card>
               );
-            }
-          )}
+            })
+          : stats23?.map((player) => {
+              return (
+                <Card id="player-card" className="mx-auto" key={player.id}>
+                  <Button
+                    style={{
+                      backgroundColor: "inherit",
+                      padding: "0px",
+                      borderColor: "inherit",
+                    }}
+                    onClick={() => {
+                      console.log("clicked");
+                      setModalData(player);
+                      setModalShow(true);
+                    }}
+                  >
+                    <Card.Body
+                      style={{
+                        paddingLeft: "5px",
+                        margin: "0px",
+                        paddingTop: "0px",
+                        paddingBottom: "0px",
+                        paddingRight: "10px",
+                      }}
+                    >
+                      <Row>
+                        <h3
+                          style={{ color: "black", padding: "5px" }}
+                          className="d-flex justify-content-end"
+                        >
+                          {player.playerBasic.firstName.toUpperCase()}{" "}
+                          {player.playerBasic.lastName.toUpperCase()}
+                        </h3>
+                        <Col xs={6}>
+                          <img
+                            className="d-flex justify-content-end"
+                            style={{
+                              maxWidth: "12rem",
+                              objectFit: "cover",
+                              height: "100%",
+                              padding: "0px",
+                            }}
+                            src={player.playerBasic.imageUrl}
+                            alt={`Nets Player: ${player.playerBasic.firstName} ${player.playerBasic.lastName}`}
+                          />{" "}
+                        </Col>
+                        <Col>
+                          <p id="player-card-text">
+                            Height: {player.playerBasic.heightFt}`
+                            {player.playerBasic.heightIn}
+                          </p>
+                          <p id="player-card-text">
+                            {" "}
+                            Weight: {player.playerBasic.weight} lbs
+                          </p>
+                        </Col>
+                      </Row>
+                    </Card.Body>
+                  </Button>
+                </Card>
+              );
+            })}
       </Row>
       <Modal
         show={modalShow}
@@ -166,9 +231,18 @@ const AllPlayers = () => {
         size="lg"
         centered
       >
-        <Modal.Header closeButton />
-        <Modal.Body>
-          <SinglePlayerCharts id={modalData} />
+        <Modal.Header
+          closeButton
+          id="modal-header"
+          className="d-flex justify-content-center"
+        >
+          <Modal.Title className="ms-auto" id="modal-title">
+            {modalData.playerBasic?.firstName.toUpperCase()}{" "}
+            {modalData.playerBasic?.lastName.toUpperCase()}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body id="modal-body">
+          <SinglePlayerCharts id={modalData.playerBasic?.id} />
         </Modal.Body>
       </Modal>
     </Container>

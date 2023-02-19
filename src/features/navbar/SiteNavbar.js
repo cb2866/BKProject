@@ -1,29 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Nav, Navbar, Container, Offcanvas, Button } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 const SiteNavbar = () => {
   return (
     <Navbar
       expand={`md`}
       variant="dark"
-      style={{ padding: "0px", color: "white" }}
+      style={{ padding: "0px", position: "absolute" }}
     >
       <Container fluid style={{ paddingLeft: "10px" }}>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-md`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-md`}
-          placement="end"
-        >
-          <Offcanvas.Header closeButton></Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="/games">Games</Nav.Link>
-              <Nav.Link href="/players">Players</Nav.Link>
-            </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+        <Nav className="d-flex justify-content-end">
+          <Nav.Link href="/games">Games</Nav.Link>
+          <Nav.Link href="/players">Players</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );

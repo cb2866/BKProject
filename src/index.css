@@ -22,11 +22,21 @@ code {
   transform: scale(1.1);
 }
 
-#table-header {
+#table-title {
+  justify-content: center;
+  text-align: center;
+  border: none;
+}
+
+#table-label {
   font-weight: 300;
+  font-size: 12px;
+  text-align: left;
 }
 #table-data {
   font-weight: 200;
+  font-size: 12px;
+  text-align: center;
 }
 
 #games-table {
@@ -39,10 +49,12 @@ code {
 .nav.nav-pills .nav-link.active {
   background-color: black;
   color: white;
+  font-size: 12px;
 }
 
 .nav.nav-pills .nav-link {
   color: black;
+  font-size: 12px;
 }
 
 #player-card {
@@ -120,7 +132,6 @@ code {
 }
 
 #games-card {
-  /* border: none; */
   width: 60%;
   padding: 10px;
   background-color: transparent;
@@ -145,7 +156,7 @@ td {
   text-align: right;
 }
 nav {
-  background-color: black;
+  background-color: transparent;
   color: white;
 }
 .nav-tabs .nav-link.active {
@@ -166,4 +177,18 @@ nav {
 #modal-player {
   border: none;
   padding: 0;
+}
+
+#modal-header {
+  background-color: rgb(255, 251, 251);
+}
+
+#modal-title {
+  font-size: 200%;
+  font-weight: 400;
+  color: black;
+}
+
+#season-tabs {
+  justify-content: center;
 }

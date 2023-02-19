@@ -46,16 +46,22 @@ const CompletedGames = ({ completedGames }) => {
               </tr>
             </thead>
             <tbody>
-              {octoberGames.length &&
-                octoberGames.map(({ id, gameId, date, awayTeam, homeTeam }) => {
-                  return (
-                    <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
-                      <td>{date}</td>
-                      <td>{homeTeam}</td>
-                      <td>{awayTeam}</td>
-                    </tr>
-                  );
-                })}
+              {octoberGames.length
+                ? octoberGames.map(
+                    ({ id, gameId, date, awayTeam, homeTeam }) => {
+                      return (
+                        <tr
+                          key={id}
+                          onClick={() => navigate(`/games/${gameId}`)}
+                        >
+                          <td>{date}</td>
+                          <td>{homeTeam}</td>
+                          <td>{awayTeam}</td>
+                        </tr>
+                      );
+                    }
+                  )
+                : null}
             </tbody>
           </Table>
         </Tab>
@@ -76,18 +82,22 @@ const CompletedGames = ({ completedGames }) => {
               </tr>
             </thead>
             <tbody>
-              {novemberGames.length &&
-                novemberGames.map(
-                  ({ id, gameId, date, awayTeam, homeTeam }) => {
-                    return (
-                      <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
-                        <td>{date}</td>
-                        <td>{homeTeam}</td>
-                        <td>{awayTeam}</td>
-                      </tr>
-                    );
-                  }
-                )}
+              {novemberGames.length
+                ? novemberGames.map(
+                    ({ id, gameId, date, awayTeam, homeTeam }) => {
+                      return (
+                        <tr
+                          key={id}
+                          onClick={() => navigate(`/games/${gameId}`)}
+                        >
+                          <td>{date}</td>
+                          <td>{homeTeam}</td>
+                          <td>{awayTeam}</td>
+                        </tr>
+                      );
+                    }
+                  )
+                : null}
             </tbody>
           </Table>
         </Tab>
@@ -101,18 +111,22 @@ const CompletedGames = ({ completedGames }) => {
               </tr>
             </thead>
             <tbody>
-              {decemberGames.length &&
-                decemberGames.map(
-                  ({ id, gameId, date, awayTeam, homeTeam }) => {
-                    return (
-                      <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
-                        <td>{date}</td>
-                        <td>{homeTeam}</td>
-                        <td>{awayTeam}</td>
-                      </tr>
-                    );
-                  }
-                )}
+              {decemberGames.length
+                ? decemberGames.map(
+                    ({ id, gameId, date, awayTeam, homeTeam }) => {
+                      return (
+                        <tr
+                          key={id}
+                          onClick={() => navigate(`/games/${gameId}`)}
+                        >
+                          <td>{date}</td>
+                          <td>{homeTeam}</td>
+                          <td>{awayTeam}</td>
+                        </tr>
+                      );
+                    }
+                  )
+                : null}
             </tbody>
           </Table>
         </Tab>
@@ -126,16 +140,22 @@ const CompletedGames = ({ completedGames }) => {
               </tr>
             </thead>
             <tbody>
-              {januaryGames.length &&
-                januaryGames.map(({ id, gameId, date, awayTeam, homeTeam }) => {
-                  return (
-                    <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
-                      <td>{date}</td>
-                      <td>{homeTeam}</td>
-                      <td>{awayTeam}</td>
-                    </tr>
-                  );
-                })}
+              {januaryGames.length
+                ? januaryGames.map(
+                    ({ id, gameId, date, awayTeam, homeTeam }) => {
+                      return (
+                        <tr
+                          key={id}
+                          onClick={() => navigate(`/games/${gameId}`)}
+                        >
+                          <td>{date}</td>
+                          <td>{homeTeam}</td>
+                          <td>{awayTeam}</td>
+                        </tr>
+                      );
+                    }
+                  )
+                : null}
             </tbody>
           </Table>
         </Tab>
@@ -149,18 +169,22 @@ const CompletedGames = ({ completedGames }) => {
               </tr>
             </thead>
             <tbody>
-              {februaryGames.length &&
-                februaryGames.map(
-                  ({ id, gameId, date, awayTeam, homeTeam }) => {
-                    return (
-                      <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
-                        <td>{date}</td>
-                        <td>{homeTeam}</td>
-                        <td>{awayTeam}</td>
-                      </tr>
-                    );
-                  }
-                )}
+              {februaryGames.length
+                ? februaryGames.map(
+                    ({ id, gameId, date, awayTeam, homeTeam }) => {
+                      return (
+                        <tr
+                          key={id}
+                          onClick={() => navigate(`/games/${gameId}`)}
+                        >
+                          <td>{date}</td>
+                          <td>{homeTeam}</td>
+                          <td>{awayTeam}</td>
+                        </tr>
+                      );
+                    }
+                  )
+                : null}
             </tbody>
           </Table>
         </Tab>
