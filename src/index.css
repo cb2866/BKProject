@@ -22,11 +22,21 @@ code {
   transform: scale(1.1);
 }
 
-#table-header {
+#table-title {
+  justify-content: center;
+  text-align: center;
+  border: none;
+}
+
+#table-label {
   font-weight: 300;
+  font-size: 12px;
+  text-align: left;
 }
 #table-data {
   font-weight: 200;
+  font-size: 12px;
+  text-align: center;
 }
 
 #games-table {
@@ -39,10 +49,12 @@ code {
 .nav.nav-pills .nav-link.active {
   background-color: black;
   color: white;
+  font-size: 12px;
 }
 
 .nav.nav-pills .nav-link {
   color: black;
+  font-size: 12px;
 }
 
 #player-card {
@@ -171,4 +183,8 @@ nav {
 
 #modal-header {
   background-color: rgb(244, 240, 240);
+}
+
+#season-tabs {
+  justify-content: center;
 }

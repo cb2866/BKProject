@@ -11,7 +11,12 @@ const SinglePlayerCharts = ({ id }) => {
   const playerData = useSelector(selectSinglePlayerBasicInfo);
 
   const { firstName, lastName, imageUrl, seasonPlayerStats } = playerData;
-  console.log(playerData.seasonPlayerStats);
+
+  const sortedSeasons =
+    seasonPlayerStats &&
+    [...seasonPlayerStats]?.sort((a, b) => {
+      return parseInt(b.season) - parseInt(a.season);
+    });
 
   useEffect(() => {
     dispatch(fetchSinglePlayerBasicInfo(id));
@@ -21,61 +26,68 @@ const SinglePlayerCharts = ({ id }) => {
     <Container fluid>
       {playerData && (
         <Card id="modal-player" className="mx-auto">
-          {/* <Card.Header>
-            <Card.Title>
-              {firstName} {lastName}
-            </Card.Title>
-          </Card.Header> */}
-          <Card.Body className="me-auto">
+          <Card.Body className="mx-auto">
             <Row>
-              <Col>
-                <img
-                  src={imageUrl}
-                  style={{ maxWidth: "100%", maxHeight: "90%" }}
-                  alt={`${firstName} ${lastName}`}
-                />
+              <Col md={6}>
+                <div className="d-flex justify-content-center align-items-center">
+                  <img
+                    src={imageUrl}
+                    style={{ maxWidth: "100%" }}
+                    alt={`${firstName} ${lastName}`}
+                  />
+                </div>
               </Col>
 
               <Tab.Container defaultActiveKey="0">
-                <Col sm={8}>
-                  <Tab.Content>
-                    {seasonPlayerStats?.map((record, idx) => {
+                <Col sm={8} md={6}>
+                  <h4 id="table-title">Season Averages</h4>
+                  <Nav variant="pills" id="season-tabs">
+                    {sortedSeasons?.map((record, idx) => {
                       return (
-                        <Tab.Pane
-                          key={idx}
-                          eventKey={`${idx}`}
-                          className="justify-content-start"
-                        >
+                        <Nav.Item key={idx}>
+                          <Nav.Link eventKey={`${idx}`}>
+                            {record.season}
+                          </Nav.Link>
+                        </Nav.Item>
+                      );
+                    })}
+                  </Nav>
+                  <Tab.Content>
+                    {sortedSeasons?.map((record, idx) => {
+                      return (
+                        <Tab.Pane key={idx} eventKey={`${idx}`}>
                           <Table>
-                            <thead>
+                            {/* <thead>
                               <tr>
-                                <th colSpan={2}>Season Averages</th>
+                                <th id="table-title" colSpan={2}>
+                                  Season Averages
+                                </th>
                               </tr>
-                            </thead>
-                            <tbody className="text-align-left">
+                            </thead> */}
+                            <tbody>
                               <tr>
-                                <td id="table-header">Minutes Per Game</td>
+                                <td id="table-label">Minutes Per Game</td>
                                 <td id="table-data">{record.minutesPlayed}</td>
                               </tr>
                               <tr>
-                                <td id="table-header">Points Per Game</td>
+                                <td id="table-label">Points Per Game</td>
                                 <td id="table-data">{record.pointsMade}</td>
                               </tr>
                               <tr>
-                                <td id="table-header"> 3PA</td>
+                                <td id="table-label"> 3PA</td>
                                 <td id="table-data">
                                   {record.threePointAttempt}
                                 </td>
                               </tr>
                               <tr>
-                                <td id="table-header"> 3PM</td>
+                                <td id="table-label"> 3PM</td>
                                 <td id="table-data">
                                   {" "}
                                   {record.threePointMade}
                                 </td>
                               </tr>
                               <tr>
-                                <td id="table-header"> 3P%</td>
+                                <td id="table-label"> 3P%</td>
                                 <td id="table-data">
                                   {Math.round(record.threePointPercent * 100)}%
                                 </td>
@@ -86,22 +98,6 @@ const SinglePlayerCharts = ({ id }) => {
                       );
                     })}
                   </Tab.Content>
-                </Col>
-                <Col
-                  sm={4}
-                  className="d-flex align-items-center justify-content-center"
-                >
-                  <Nav variant="pills" className="flex-column" id="season-tabs">
-                    {seasonPlayerStats?.map((record, idx) => {
-                      return (
-                        <Nav.Item key={idx}>
-                          <Nav.Link eventKey={`${idx}`}>
-                            {record.season}
-                          </Nav.Link>
-                        </Nav.Item>
-                      );
-                    })}
-                  </Nav>
                 </Col>
               </Tab.Container>
             </Row>
