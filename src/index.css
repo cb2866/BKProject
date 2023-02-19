@@ -100,20 +100,20 @@ code {
   height: 50%;
   margin-right: 5%;
   display: flex;
-  padding-top: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 #games-card {
-  border: none;
+  /* border: none; */
   width: 60%;
-  padding: "0";
+  padding: 10px;
   background-color: transparent;
 }
 
 #games-tab {
   margin-bottom: 5%;
   background-color: transparent;
-  text-align: end;
 }
 
 #games-header {
@@ -132,4 +132,16 @@ td {
 nav {
   background-color: black;
   color: white;
+}
+.nav-tabs .nav-link.active {
+  background-color: black;
+  text-align: right;
+  justify-content: end;
+  color: white;
+}
+
+.nav-tabs .nav-link {
+  color: black;
+  text-align: right;
+  justify-content: end;
 }

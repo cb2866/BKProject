@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, Container, Offcanvas } from "react-bootstrap";
+import { Nav, Navbar, Container, Offcanvas, Button } from "react-bootstrap";
 
 const SiteNavbar = () => {
   return (
@@ -10,14 +10,6 @@ const SiteNavbar = () => {
       style={{ padding: "0px", color: "white" }}
     >
       <Container fluid style={{ paddingLeft: "10px" }}>
-        <Navbar.Brand href="/">
-          <img
-            src="/cbmLogo.png"
-            height="50"
-            className="d-inline-block align-top"
-            alt="CBM"
-          />
-        </Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
         <Navbar.Offcanvas
           id={`offcanvasNavbar-expand-md`}
