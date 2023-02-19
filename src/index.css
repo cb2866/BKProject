@@ -32,6 +32,8 @@ code {
 #games-table {
   font-weight: 200;
   font-size: 12px;
+  background-color: transparent;
+  text-align: left;
 }
 
 .nav.nav-pills .nav-link.active {
@@ -43,9 +45,91 @@ code {
   color: black;
 }
 
-.cropped {
-  /* width: 100%; /* width of container */
-  /* height: 100%; height of container */
-  /* object-fit: cover; */
-  object-position: 140px 10px; /* try 20px 10px */
+#player-card {
+  color: black;
+  font-size: 10px;
+  text-align: right;
+  margin-bottom: 0%;
+}
+
+#hero-description {
+  text-align: left;
+  color: white;
+  font-weight: 200;
+}
+
+#hero-header {
+  text-align: left;
+  color: white;
+  font-weight: 600;
+}
+
+#hero-container {
+  background-image: url("/public/2.svg");
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
+
+#hero-row {
+  height: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  padding-top: 5%;
+}
+
+#players-container {
+  background-color: black;
+  padding-top: 2%;
+}
+
+#games-container {
+  min-height: 100vh;
+  background-color: #dddcdb;
+}
+
+#games-row1 {
+  height: 50%;
+  display: flex;
+  margin-right: 5%;
+  padding-top: 5%;
+}
+
+#games-row2 {
+  height: 50%;
+  margin-right: 5%;
+  display: flex;
+  padding-top: 5%;
+}
+
+#games-card {
+  border: none;
+  width: 60%;
+  padding: "0";
+  background-color: transparent;
+}
+
+#games-tab {
+  margin-bottom: 5%;
+  background-color: transparent;
+  text-align: end;
+}
+
+#games-header {
+  text-align: right;
+  color: black;
+  margin-right: 5%;
+}
+th {
+  text-align: right;
+}
+td {
+  flex: content;
+  vertical-align: middle;
+  text-align: right;
+}
+nav {
+  background-color: black;
+  color: white;
 }

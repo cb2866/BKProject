@@ -34,23 +34,11 @@ const CompletedGames = ({ completedGames }) => {
   });
 
   return (
-    <>
-      <Tabs
-        defaultActiveKey="October"
-        id="uncontrolled-tab-example"
-        className="mx-auto"
-      >
-        <Tab eventKey="October" title="October">
-          <Table
-            id="games-table"
-            size="sm"
-            borderless
-            hover
-            responsive="sm"
-            style={{ backgroundColor: "white", textAlign: "left" }}
-          >
+    <Card id="games-card">
+      <Tabs defaultActiveKey="October" id="games-tab" fill>
+        <Tab eventKey="October" id="games-tab" title="October">
+          <Table id="games-table" size="sm" borderless hover responsive="sm">
             <thead>
-              <tr></tr>
               <tr>
                 <th>Date</th>
                 <th>Home</th>
@@ -61,35 +49,26 @@ const CompletedGames = ({ completedGames }) => {
               {octoberGames.length &&
                 octoberGames.map(({ id, gameId, date, awayTeam, homeTeam }) => {
                   return (
-                    <tr key={id}>
+                    <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
                       <td>{date}</td>
                       <td>{homeTeam}</td>
                       <td>{awayTeam}</td>
-                      <td>
-                        <Button onClick={() => navigate(`/games/${gameId}`)}>
-                          More Details
-                        </Button>
-                      </td>
                     </tr>
                   );
                 })}
             </tbody>
           </Table>
         </Tab>
-        <Tab eventKey="November" title="November">
+        <Tab eventKey="November" id="games-tab" title="November">
           <Table
             id="games-table"
             borderless
             hover
+            size="sm"
             responsive="sm"
-            style={{ backgroundColor: "white", textAlign: "left" }}
+            style={{ textAlign: "left" }}
           >
             <thead>
-              <tr>
-                <th colSpan={3} className="text-center">
-                  Upcoming Games
-                </th>
-              </tr>
               <tr>
                 <th>Date</th>
                 <th>Home</th>
@@ -101,15 +80,10 @@ const CompletedGames = ({ completedGames }) => {
                 novemberGames.map(
                   ({ id, gameId, date, awayTeam, homeTeam }) => {
                     return (
-                      <tr key={id}>
+                      <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
                         <td>{date}</td>
                         <td>{homeTeam}</td>
                         <td>{awayTeam}</td>
-                        <td>
-                          <Button onClick={() => navigate(`/games/${gameId}`)}>
-                            More Details
-                          </Button>
-                        </td>
                       </tr>
                     );
                   }
@@ -117,20 +91,9 @@ const CompletedGames = ({ completedGames }) => {
             </tbody>
           </Table>
         </Tab>
-        <Tab eventKey="December" title="December">
-          <Table
-            id="games-table"
-            borderless
-            hover
-            responsive="sm"
-            style={{ backgroundColor: "white", textAlign: "left" }}
-          >
+        <Tab eventKey="December" id="games-tab" title="December">
+          <Table id="games-table" borderless hover size="sm" responsive="sm">
             <thead>
-              <tr>
-                <th colSpan={3} className="text-center">
-                  Upcoming Games
-                </th>
-              </tr>
               <tr>
                 <th>Date</th>
                 <th>Home</th>
@@ -142,15 +105,10 @@ const CompletedGames = ({ completedGames }) => {
                 decemberGames.map(
                   ({ id, gameId, date, awayTeam, homeTeam }) => {
                     return (
-                      <tr key={id}>
+                      <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
                         <td>{date}</td>
                         <td>{homeTeam}</td>
                         <td>{awayTeam}</td>
-                        <td>
-                          <Button onClick={() => navigate(`/games/${gameId}`)}>
-                            More Details
-                          </Button>
-                        </td>
                       </tr>
                     );
                   }
@@ -159,19 +117,8 @@ const CompletedGames = ({ completedGames }) => {
           </Table>
         </Tab>
         <Tab eventKey="January" title="January">
-          <Table
-            id="games-table"
-            borderless
-            hover
-            responsive="sm"
-            style={{ backgroundColor: "white", textAlign: "left" }}
-          >
+          <Table id="games-table" borderless hover size="sm" responsive="sm">
             <thead>
-              <tr>
-                <th colSpan={3} className="text-center">
-                  Upcoming Games
-                </th>
-              </tr>
               <tr>
                 <th>Date</th>
                 <th>Home</th>
@@ -182,15 +129,10 @@ const CompletedGames = ({ completedGames }) => {
               {januaryGames.length &&
                 januaryGames.map(({ id, gameId, date, awayTeam, homeTeam }) => {
                   return (
-                    <tr key={id}>
+                    <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
                       <td>{date}</td>
                       <td>{homeTeam}</td>
                       <td>{awayTeam}</td>
-                      <td>
-                        <Button onClick={() => navigate(`/games/${gameId}`)}>
-                          More Details
-                        </Button>
-                      </td>
                     </tr>
                   );
                 })}
@@ -198,19 +140,8 @@ const CompletedGames = ({ completedGames }) => {
           </Table>
         </Tab>
         <Tab eventKey="February" title="February">
-          <Table
-            id="games-table"
-            borderless
-            hover
-            responsive="sm"
-            style={{ backgroundColor: "white", textAlign: "left" }}
-          >
+          <Table id="games-table" borderless hover size="sm" responsive="sm">
             <thead>
-              <tr>
-                <th colSpan={3} className="text-center">
-                  Completed Games
-                </th>
-              </tr>
               <tr>
                 <th>Date</th>
                 <th>Home</th>
@@ -222,15 +153,10 @@ const CompletedGames = ({ completedGames }) => {
                 februaryGames.map(
                   ({ id, gameId, date, awayTeam, homeTeam }) => {
                     return (
-                      <tr key={id}>
+                      <tr key={id} onClick={() => navigate(`/games/${gameId}`)}>
                         <td>{date}</td>
                         <td>{homeTeam}</td>
                         <td>{awayTeam}</td>
-                        <td>
-                          <Button onClick={() => navigate(`/games/${gameId}`)}>
-                            More Details
-                          </Button>
-                        </td>
                       </tr>
                     );
                   }
@@ -239,7 +165,7 @@ const CompletedGames = ({ completedGames }) => {
           </Table>
         </Tab>
       </Tabs>
-    </>
+    </Card>
   );
 };
 export default CompletedGames;

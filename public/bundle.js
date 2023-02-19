@@ -8834,14 +8834,12 @@ var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_5__.configureStore)({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _PendingGames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PendingGames */ "./src/features/games/PendingGames.js");
-/* harmony import */ var _CompletedGames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CompletedGames */ "./src/features/games/CompletedGames.js");
-/* harmony import */ var _gamesSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./gamesSlice */ "./src/features/games/gamesSlice.js");
-
+/* harmony import */ var _CompletedGames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CompletedGames */ "./src/features/games/CompletedGames.js");
+/* harmony import */ var _gamesSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gamesSlice */ "./src/features/games/gamesSlice.js");
 
 
 
@@ -8850,32 +8848,28 @@ __webpack_require__.r(__webpack_exports__);
 var AllGames = function AllGames() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_gamesSlice__WEBPACK_IMPORTED_MODULE_4__.fetchAllGames)());
+    dispatch((0,_gamesSlice__WEBPACK_IMPORTED_MODULE_3__.fetchAllGames)());
   }, [dispatch]);
-  var games = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_gamesSlice__WEBPACK_IMPORTED_MODULE_4__.selectGames);
+  var games = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_gamesSlice__WEBPACK_IMPORTED_MODULE_3__.selectGames);
   var completedGames = games.filter(function (game) {
     return game.status === "Final";
   });
-  var pendingGames = games.filter(function (game) {
-    return game.status !== "Final";
-  });
-  // const homeGames = completedGames.filter((game) => {
-  //   return game.homeTeam === "Brooklyn Nets";
-  // });
-  // const awayGames = completedGames.filter((game) => {
-  //   return game.awayTeam === "Brooklyn Nets";
-  // });
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    fluid: true,
-    style: {
-      backgroundColor: "white"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "2022-2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    className: "mx-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Previous Games Performance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CompletedGames__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    id: "games-container",
+    fluid: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    id: "games-row1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    id: "games-header"
+  }, "Game Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
+    id: "games-header"
+  }, "2022-2023 Season")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    id: "games-row2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "d-flex justify-content-end"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CompletedGames__WEBPACK_IMPORTED_MODULE_2__["default"], {
     completedGames: completedGames
-  }), " ")));
+  }))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (AllGames);
 
@@ -8893,10 +8887,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _SingleGame__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SingleGame */ "./src/features/games/SingleGame.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Tabs.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Tab.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Table.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Tabs.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Tab.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Table.js");
 
 
 
@@ -8919,257 +8913,126 @@ var CompletedGames = function CompletedGames(_ref) {
   var februaryGames = completedGames.filter(function (game) {
     return game.date.includes("2023-02");
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    defaultActiveKey: "October",
-    id: "uncontrolled-tab-example",
-    className: "mx-auto"
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    id: "games-card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    eventKey: "October",
-    title: "October"
+    defaultActiveKey: "October",
+    id: "games-tab",
+    fill: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    eventKey: "October",
+    id: "games-tab",
+    title: "October"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     id: "games-table",
     size: "sm",
     borderless: true,
     hover: true,
-    responsive: "sm",
-    style: {
-      backgroundColor: "white",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, octoberGames.length && octoberGames.map(function (_ref2) {
+    responsive: "sm"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, octoberGames.length && octoberGames.map(function (_ref2) {
     var id = _ref2.id,
       gameId = _ref2.gameId,
       date = _ref2.date,
       awayTeam = _ref2.awayTeam,
       homeTeam = _ref2.homeTeam;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      key: id,
       onClick: function onClick() {
         return navigate("/games/".concat(gameId));
       }
-    }, "More Details")));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     eventKey: "November",
+    id: "games-tab",
     title: "November"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     id: "games-table",
     borderless: true,
     hover: true,
+    size: "sm",
     responsive: "sm",
     style: {
-      backgroundColor: "white",
       textAlign: "left"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
-    colSpan: 3,
-    className: "text-center"
-  }, "Upcoming Games")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, novemberGames.length && novemberGames.map(function (_ref3) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, novemberGames.length && novemberGames.map(function (_ref3) {
     var id = _ref3.id,
       gameId = _ref3.gameId,
       date = _ref3.date,
       awayTeam = _ref3.awayTeam,
       homeTeam = _ref3.homeTeam;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      key: id,
       onClick: function onClick() {
         return navigate("/games/".concat(gameId));
       }
-    }, "More Details")));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     eventKey: "December",
+    id: "games-tab",
     title: "December"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     id: "games-table",
     borderless: true,
     hover: true,
-    responsive: "sm",
-    style: {
-      backgroundColor: "white",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
-    colSpan: 3,
-    className: "text-center"
-  }, "Upcoming Games")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, decemberGames.length && decemberGames.map(function (_ref4) {
+    size: "sm",
+    responsive: "sm"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, decemberGames.length && decemberGames.map(function (_ref4) {
     var id = _ref4.id,
       gameId = _ref4.gameId,
       date = _ref4.date,
       awayTeam = _ref4.awayTeam,
       homeTeam = _ref4.homeTeam;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      key: id,
       onClick: function onClick() {
         return navigate("/games/".concat(gameId));
       }
-    }, "More Details")));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     eventKey: "January",
     title: "January"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     id: "games-table",
     borderless: true,
     hover: true,
-    responsive: "sm",
-    style: {
-      backgroundColor: "white",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
-    colSpan: 3,
-    className: "text-center"
-  }, "Upcoming Games")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, januaryGames.length && januaryGames.map(function (_ref5) {
+    size: "sm",
+    responsive: "sm"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, januaryGames.length && januaryGames.map(function (_ref5) {
     var id = _ref5.id,
       gameId = _ref5.gameId,
       date = _ref5.date,
       awayTeam = _ref5.awayTeam,
       homeTeam = _ref5.homeTeam;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      key: id,
       onClick: function onClick() {
         return navigate("/games/".concat(gameId));
       }
-    }, "More Details")));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
     eventKey: "February",
     title: "February"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     id: "games-table",
     borderless: true,
     hover: true,
-    responsive: "sm",
-    style: {
-      backgroundColor: "white",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
-    colSpan: 3,
-    className: "text-center"
-  }, "Completed Games")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, februaryGames.length && februaryGames.map(function (_ref6) {
+    size: "sm",
+    responsive: "sm"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, februaryGames.length && februaryGames.map(function (_ref6) {
     var id = _ref6.id,
       gameId = _ref6.gameId,
       date = _ref6.date,
       awayTeam = _ref6.awayTeam,
       homeTeam = _ref6.homeTeam;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      key: id,
       onClick: function onClick() {
         return navigate("/games/".concat(gameId));
       }
-    }, "More Details")));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
   }))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (CompletedGames);
-
-/***/ }),
-
-/***/ "./src/features/games/PendingGames.js":
-/*!********************************************!*\
-  !*** ./src/features/games/PendingGames.js ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Tabs.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Tab.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Table.js");
-
-
-var PendingGames = function PendingGames(_ref) {
-  var pendingGames = _ref.pendingGames;
-  var febGames = pendingGames.filter(function (game) {
-    return game.date.includes("2023-02");
-  });
-  var marchGames = pendingGames.filter(function (game) {
-    return game.date.includes("2023-03");
-  });
-  var aprilGames = pendingGames.filter(function (game) {
-    return game.date.includes("2023-04");
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    defaultActiveKey: "February",
-    id: "uncontrolled-tab-example",
-    className: "mx-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    eventKey: "February",
-    title: "February"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    id: "games-table",
-    size: "sm",
-    borderless: true,
-    hover: true,
-    responsive: "sm",
-    style: {
-      backgroundColor: "white",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
-    colSpan: 3,
-    className: "text-center"
-  }, "Upcoming Games")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, febGames.length && febGames.map(function (_ref2) {
-    var id = _ref2.id,
-      date = _ref2.date,
-      awayTeam = _ref2.awayTeam,
-      homeTeam = _ref2.homeTeam;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    eventKey: "March",
-    title: "March"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    id: "games-table",
-    borderless: true,
-    hover: true,
-    responsive: "sm",
-    style: {
-      backgroundColor: "white",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
-    colSpan: 3,
-    className: "text-center"
-  }, "Upcoming Games")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, marchGames.length && marchGames.map(function (_ref3) {
-    var id = _ref3.id,
-      date = _ref3.date,
-      awayTeam = _ref3.awayTeam,
-      homeTeam = _ref3.homeTeam;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    eventKey: "April",
-    title: "April"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    id: "games-table",
-    borderless: true,
-    hover: true,
-    responsive: "sm",
-    style: {
-      backgroundColor: "white",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", {
-    colSpan: 3,
-    className: "text-center"
-  }, "Upcoming Games")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Away"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, aprilGames.length && aprilGames.map(function (_ref4) {
-    var id = _ref4.id,
-      date = _ref4.date,
-      awayTeam = _ref4.awayTeam,
-      homeTeam = _ref4.homeTeam;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, homeTeam), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, awayTeam));
-  }))))));
-};
-/* harmony default export */ __webpack_exports__["default"] = (PendingGames);
 
 /***/ }),
 
@@ -9417,6 +9280,42 @@ var selectSingleGameSpecifics = function selectSingleGameSpecifics(state) {
 
 /***/ }),
 
+/***/ "./src/features/hero/Hero.js":
+/*!***********************************!*\
+  !*** ./src/features/hero/Hero.js ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+
+
+var Hero = function Hero() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    fluid: true,
+    id: "hero-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    id: "hero-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    xs: 12,
+    id: "hero-col"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    id: "hero-header"
+  }, "Shooters Shoot"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
+    id: "hero-header"
+  }, "Nets Edition"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    id: "hero-description"
+  }, "This project focuses on the Brooklyn Nets and their three pointer stats for the 2022-2023 season, with a focus on analyzing the team's performance in shooting three-point shots. The project currently looks at the team's three-point attempts, three-points scored, and percentage of successful shots. The data will be analyzed to identify trends and patterns, such as which players are the most effective at shooting three-pointers, which lineups perform best, and how the team's three-point shooting affects their overall performance. The insights gained from this analysis could be used to inform strategies for future games and help the team optimize their performance in three-point shooting."))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (Hero);
+
+/***/ }),
+
 /***/ "./src/features/home/Home.js":
 /*!***********************************!*\
   !*** ./src/features/home/Home.js ***!
@@ -9428,10 +9327,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/utils/use-in-view.mjs");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/utils/use-in-view.mjs");
 /* harmony import */ var _games_gamesSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../games/gamesSlice */ "./src/features/games/gamesSlice.js");
 /* harmony import */ var _players_AllPlayers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../players/AllPlayers */ "./src/features/players/AllPlayers.js");
 /* harmony import */ var _games_AllGames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../games/AllGames */ "./src/features/games/AllGames.js");
+/* harmony import */ var _hero_Hero__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hero/Hero */ "./src/features/hero/Hero.js");
+/* harmony import */ var _navbar_SiteNavbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../navbar/SiteNavbar */ "./src/features/navbar/SiteNavbar.js");
+
+
 
 
 
@@ -9441,7 +9344,7 @@ __webpack_require__.r(__webpack_exports__);
 function Section(_ref) {
   var children = _ref.children;
   var ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var isInView = (0,framer_motion__WEBPACK_IMPORTED_MODULE_5__.useInView)(ref, {
+  var isInView = (0,framer_motion__WEBPACK_IMPORTED_MODULE_7__.useInView)(ref, {
     once: true
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
@@ -9455,7 +9358,7 @@ function Section(_ref) {
   }, children));
 }
 var Home = function Home() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Section, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_games_AllGames__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Section, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_players_AllPlayers__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Section, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_hero_Hero__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Section, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_games_AllGames__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Section, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_players_AllPlayers__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
@@ -9481,7 +9384,6 @@ __webpack_require__.r(__webpack_exports__);
 var SiteNavbar = function SiteNavbar() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
     expand: "md",
-    bg: "dark",
     variant: "dark",
     style: {
       padding: "0px",
@@ -9548,6 +9450,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
 var AllPlayers = function AllPlayers() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
@@ -9563,7 +9466,7 @@ var AllPlayers = function AllPlayers() {
   }, [dispatch]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     fluid: true,
-    className: "p-4"
+    id: "players-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     style: {
       color: "white"
@@ -9584,7 +9487,7 @@ var AllPlayers = function AllPlayers() {
       className: "mx-auto",
       key: id,
       style: {
-        width: "18rem",
+        width: "20rem",
         marginRight: "5px",
         marginLeft: "5px",
         marginBottom: "20px",
@@ -9602,42 +9505,35 @@ var AllPlayers = function AllPlayers() {
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
       style: {
-        padding: "0px",
-        margin: "0px"
+        paddingLeft: "5px",
+        margin: "0px",
+        paddingTop: "0px",
+        paddingBottom: "0px",
+        paddingRight: "10px"
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
       style: {
-        color: "black"
-      }
-    }, firstName.toUpperCase(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " ", lastName.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      className: "mx-auto",
+        color: "black",
+        padding: "5px"
+      },
+      className: "d-flex justify-content-end"
+    }, firstName.toUpperCase(), " ", lastName.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      xs: 6
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      className: "d-flex justify-content-end",
       style: {
-        maxWidth: "100%",
-        maxHeight: "15rem",
+        maxWidth: "12rem",
+        objectFit: "cover",
+        height: "100%",
         padding: "0px"
       },
       src: imageUrl,
       alt: "Nets Player: ".concat(firstName, " ").concat(lastName)
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
-      className: "d-flex justify-content-between",
-      style: {
-        color: "black"
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-      style: {
-        fontSize: "10px",
-        padding: "0px",
-        marginBottom: "2px"
-      },
-      className: "text-muted"
-    }, "Height: ", heightFt, "`", heightIn, "\""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-      style: {
-        fontSize: "10px",
-        padding: "0px",
-        margin: "1px"
-      },
-      className: "text-muted"
-    }, "Weight: ", weight, " pounds"))));
+    }), " ", "'"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      id: "player-card"
+    }, " ", "Height: ", heightFt, "`", heightIn), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+      id: "player-card"
+    }, " Weight: ", weight, " lbs"))))));
   })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (AllPlayers);
@@ -10122,12 +10018,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../../../../../public/2.svg */ "./public/2.svg"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n.cropped {\n  /* width: 100%; /* width of container */\n  /* height: 100%; height of container */\n  /* object-fit: cover; */\n  object-position: 140px 10px; /* try 20px 10px */\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT;;cAEY;EACZ,mCAAmC;EACnC,kCAAkC;EAClC,uBAAuB;AACzB;;AAEA;EACE;aACW;AACb;;AAEA;EACE,gCAAgC;EAChC,YAAY;AACd;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,uCAAuC;EACvC,sCAAsC;EACtC,uBAAuB;EACvB,2BAA2B,EAAE,kBAAkB;AACjD","sourcesContent":["body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n.cropped {\n  /* width: 100%; /* width of container */\n  /* height: 100%; height of container */\n  /* object-fit: cover; */\n  object-position: 140px 10px; /* try 20px 10px */\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n  background-color: transparent;\n  text-align: left;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n#player-card {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n\n#hero-description {\n  text-align: left;\n  color: white;\n  font-weight: 200;\n}\n\n#hero-header {\n  text-align: left;\n  color: white;\n  font-weight: 600;\n}\n\n#hero-container {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-size: cover;\n  background-position: center center;\n  min-height: 100vh;\n}\n\n#hero-row {\n  height: 50%;\n  margin-left: 5%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#players-container {\n  background-color: black;\n  padding-top: 2%;\n}\n\n#games-container {\n  min-height: 100vh;\n  background-color: #dddcdb;\n}\n\n#games-row1 {\n  height: 50%;\n  display: flex;\n  margin-right: 5%;\n  padding-top: 5%;\n}\n\n#games-row2 {\n  height: 50%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#games-card {\n  border: none;\n  width: 60%;\n  padding: \"0\";\n  background-color: transparent;\n}\n\n#games-tab {\n  margin-bottom: 5%;\n  background-color: transparent;\n  text-align: end;\n}\n\n#games-header {\n  text-align: right;\n  color: black;\n  margin-right: 5%;\n}\nth {\n  text-align: right;\n}\ntd {\n  flex: content;\n  vertical-align: middle;\n  text-align: right;\n}\nnav {\n  background-color: black;\n  color: white;\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT;;cAEY;EACZ,mCAAmC;EACnC,kCAAkC;EAClC,uBAAuB;AACzB;;AAEA;EACE;aACW;AACb;;AAEA;EACE,gCAAgC;EAChC,YAAY;AACd;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,6BAA6B;EAC7B,gBAAgB;AAClB;;AAEA;EACE,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,yDAAsC;EACtC,sBAAsB;EACtB,kCAAkC;EAClC,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,yBAAyB;AAC3B;;AAEA;EACE,WAAW;EACX,aAAa;EACb,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,YAAY;EACZ,UAAU;EACV,YAAY;EACZ,6BAA6B;AAC/B;;AAEA;EACE,iBAAiB;EACjB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,YAAY;EACZ,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,iBAAiB;AACnB;AACA;EACE,uBAAuB;EACvB,YAAY;AACd","sourcesContent":["body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  background-color: black;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n    monospace;\n}\n\n#playerImg {\n  transition: all 0.6s ease-in-out;\n  border: none;\n}\n\n#playerImg:hover {\n  transform: scale(1.1);\n}\n\n#table-header {\n  font-weight: 300;\n}\n#table-data {\n  font-weight: 200;\n}\n\n#games-table {\n  font-weight: 200;\n  font-size: 12px;\n  background-color: transparent;\n  text-align: left;\n}\n\n.nav.nav-pills .nav-link.active {\n  background-color: black;\n  color: white;\n}\n\n.nav.nav-pills .nav-link {\n  color: black;\n}\n\n#player-card {\n  color: black;\n  font-size: 10px;\n  text-align: right;\n  margin-bottom: 0%;\n}\n\n#hero-description {\n  text-align: left;\n  color: white;\n  font-weight: 200;\n}\n\n#hero-header {\n  text-align: left;\n  color: white;\n  font-weight: 600;\n}\n\n#hero-container {\n  background-image: url(\"/public/2.svg\");\n  background-size: cover;\n  background-position: center center;\n  min-height: 100vh;\n}\n\n#hero-row {\n  height: 50%;\n  margin-left: 5%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#players-container {\n  background-color: black;\n  padding-top: 2%;\n}\n\n#games-container {\n  min-height: 100vh;\n  background-color: #dddcdb;\n}\n\n#games-row1 {\n  height: 50%;\n  display: flex;\n  margin-right: 5%;\n  padding-top: 5%;\n}\n\n#games-row2 {\n  height: 50%;\n  margin-right: 5%;\n  display: flex;\n  padding-top: 5%;\n}\n\n#games-card {\n  border: none;\n  width: 60%;\n  padding: \"0\";\n  background-color: transparent;\n}\n\n#games-tab {\n  margin-bottom: 5%;\n  background-color: transparent;\n  text-align: end;\n}\n\n#games-header {\n  text-align: right;\n  color: black;\n  margin-right: 5%;\n}\nth {\n  text-align: right;\n}\ntd {\n  flex: content;\n  vertical-align: middle;\n  text-align: right;\n}\nnav {\n  background-color: black;\n  color: white;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -57503,6 +57404,17 @@ module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%
 
 /***/ }),
 
+/***/ "./public/2.svg":
+/*!**********************!*\
+  !*** ./public/2.svg ***!
+  \**********************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+module.exports = __webpack_require__.p + "dd067a6aa4c99d5710d0.svg";
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
@@ -61865,6 +61777,26 @@ function n(n){for(var r=arguments.length,t=Array(r>1?r-1:0),e=1;e<r;e++)t[e-1]=a
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	!function() {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

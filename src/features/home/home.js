@@ -4,6 +4,8 @@ import { motion, useScroll, useInView } from "framer-motion";
 import { fetchAllGames, selectGames } from "../games/gamesSlice";
 import AllPlayers from "../players/AllPlayers";
 import AllGames from "../games/AllGames";
+import Hero from "../hero/Hero";
+import SiteNavbar from "../navbar/SiteNavbar";
 
 function Section({ children }) {
   const ref = useRef(null);
@@ -27,6 +29,9 @@ function Section({ children }) {
 const Home = () => {
   return (
     <>
+      <Section>
+        <Hero />
+      </Section>
       <Section>
         <AllGames />
       </Section>

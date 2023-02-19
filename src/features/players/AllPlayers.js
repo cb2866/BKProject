@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import {
   fetchAllPlayerBasicInfo,
   selectPlayerBasicInfo,
@@ -26,7 +27,7 @@ const AllPlayers = () => {
   }, [dispatch]);
 
   return (
-    <Container fluid className="p-4">
+    <Container fluid id="players-container">
       <Row>
         <p style={{ color: "white" }}>
           Players are currently sorted by 2022-2023 3PP
@@ -51,7 +52,7 @@ const AllPlayers = () => {
                   className="mx-auto"
                   key={id}
                   style={{
-                    width: "18rem",
+                    width: "20rem",
                     marginRight: "5px",
                     marginLeft: "5px",
                     marginBottom: "20px",
@@ -67,52 +68,45 @@ const AllPlayers = () => {
                     }}
                     onClick={() => navigate(`/players/${id}`)}
                   >
-                    <Card.Body style={{ padding: "0px", margin: "0px" }}>
-                      <Col>
-                        <h3 style={{ color: "black" }}>
-                          {firstName.toUpperCase()}
-                          <br /> {lastName.toUpperCase()}
-                        </h3>
-                      </Col>
-
-                      <Col>
-                        <img
-                          className="mx-auto"
-                          style={{
-                            maxWidth: "100%",
-                            maxHeight: "15rem",
-                            padding: "0px",
-                          }}
-                          src={imageUrl}
-                          alt={`Nets Player: ${firstName} ${lastName}`}
-                        />
-                      </Col>
-                    </Card.Body>
-                    <Card.Footer
-                      className="d-flex justify-content-between"
-                      style={{ color: "black" }}
+                    <Card.Body
+                      style={{
+                        paddingLeft: "5px",
+                        margin: "0px",
+                        paddingTop: "0px",
+                        paddingBottom: "0px",
+                        paddingRight: "10px",
+                      }}
                     >
-                      <p
-                        style={{
-                          fontSize: "10px",
-                          padding: "0px",
-                          marginBottom: "2px",
-                        }}
-                        className="text-muted"
-                      >
-                        Height: {heightFt}`{heightIn}"
-                      </p>
-                      <p
-                        style={{
-                          fontSize: "10px",
-                          padding: "0px",
-                          margin: "1px",
-                        }}
-                        className="text-muted"
-                      >
-                        Weight: {weight} pounds
-                      </p>
-                    </Card.Footer>
+                      <Row>
+                        <h3
+                          style={{ color: "black", padding: "5px" }}
+                          className="d-flex justify-content-end"
+                        >
+                          {firstName.toUpperCase()} {lastName.toUpperCase()}
+                        </h3>
+                        <Col xs={6}>
+                          <img
+                            className="d-flex justify-content-end"
+                            style={{
+                              maxWidth: "12rem",
+                              objectFit: "cover",
+                              height: "100%",
+                              padding: "0px",
+                            }}
+                            src={imageUrl}
+                            alt={`Nets Player: ${firstName} ${lastName}`}
+                          />{" "}
+                          '
+                        </Col>
+                        <Col>
+                          <p id="player-card">
+                            {" "}
+                            Height: {heightFt}`{heightIn}
+                          </p>
+                          <p id="player-card"> Weight: {weight} lbs</p>
+                        </Col>
+                      </Row>
+                    </Card.Body>
                   </Button>
                 </Card>
               );

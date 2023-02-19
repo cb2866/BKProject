@@ -6,7 +6,6 @@ const SiteNavbar = () => {
   return (
     <Navbar
       expand={`md`}
-      bg="dark"
       variant="dark"
       style={{ padding: "0px", color: "white" }}
     >
