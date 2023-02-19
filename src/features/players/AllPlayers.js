@@ -165,8 +165,16 @@ const AllPlayers = () => {
         size="lg"
         centered
       >
-        <Modal.Header closeButton id="modal-header">
-          {modalData.firstName} {modalData.lastName}
+        <Modal.Header
+          closeButton
+          id="modal-header"
+          className="d-flex justify-content-center"
+        >
+          <Modal.Title className="ms-auto" id="modal-title">
+            {" "}
+            {modalData.firstName?.toUpperCase()}{" "}
+            {modalData.lastName?.toUpperCase()}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body id="modal-body">
           <SinglePlayerCharts id={modalData.id} />

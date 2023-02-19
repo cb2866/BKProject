@@ -27,7 +27,7 @@ const SinglePlayerCharts = ({ id }) => {
       {playerData && (
         <Card id="modal-player" className="mx-auto">
           <Card.Body className="mx-auto">
-            <Row>
+            <Row className="mx-auto">
               <Col md={6}>
                 <div className="d-flex justify-content-center align-items-center">
                   <img
@@ -39,7 +39,7 @@ const SinglePlayerCharts = ({ id }) => {
               </Col>
 
               <Tab.Container defaultActiveKey="0">
-                <Col sm={8} md={6}>
+                <Col sm={12} md={6}>
                   <h4 id="table-title">Season Averages</h4>
                   <Nav variant="pills" id="season-tabs">
                     {sortedSeasons?.map((record, idx) => {
@@ -57,13 +57,6 @@ const SinglePlayerCharts = ({ id }) => {
                       return (
                         <Tab.Pane key={idx} eventKey={`${idx}`}>
                           <Table>
-                            {/* <thead>
-                              <tr>
-                                <th id="table-title" colSpan={2}>
-                                  Season Averages
-                                </th>
-                              </tr>
-                            </thead> */}
                             <tbody>
                               <tr>
                                 <td id="table-label">Minutes Per Game</td>

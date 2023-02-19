@@ -132,7 +132,6 @@ code {
 }
 
 #games-card {
-  /* border: none; */
   width: 60%;
   padding: 10px;
   background-color: transparent;
@@ -159,7 +158,6 @@ td {
 nav {
   background-color: transparent;
   color: white;
-  /* align-items: flex-end; */
 }
 .nav-tabs .nav-link.active {
   background-color: black;
@@ -182,7 +180,13 @@ nav {
 }
 
 #modal-header {
-  background-color: rgb(244, 240, 240);
+  background-color: rgb(255, 251, 251);
+}
+
+#modal-title {
+  font-size: 300%;
+  font-weight: 400;
+  color: black;
 }
 
 #season-tabs {
