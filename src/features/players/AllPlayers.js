@@ -1,5 +1,14 @@
-import React, { useEffect } from "react";
-import { Button, Card, Container, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Card,
+  Container,
+  Row,
+  Col,
+  DropdownButton,
+  Dropdown,
+  Modal,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
@@ -7,11 +16,34 @@ import {
   fetchAllPlayerBasicInfo,
   selectPlayerBasicInfo,
 } from "./allPlayersSlice";
+import SinglePlayerCharts from "./SinglePlayerCharts";
 
 const AllPlayers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [modalShow, setModalShow] = useState(false);
+  const [modalData, setModalData] = useState(null);
+  console.log(modalData);
   const playersBasicInfo = useSelector(selectPlayerBasicInfo);
+
+  const dropdownOptions = ["2022-2023", "2021-2022", "2020-2021"];
+
+  useEffect(() => {
+    dispatch(fetchAllPlayerBasicInfo());
+  }, [dispatch]);
+
+  // console.log(playersBasicInfo);
+
+  // const [sortedPlayersBy3PP, setSortedPlayersBy3PP] =
+  //   useState(playersBasicInfo);
+
+  // const S23 = [...playersBasicInfo].filter((season)=> {
+  //   return (
+
+  //   )
+
+  // })
+  // console.log(sortedPlayersBy3PP);
 
   //sort players by who has the higher attempt/success ratio from 2022-23 season
   const sortedPlayersBy3PP = [...playersBasicInfo].sort((a, b) => {
@@ -22,18 +54,42 @@ const AllPlayers = () => {
   });
   console.log(sortedPlayersBy3PP);
 
-  useEffect(() => {
-    dispatch(fetchAllPlayerBasicInfo());
-  }, [dispatch]);
+  // const sortPlayerButton = (ev) => {
+  //   let category = ev;
+  //   console.log("clicked", ev);
+  //   if (ev === '2022-2023') {
+  //     [...playersBasicInfo].filter((
+
+  //     ))
+
+  //   }
+
+  //   setSortedPlayersBy3PP(sorted);
+  // };
 
   return (
     <Container fluid id="players-container">
       <Row>
+        <DropdownButton
+          id="player-sort-dropdown"
+          title="Sort by"
+          variant="secondary"
+          className="d-flex justify-content-center"
+          // onSelect={(ev) => sortPlayerButton(ev)}
+        >
+          {dropdownOptions.map((option, idx) => {
+            return (
+              <Dropdown.Item eventKey={option} key={idx}>
+                {option}
+              </Dropdown.Item>
+            );
+          })}
+        </DropdownButton>{" "}
         <p style={{ color: "white" }}>
           Players are currently sorted by 2022-2023 3PP
         </p>
       </Row>
-      <Row className="me-2">
+      <Row>
         {sortedPlayersBy3PP.length &&
           sortedPlayersBy3PP.map(
             ({
@@ -47,26 +103,19 @@ const AllPlayers = () => {
               position,
             }) => {
               return (
-                <Card
-                  id="playerCard"
-                  className="mx-auto"
-                  key={id}
-                  style={{
-                    width: "20rem",
-                    marginRight: "5px",
-                    marginLeft: "5px",
-                    marginBottom: "20px",
-                    padding: "0",
-                    boxShadow: "0px 0px 10px 0px rgba(200,200,200,0.75)",
-                  }}
-                >
+                <Card id="player-card" className="mx-auto" key={id}>
                   <Button
                     style={{
                       backgroundColor: "inherit",
                       padding: "0px",
                       borderColor: "inherit",
                     }}
-                    onClick={() => navigate(`/players/${id}`)}
+                    onClick={() => {
+                      console.log("clicked");
+                      setModalData(id);
+                      setModalShow(true);
+                    }}
+                    // onClick={() => navigate(`/players/${id}`)}
                   >
                     <Card.Body
                       style={{
@@ -96,14 +145,12 @@ const AllPlayers = () => {
                             src={imageUrl}
                             alt={`Nets Player: ${firstName} ${lastName}`}
                           />{" "}
-                          '
                         </Col>
                         <Col>
-                          <p id="player-card">
-                            {" "}
+                          <p id="player-card-text">
                             Height: {heightFt}`{heightIn}
                           </p>
-                          <p id="player-card"> Weight: {weight} lbs</p>
+                          <p id="player-card-text"> Weight: {weight} lbs</p>
                         </Col>
                       </Row>
                     </Card.Body>
@@ -113,6 +160,17 @@ const AllPlayers = () => {
             }
           )}
       </Row>
+      <Modal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        size="lg"
+        centered
+      >
+        <Modal.Header closeButton />
+        <Modal.Body>
+          <SinglePlayerCharts id={modalData} />
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 };

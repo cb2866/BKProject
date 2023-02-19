@@ -46,10 +46,25 @@ code {
 }
 
 #player-card {
+  width: 20rem;
+  padding: 0;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+#player-card-text {
   color: black;
   font-size: 10px;
   text-align: right;
   margin-bottom: 0%;
+}
+
+#player-sort-dropdown {
+  margin-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 15px;
 }
 
 #hero-description {
@@ -138,10 +153,17 @@ nav {
   text-align: right;
   justify-content: end;
   color: white;
+  font-weight: bold;
 }
 
 .nav-tabs .nav-link {
   color: black;
   text-align: right;
   justify-content: end;
+  font-weight: bold;
+}
+
+#modal-player {
+  border: none;
+  padding: 0;
 }

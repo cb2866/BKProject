@@ -28,10 +28,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const SinglePlayerCharts = () => {
+const SinglePlayerCharts = ({ id }) => {
   const dispatch = useDispatch();
-  const { id } = useParams();
   const playerData = useSelector(selectSinglePlayerBasicInfo);
+  console.log(playerData);
+  console.log(id);
 
   const {
     firstName,
@@ -53,16 +54,20 @@ const SinglePlayerCharts = () => {
     <Container fluid>
       {playerData && (
         <Card
+          id="modal-player"
           style={{
             backgroundColor: "white",
-            width: "50%",
-            minWidth: "20rem",
+            width: "100%",
+            // minWidth: "20rem",
             marginTop: "1rem",
           }}
           className="mx-auto"
         >
           <Card.Header>
-            {firstName} {lastName}
+            <Card.Title>
+              {" "}
+              {firstName} {lastName}
+            </Card.Title>
           </Card.Header>
           <Card.Body className="me-auto">
             <Row>
@@ -73,8 +78,8 @@ const SinglePlayerCharts = () => {
                   alt={`${firstName} ${lastName}`}
                 />
               </Col>
-            </Row>
-            <Row>
+              {/* </Row> */}
+              {/* <Row> */}
               <Tab.Container defaultActiveKey="0">
                 <Col sm={8}>
                   <Tab.Content>
