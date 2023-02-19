@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import {
   fetchAllPlayerBasicInfo,
   selectPlayerBasicInfo,
@@ -26,7 +27,7 @@ const AllPlayers = () => {
   }, [dispatch]);
 
   return (
-    <Container fluid className="p-4">
+    <Container fluid id="players-container">
       <Row>
         <p style={{ color: "white" }}>
           Players are currently sorted by 2022-2023 3PP
@@ -77,14 +78,12 @@ const AllPlayers = () => {
                       }}
                     >
                       <Row>
-                        {/* <Col xs={4}> */}
                         <h3
                           style={{ color: "black", padding: "5px" }}
                           className="d-flex justify-content-end"
                         >
                           {firstName.toUpperCase()} {lastName.toUpperCase()}
                         </h3>
-                        {/* </Col> */}
                         <Col xs={6}>
                           <img
                             className="d-flex justify-content-end"
@@ -108,31 +107,6 @@ const AllPlayers = () => {
                         </Col>
                       </Row>
                     </Card.Body>
-                    <Card.Footer
-                      className="d-flex justify-content-between"
-                      style={{ color: "black" }}
-                    >
-                      {/* <p
-                        style={{
-                          fontSize: "10px",
-                          padding: "0px",
-                          marginBottom: "2px",
-                        }}
-                        className="text-muted"
-                      >
-                        Height: {heightFt}`{heightIn}"
-                      </p> */}
-                      {/* <p
-                        style={{
-                          fontSize: "10px",
-                          padding: "0px",
-                          margin: "1px",
-                        }}
-                        className="text-muted"
-                      >
-                        Weight: {weight} pounds
-                      </p> */}
-                    </Card.Footer>
                   </Button>
                 </Card>
               );
