@@ -67,20 +67,17 @@ const SinglePlayerCharts = ({ id }) => {
                                 <td id="table-data">{record.pointsMade}</td>
                               </tr>
                               <tr>
-                                <td id="table-label"> 3PA</td>
+                                <td id="table-label">3PA</td>
                                 <td id="table-data">
                                   {record.threePointAttempt}
                                 </td>
                               </tr>
                               <tr>
-                                <td id="table-label"> 3PM</td>
-                                <td id="table-data">
-                                  {" "}
-                                  {record.threePointMade}
-                                </td>
+                                <td id="table-label">3PM</td>
+                                <td id="table-data">{record.threePointMade}</td>
                               </tr>
                               <tr>
-                                <td id="table-label"> 3P%</td>
+                                <td id="table-label">3P%</td>
                                 <td id="table-data">
                                   {Math.round(record.threePointPercent * 100)}%
                                 </td>
