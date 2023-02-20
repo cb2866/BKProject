@@ -39,21 +39,20 @@ const SingleGame = ({ gameId }) => {
   }, [dispatch]);
 
   return (
-    // <Container>
-    <Row className="p-4">
-      <Card.Header className="text-muted justify-content-start">
-        {date}
-      </Card.Header>
-      <Card.Header>
+    <Card style={{ border: "none" }}>
+      <Card.Header style={{ border: "none" }}>
         {homeTeam} vs {awayTeam}
+      </Card.Header>
+      <Card.Header
+        className="text-muted justify-content-start"
+        style={{ border: "none" }}
+      >
+        <p>
+          Final Score: {homeTeamScore} - {awayTeamScore}
+        </p>
       </Card.Header>
 
       <Card.Body>
-        <p>
-          Final Score
-          <br />
-          {homeTeamScore} : {awayTeamScore}
-        </p>
         <Table>
           <thead>
             <tr>
@@ -91,9 +90,7 @@ const SingleGame = ({ gameId }) => {
           </tbody>
         </Table>
       </Card.Body>
-      {/* </Card> */}
-    </Row>
-    // </Container>
+    </Card>
   );
 };
 

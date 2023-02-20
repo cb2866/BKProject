@@ -214,7 +214,8 @@ const CompletedGames = ({ completedGames }) => {
           onHide={() => setIsShown(false)}
           size="lg"
         >
-          <Modal.Body>
+          <Modal.Header closeButton />
+          <Modal.Body style={{ padding: "0" }}>
             <SingleGame gameId={clickedGameId} />
           </Modal.Body>
         </Modal>

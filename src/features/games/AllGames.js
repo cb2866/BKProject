@@ -21,6 +21,15 @@ const AllGames = () => {
       <Row id="games-row1">
         <h1 id="games-header">Game Breakdown</h1>
         <h3 id="games-header">2022-2023 Season</h3>
+        <Col sm={7} className="ms-auto">
+          <p id="section-instructions-right">
+            {" "}
+            Click on a different month to display games played during that
+            period. For specific game details, click into a row. Information
+            displayed includes final score, as well as player stats, including
+            minutes played, overall points scored.
+          </p>
+        </Col>
       </Row>
 
       <Row id="games-row2">

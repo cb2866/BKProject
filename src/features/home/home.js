@@ -1,8 +1,10 @@
 import { useInView } from "framer-motion";
 import React, { useRef } from "react";
+import { Button } from "react-bootstrap";
 import AllGames from "../games/AllGames";
 import Hero from "../hero/Hero";
 import AllPlayers from "../players/AllPlayers";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 function Section({ children }) {
   const ref = useRef(null);
@@ -26,15 +28,22 @@ function Section({ children }) {
 const Home = () => {
   return (
     <>
-      <Section>
-        <Hero />
-      </Section>
+      <Hero />
       <Section>
         <AllGames />
       </Section>
       <Section>
         <AllPlayers />
       </Section>
+      <Button
+        onClick={() => {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }}
+        id="scroll-to-top"
+      >
+        <ArrowUpwardIcon />
+      </Button>
     </>
   );
 };
