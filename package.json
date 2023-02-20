@@ -21,7 +21,7 @@
     "sequelize": "^6.25.3"
   },
   "scripts": {
-    "start": "react-scripts start node server",
+    "start": "node server",
     "start:dev": "npm run build:dev & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore src",
     "build": "webpack",
