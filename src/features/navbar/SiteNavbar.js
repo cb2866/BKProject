@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { elementAcceptingRef } from "@mui/utils";
 
 const SiteNavbar = () => {
   const scrollToComponent = (id) => {

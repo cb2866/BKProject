@@ -4,7 +4,10 @@ import { Button } from "react-bootstrap";
 import AllGames from "../games/AllGames";
 import Hero from "../hero/Hero";
 import AllPlayers from "../players/AllPlayers";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+
+import { BsArrowUp } from "react-icons/bs";
+
+// import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 function Section({ children }) {
   const ref = useRef(null);
@@ -42,7 +45,7 @@ const Home = () => {
         }}
         id="scroll-to-top"
       >
-        <ArrowUpwardIcon />
+        <BsArrowUp />
       </Button>
     </>
   );
