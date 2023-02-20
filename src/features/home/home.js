@@ -1,17 +1,12 @@
-import { useInView } from "framer-motion";
 import React, { useRef } from "react";
 import { Button } from "react-bootstrap";
+import { BsArrowUp } from "react-icons/bs";
+import { useInView } from "framer-motion";
 import AllGames from "../games/AllGames";
 import Hero from "../hero/Hero";
 import AllPlayers from "../players/AllPlayers";
-import { motion } from "framer-motion";
-import { BsArrowUp } from "react-icons/bs";
-
-// import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 function FadeIn({ children }) {
-  // const ref = useRef(null);
-  // const isInView = useInView(ref, { once: true });
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
