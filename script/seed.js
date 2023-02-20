@@ -1,11 +1,9 @@
-"use strict";
 
 const {
   db,
   models: { AllGame, SeasonPlayerStat, PlayerBasic, GamePlayerStat },
 } = require("../server/db");
 const axios = require("axios");
-const { Op } = require("sequelize");
 const { playerStatsSeed } = require("./playerStatsSeed");
 const { playerBasicSeed } = require("./playerBasicSeed");
 
@@ -13,7 +11,7 @@ async function seed() {
   await db.sync({ force: true });
   console.log("db synced!");
 
-  // <-------- creating a record of each Nets game from 2022-23 season------->
+  // <--------------- creating a record of each Nets game from 2022-23 season------------------->
   const response = await axios.get(
     "https://www.balldontlie.io/api/v1/games?seasons%5B%5D=2022&team_ids%5B%5D=3&per_page=100"
   );
@@ -52,6 +50,16 @@ async function seed() {
     )
   );
 
+  // SeasonPlayerStat.update(
+  //   {
+  //     playerBasicId: 1,
+  //   },
+  //   {
+  //     where: {
+  //       playerId: 17896048,
+  //     },
+  //   }
+  // );
   // <------------------grabbing individual player stats per game--------------------_>
 
   const gameResponse1 = await axios.get(

@@ -2,7 +2,6 @@ const router = require("express").Router();
 const {
   models: { AllGame },
 } = require("../db");
-const { Op } = require("sequelize");
 
 //GET all games
 router.get("/", async (req, res, next) => {
@@ -21,7 +20,6 @@ router.get("/", async (req, res, next) => {
 });
 
 //GET single game
-
 router.get("/:gameId", async (req, res, next) => {
   try {
     const game = await AllGame.findOne({

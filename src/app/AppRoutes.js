@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../features/home/Home";
 import AllGames from "../features/games/AllGames";
+import SingleGame from "../features/games/SingleGame";
+import Home from "../features/home/Home";
 import AllPlayers from "../features/players/AllPlayers";
 import SinglePlayerCharts from "../features/players/SinglePlayerCharts";
-import SingleGame from "../features/games/SingleGame";
 
 const AppRoutes = () => {
   return (

@@ -2,7 +2,6 @@ const router = require("express").Router();
 const {
   models: { PlayerBasic },
 } = require("../db");
-const { Op } = require("sequelize");
 const SeasonPlayerStat = require("../db/models/SeasonPlayerStats");
 
 // GET all player basics

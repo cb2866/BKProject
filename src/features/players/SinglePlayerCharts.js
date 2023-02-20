@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
+import { Card, Col, Container, Nav, Row, Tab, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Card, Row, Col, Nav, Tab, Table } from "react-bootstrap";
 import {
   fetchSinglePlayerBasicInfo,
-  selectSinglePlayerBasicInfo,
+  selectSinglePlayerBasicInfo
 } from "./singlePlayerSlice";
 
 const SinglePlayerCharts = ({ id }) => {

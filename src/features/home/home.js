@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { motion, useScroll, useInView } from "framer-motion";
-import { fetchAllGames, selectGames } from "../games/gamesSlice";
-import AllPlayers from "../players/AllPlayers";
+import { useInView } from "framer-motion";
+import React, { useRef } from "react";
 import AllGames from "../games/AllGames";
 import Hero from "../hero/Hero";
-import SiteNavbar from "../navbar/SiteNavbar";
+import AllPlayers from "../players/AllPlayers";
 
 function Section({ children }) {
   const ref = useRef(null);

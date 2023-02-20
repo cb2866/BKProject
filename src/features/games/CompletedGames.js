@@ -1,19 +1,19 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import SingleGame from "./SingleGame";
+import React, { useState, useRef } from "react";
 import {
-  Button,
   Card,
-  Container,
-  Row,
-  Col,
-  Tabs,
   Tab,
   Table,
+  Tabs,
+  Modal,
+  OverlayTrigger,
+  Popover,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import SingleGame from "./SingleGame";
 
 const CompletedGames = ({ completedGames }) => {
   const navigate = useNavigate();
+
   const octoberGames = completedGames.filter((game) => {
     return game.date.includes("2022-10");
   });
@@ -32,6 +32,9 @@ const CompletedGames = ({ completedGames }) => {
   const februaryGames = completedGames.filter((game) => {
     return game.date.includes("2023-02");
   });
+
+  const [isShown, setIsShown] = useState(false);
+  const [clickedGameId, setClickedGameId] = useState(null);
 
   return (
     <Card id="games-card">
@@ -52,7 +55,10 @@ const CompletedGames = ({ completedGames }) => {
                       return (
                         <tr
                           key={id}
-                          onClick={() => navigate(`/games/${gameId}`)}
+                          onClick={() => {
+                            setIsShown(true);
+                            setClickedGameId(gameId);
+                          }}
                         >
                           <td>{date}</td>
                           <td>{homeTeam}</td>
@@ -88,7 +94,10 @@ const CompletedGames = ({ completedGames }) => {
                       return (
                         <tr
                           key={id}
-                          onClick={() => navigate(`/games/${gameId}`)}
+                          onClick={() => {
+                            setIsShown(true);
+                            setClickedGameId(gameId);
+                          }}
                         >
                           <td>{date}</td>
                           <td>{homeTeam}</td>
@@ -117,7 +126,10 @@ const CompletedGames = ({ completedGames }) => {
                       return (
                         <tr
                           key={id}
-                          onClick={() => navigate(`/games/${gameId}`)}
+                          onClick={() => {
+                            setIsShown(true);
+                            setClickedGameId(gameId);
+                          }}
                         >
                           <td>{date}</td>
                           <td>{homeTeam}</td>
@@ -146,7 +158,10 @@ const CompletedGames = ({ completedGames }) => {
                       return (
                         <tr
                           key={id}
-                          onClick={() => navigate(`/games/${gameId}`)}
+                          onClick={() => {
+                            setIsShown(true);
+                            setClickedGameId(gameId);
+                          }}
                         >
                           <td>{date}</td>
                           <td>{homeTeam}</td>
@@ -175,7 +190,10 @@ const CompletedGames = ({ completedGames }) => {
                       return (
                         <tr
                           key={id}
-                          onClick={() => navigate(`/games/${gameId}`)}
+                          onClick={() => {
+                            setIsShown(true);
+                            setClickedGameId(gameId);
+                          }}
                         >
                           <td>{date}</td>
                           <td>{homeTeam}</td>
@@ -189,6 +207,18 @@ const CompletedGames = ({ completedGames }) => {
           </Table>
         </Tab>
       </Tabs>
+      {isShown && (
+        <Modal
+          show={isShown}
+          className="modal left"
+          onHide={() => setIsShown(false)}
+          size="lg"
+        >
+          <Modal.Body>
+            <SingleGame gameId={clickedGameId} />
+          </Modal.Body>
+        </Modal>
+      )}
     </Card>
   );
 };
