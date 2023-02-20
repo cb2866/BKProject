@@ -34,7 +34,7 @@ const AllPlayers = () => {
       return instance.season === "2022-2023";
     })
     .sort((a, b) =>
-      a.playerBasic.lastName.localeCompare(b.playerBasic.lastName)
+      a?.playerBasic?.lastName.localeCompare(b?.playerBasic?.lastName)
     );
 
   const stats22 = [...playerStats].filter((instance) => {
