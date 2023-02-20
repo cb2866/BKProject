@@ -1,4 +1,3 @@
-
 const {
   db,
   models: { AllGame, SeasonPlayerStat, PlayerBasic, GamePlayerStat },
@@ -49,18 +48,6 @@ async function seed() {
       })
     )
   );
-
-  // SeasonPlayerStat.update(
-  //   {
-  //     playerBasicId: 1,
-  //   },
-  //   {
-  //     where: {
-  //       playerId: 17896048,
-  //     },
-  //   }
-  // );
-  // <------------------grabbing individual player stats per game--------------------_>
 
   const gameResponse1 = await axios.get(
     "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=61&player_ids[]=114&player_ids[]=130&player_ids[]=17896049&player_ids[]=158&player_ids[]=197&player_ids[]=666679&player_ids[]=319&player_ids[]=351&player_ids[]=417&player_ids[]=17553942&player_ids[]=432&player_ids[]=17896048&player_ids[]=470&per_page=100" // "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&season[]=2021&seasons[]=2020"

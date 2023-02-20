@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { Card, Container, Row, Table } from "react-bootstrap";
+import { Card, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import {
   fetchSingleGame,
   fetchSingleGameSpecifics,
