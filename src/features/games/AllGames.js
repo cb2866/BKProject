@@ -19,9 +19,13 @@ const AllGames = () => {
   return (
     <Container id="games-container" fluid>
       <Row id="games-row1">
-        <h1 id="games-header">Game Breakdown</h1>
-        <h3 id="games-header">2022-2023 Season</h3>
+        <Col sm={3} className="d-flex justify-content-start" id="nets-logo-col">
+          <img id="nets-logo" src="/brooklyn-nets-logo.svg" alt="nets logo" />
+        </Col>
         <Col sm={7} className="ms-auto">
+          <h1 id="games-header">Game Breakdown</h1>
+          <h3 id="games-header">2022-2023 Season</h3>
+
           <p id="section-instructions-right">
             {" "}
             Click on a different month to display games played during that
@@ -31,7 +35,6 @@ const AllGames = () => {
           </p>
         </Col>
       </Row>
-
       <Row id="games-row2">
         <Col className="d-flex justify-content-end">
           <CompletedGames completedGames={completedGames} />

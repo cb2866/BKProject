@@ -30,64 +30,11 @@ async function seed() {
       })
     )
   );
-  const season22Response = await axios.get(
-    `https://www.balldontlie.io/api/v1/season_averages?season=2022&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=17553942&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
-  );
-  const season22ResponseStat = season22Response.data.data;
+ 
 
-  const season22PlayerStatSeed = await Promise.all(
-    season22ResponseStat.map((player) =>
-      SeasonPlayerStat.create({
-        season: "2022-2023",
-        playerId: player.player_id,
-        minutesPlayed: player.min,
-        pointsMade: player.pts,
-        threePointMade: player.fg3m,
-        threePointAttempt: player.fg3a,
-        threePointPercent: player.fg3_pct,
-      })
-    )
-  );
+  SeasonPlayerStat.bulkCreate(playerStatsSeed);
 
-  // <-------------------------- seeding 21-22 season player averages---------------------->
-  const season21Response = await axios.get(
-    ` https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
-  );
-  const season21ResponseStat = season21Response.data.data;
-
-  const season21PlayerStatSeed = await Promise.all(
-    season21ResponseStat.map((player) =>
-      SeasonPlayerStat.create({
-        season: "2021-2022",
-        playerId: player.player_id,
-        minutesPlayed: player.min,
-        pointsMade: player.pts,
-        threePointMade: player.fg3m,
-        threePointAttempt: player.fg3a,
-        threePointPercent: player.fg3_pct,
-      })
-    )
-  );
-
-  // <-------------------------seeding 20-21 season player averages----------------------->
-  const season20Response = await axios.get(
-    ` https://www.balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=470&player_ids[]=17896048&player_ids[]=432&player_ids[]=417&player_ids[]=351&player_ids[]=319&player_ids[]=666679&player_ids[]=197&player_ids[]=158&player_ids[]=17896049&player_ids[]=130&player_ids[]=114&player_ids[]=61`
-  );
-  const season20ResponseStat = season20Response.data.data;
-
-  const season20PlayerStatSeed = await Promise.all(
-    season20ResponseStat.map((player) =>
-      SeasonPlayerStat.create({
-        season: "2020-2021",
-        playerId: player.player_id,
-        minutesPlayed: player.min,
-        pointsMade: player.pts,
-        threePointMade: player.fg3m,
-        threePointAttempt: player.fg3a,
-        threePointPercent: player.fg3_pct,
-      })
-    )
-  );
+  PlayerBasic.bulkCreate(playerBasicSeed);
 
   const gameResponse1 = await axios.get(
     "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=61&player_ids[]=114&player_ids[]=130&player_ids[]=17896049&player_ids[]=158&player_ids[]=197&player_ids[]=666679&player_ids[]=319&player_ids[]=351&player_ids[]=417&player_ids[]=17553942&player_ids[]=432&player_ids[]=17896048&player_ids[]=470&per_page=100" // "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&season[]=2021&seasons[]=2020"
@@ -268,8 +215,6 @@ async function seed() {
       })
     )
   );
-
-  PlayerBasic.bulkCreate(playerBasicSeed);
 }
 
 async function runSeed() {
