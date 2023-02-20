@@ -1,30 +1,25 @@
-# Getting Started with Create React App
+# CBM Nets Project
 
-## Available Scripts
+This project focuses on the Brooklyn Nets and their three pointer stats for the 2022-2023 season, with a focus on analyzing the team's performance in shooting three-point shots. The project currently looks at the team's three-point attempts, three-points scored, and percentage of successful shots. The data will be analyzed to identify trends and patterns, such as which players are the most effective at shooting three-pointers, which lineups perform best, and how the team's three-point shooting affects their overall performance. The insights gained from this analysis could be used to inform strategies for future games and help the team optimize their performance in three-point shooting.
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+**Client:** React, Redux, React-Bootstrap, Framer Motion
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Server:** Node, Express, PostgreSQL
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Authors
 
-### `npm test`
+- [@cb2866](https://www.github.com/cb2866)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployed Site
 
-### `npm run build`
+[Click here to access deployed site](https://cbm-nets-project.onrender.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔗 Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/cynthiabritomena)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Acknowledgements
 
-
+- [Data from BALLDONTLIE](https://app.balldontlie.io/)
