@@ -2,31 +2,23 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   Card,
-  Container,
-  Row,
   Col,
-  DropdownButton,
+  Container,
   Dropdown,
+  DropdownButton,
   Modal,
+  Row,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import {
   fetchAllPlayerBasicInfo,
   fetchAllPlayerStats,
-  selectPlayerBasicInfo,
   selectPlayerStats,
 } from "./allPlayersSlice";
 import SinglePlayerCharts from "./SinglePlayerCharts";
-import {
-  fetchSinglePlayerStats,
-  selectSinglePlayerStats,
-} from "./singlePlayerSlice";
 
 const AllPlayers = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
   const [modalData, setModalData] = useState([]);
   const playerStats = useSelector(selectPlayerStats);
@@ -80,12 +72,15 @@ const AllPlayers = () => {
 
   return (
     <Container fluid id="players-container">
-      <Row>
+      <Row id="player-row">
+        <h1 id="player-header">Player Standings</h1>
+        <h3 id="player-header">Sort by Season</h3>
+      </Row>
+      <Row id="player-row2">
         <DropdownButton
           id="player-sort-dropdown"
           title="Sort by"
           variant="secondary"
-          className="d-flex justify-content-center"
           onSelect={(ev) => sortPlayerButton(ev)}
         >
           {dropdownOptions.map((option, idx) => {
@@ -96,15 +91,12 @@ const AllPlayers = () => {
             );
           })}
         </DropdownButton>{" "}
-        <p style={{ color: "white" }}>
-          Players are currently sorted by 2022-2023 3PP
-        </p>
       </Row>
-      <Row>
+      <Row id="player-row">
         {playersDisplayedInfo?.length
           ? playersDisplayedInfo?.map((player) => {
               return (
-                <Card id="player-card" className="mx-auto" key={player.id}>
+                <Card id="player-card" key={player.id}>
                   <Button
                     style={{
                       backgroundColor: "inherit",
@@ -112,7 +104,6 @@ const AllPlayers = () => {
                       borderColor: "inherit",
                     }}
                     onClick={() => {
-                      console.log("clicked");
                       setModalData(player);
                       setModalShow(true);
                     }}
@@ -131,7 +122,8 @@ const AllPlayers = () => {
                           style={{ color: "black", padding: "5px" }}
                           className="d-flex justify-content-end"
                         >
-                          {player.playerBasic.firstName.toUpperCase()}{" "}
+                          {player.playerBasic.firstName.toUpperCase()}
+                          <br />
                           {player.playerBasic.lastName.toUpperCase()}
                         </h3>
                         <Col xs={6}>
@@ -165,7 +157,7 @@ const AllPlayers = () => {
             })
           : stats23?.map((player) => {
               return (
-                <Card id="player-card" className="mx-auto" key={player.id}>
+                <Card id="player-card" key={player.id}>
                   <Button
                     style={{
                       backgroundColor: "inherit",
@@ -189,10 +181,15 @@ const AllPlayers = () => {
                     >
                       <Row>
                         <h3
-                          style={{ color: "black", padding: "5px" }}
+                          style={{
+                            color: "black",
+                            padding: "5px",
+                            size: "15px",
+                          }}
                           className="d-flex justify-content-end"
                         >
-                          {player.playerBasic.firstName.toUpperCase()}{" "}
+                          {player.playerBasic.firstName.toUpperCase()}
+                          <br />
                           {player.playerBasic.lastName.toUpperCase()}
                         </h3>
                         <Col xs={6}>

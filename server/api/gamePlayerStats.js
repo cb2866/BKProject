@@ -2,7 +2,6 @@ const router = require("express").Router();
 const {
   models: { GamePlayerStat },
 } = require("../db");
-const { Op } = require("sequelize");
 
 router.get("/", async (req, res, next) => {
   try {

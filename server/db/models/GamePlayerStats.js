@@ -17,7 +17,6 @@ const GamePlayerStat = db.define("gamePlayerStat", {
   teamName: {
     type: DataTypes.STRING,
   },
-
   gameId: {
     type: DataTypes.INTEGER,
   },

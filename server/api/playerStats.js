@@ -20,7 +20,6 @@ router.get("/", async (req, res, next) => {
 });
 
 //GET single player stats
-// look into changing to req.body later on?
 router.get("/:id", async (req, res, next) => {
   try {
     const player = await SeasonPlayerStat.findByPk(req.params.id);
