@@ -1,10 +1,17 @@
 import { useInView } from "framer-motion";
 import React, { useRef } from "react";
+import { Button } from "react-bootstrap";
 import AllGames from "../games/AllGames";
 import Hero from "../hero/Hero";
 import AllPlayers from "../players/AllPlayers";
+import { motion } from "framer-motion";
+import { BsArrowUp } from "react-icons/bs";
 
-function Section({ children }) {
+// import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+
+function FadeIn({ children }) {
+  // const ref = useRef(null);
+  // const isInView = useInView(ref, { once: true });
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -26,15 +33,22 @@ function Section({ children }) {
 const Home = () => {
   return (
     <>
-      <Section>
-        <Hero />
-      </Section>
-      <Section>
+      <Hero />
+      <FadeIn>
         <AllGames />
-      </Section>
-      <Section>
+      </FadeIn>
+      <FadeIn>
         <AllPlayers />
-      </Section>
+      </FadeIn>
+      <Button
+        onClick={() => {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }}
+        id="scroll-to-top"
+      >
+        <BsArrowUp />
+      </Button>
     </>
   );
 };

@@ -37,7 +37,7 @@ const CompletedGames = ({ completedGames }) => {
   const [clickedGameId, setClickedGameId] = useState(null);
 
   return (
-    <Card id="games-card">
+    <Card id="games-card" >
       <Tabs defaultActiveKey="October" id="games-tab" fill>
         <Tab eventKey="October" id="games-tab" title="October">
           <Table id="games-table" size="sm" borderless hover responsive="sm">
@@ -214,7 +214,8 @@ const CompletedGames = ({ completedGames }) => {
           onHide={() => setIsShown(false)}
           size="lg"
         >
-          <Modal.Body>
+          <Modal.Header closeButton />
+          <Modal.Body style={{ padding: "0" }}>
             <SingleGame gameId={clickedGameId} />
           </Modal.Body>
         </Modal>

@@ -16,6 +16,7 @@ import {
   selectPlayerStats,
 } from "./allPlayersSlice";
 import SinglePlayerCharts from "./SinglePlayerCharts";
+import { motion } from "framer-motion";
 
 const AllPlayers = () => {
   const dispatch = useDispatch();
@@ -75,6 +76,15 @@ const AllPlayers = () => {
       <Row id="player-row">
         <h1 id="player-header">Player Standings</h1>
         <h3 id="player-header">Sort by Season</h3>
+        <p id="section-instructions-left">
+          Player Standings currently features team forwards and guards for whom
+          data is available. Using the <strong>'sort by' </strong>button below,
+          sort players by their three-pointer percentage (season average).
+          <br />
+          <br />
+          Click into a player's card to see more season averages from the past 3
+          seasons.
+        </p>
       </Row>
       <Row id="player-row2">
         <DropdownButton
@@ -92,132 +102,149 @@ const AllPlayers = () => {
           })}
         </DropdownButton>{" "}
       </Row>
-      <Row id="player-row">
+      <Row id="player-row-card">
         {playersDisplayedInfo?.length
           ? playersDisplayedInfo?.map((player) => {
               return (
                 <Card id="player-card" key={player.id}>
-                  <Button
-                    style={{
-                      backgroundColor: "inherit",
-                      padding: "0px",
-                      borderColor: "inherit",
-                    }}
-                    onClick={() => {
-                      setModalData(player);
-                      setModalShow(true);
-                    }}
+                  {" "}
+                  <motion.div
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    <Card.Body
+                    <Button
                       style={{
-                        paddingLeft: "5px",
-                        margin: "0px",
-                        paddingTop: "0px",
-                        paddingBottom: "0px",
-                        paddingRight: "10px",
+                        backgroundColor: "inherit",
+                        padding: "0px",
+                        borderColor: "inherit",
+                      }}
+                      onClick={() => {
+                        setModalData(player);
+                        setModalShow(true);
                       }}
                     >
-                      <Row>
-                        <h3
-                          style={{ color: "black", padding: "5px" }}
-                          className="d-flex justify-content-end"
-                        >
-                          {player.playerBasic.firstName.toUpperCase()}
-                          <br />
-                          {player.playerBasic.lastName.toUpperCase()}
-                        </h3>
-                        <Col xs={6}>
-                          <img
-                            className="d-flex justify-content-end"
+                      <Card.Body
+                        style={{
+                          paddingLeft: "5px",
+                          margin: "0px",
+                          paddingTop: "0px",
+                          paddingBottom: "0px",
+                          paddingRight: "10px",
+                        }}
+                      >
+                        <Row>
+                          <h3
                             style={{
-                              maxWidth: "12rem",
-                              objectFit: "cover",
-                              height: "100%",
-                              padding: "0px",
+                              color: "black",
+                              padding: "15px",
+                              textAlign: "right",
                             }}
-                            src={player.playerBasic.imageUrl}
-                            alt={`Nets Player: ${player.playerBasic.firstName} ${player.playerBasic.lastName}`}
-                          />{" "}
-                        </Col>
-                        <Col>
-                          <p id="player-card-text">
-                            Height: {player.playerBasic.heightFt}`
-                            {player.playerBasic.heightIn}
-                          </p>
-                          <p id="player-card-text">
-                            {" "}
-                            Weight: {player.playerBasic.weight} lbs
-                          </p>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                  </Button>
+                            className="d-flex justify-content-end"
+                          >
+                            {player.playerBasic.firstName.toUpperCase()}
+                            <br />
+                            {player.playerBasic.lastName.toUpperCase()}
+                          </h3>
+                          <Col xs={6}>
+                            <img
+                              className="d-flex justify-content-end"
+                              style={{
+                                maxWidth: "12rem",
+                                objectFit: "cover",
+                                height: "100%",
+                                padding: "0px",
+                              }}
+                              src={player.playerBasic.imageUrl}
+                              alt={`Nets Player: ${player.playerBasic.firstName} ${player.playerBasic.lastName}`}
+                            />{" "}
+                          </Col>
+                          <Col>
+                            <p id="player-card-text">
+                              Height: {player.playerBasic.heightFt}`
+                              {player.playerBasic.heightIn}
+                            </p>
+                            <p id="player-card-text">
+                              {" "}
+                              Weight: {player.playerBasic.weight} lbs
+                            </p>
+                          </Col>
+                        </Row>
+                      </Card.Body>
+                    </Button>{" "}
+                  </motion.div>
                 </Card>
               );
             })
           : stats23?.map((player) => {
               return (
                 <Card id="player-card" key={player.id}>
-                  <Button
-                    style={{
-                      backgroundColor: "inherit",
-                      padding: "0px",
-                      borderColor: "inherit",
-                    }}
-                    onClick={() => {
-                      console.log("clicked");
-                      setModalData(player);
-                      setModalShow(true);
-                    }}
+                  {" "}
+                  <motion.div
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    <Card.Body
+                    <Button
                       style={{
-                        paddingLeft: "5px",
-                        margin: "0px",
-                        paddingTop: "0px",
-                        paddingBottom: "0px",
-                        paddingRight: "10px",
+                        backgroundColor: "inherit",
+                        padding: "0px",
+                        borderColor: "inherit",
+                      }}
+                      onClick={() => {
+                        console.log("clicked");
+                        setModalData(player);
+                        setModalShow(true);
                       }}
                     >
-                      <Row>
-                        <h3
-                          style={{
-                            color: "black",
-                            padding: "5px",
-                            size: "15px",
-                          }}
-                          className="d-flex justify-content-end"
-                        >
-                          {player.playerBasic.firstName.toUpperCase()}
-                          <br />
-                          {player.playerBasic.lastName.toUpperCase()}
-                        </h3>
-                        <Col xs={6}>
-                          <img
-                            className="d-flex justify-content-end"
+                      <Card.Body
+                        style={{
+                          paddingLeft: "5px",
+                          margin: "0px",
+                          paddingTop: "0px",
+                          paddingBottom: "0px",
+                          paddingRight: "10px",
+                        }}
+                      >
+                        <Row>
+                          <h3
                             style={{
-                              maxWidth: "12rem",
-                              objectFit: "cover",
-                              height: "100%",
-                              padding: "0px",
+                              color: "black",
+                              padding: "15px",
+                              size: "15px",
+                              textAlign: "right",
                             }}
-                            src={player.playerBasic.imageUrl}
-                            alt={`Nets Player: ${player.playerBasic.firstName} ${player.playerBasic.lastName}`}
-                          />{" "}
-                        </Col>
-                        <Col>
-                          <p id="player-card-text">
-                            Height: {player.playerBasic.heightFt}`
-                            {player.playerBasic.heightIn}
-                          </p>
-                          <p id="player-card-text">
-                            {" "}
-                            Weight: {player.playerBasic.weight} lbs
-                          </p>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                  </Button>
+                            className="d-flex justify-content-end"
+                          >
+                            {player.playerBasic.firstName.toUpperCase()}
+                            <br />
+                            {player.playerBasic.lastName.toUpperCase()}
+                          </h3>
+                          <Col xs={6}>
+                            <img
+                              className="d-flex justify-content-end"
+                              style={{
+                                maxWidth: "12rem",
+                                objectFit: "cover",
+                                height: "100%",
+                                padding: "0px",
+                              }}
+                              src={player.playerBasic.imageUrl}
+                              alt={`Nets Player: ${player.playerBasic.firstName} ${player.playerBasic.lastName}`}
+                            />{" "}
+                          </Col>
+                          <Col>
+                            <p id="player-card-text">
+                              Height: {player.playerBasic.heightFt}`
+                              {player.playerBasic.heightIn}
+                            </p>
+                            <p id="player-card-text">
+                              {" "}
+                              Weight: {player.playerBasic.weight} lbs
+                            </p>
+                          </Col>
+                        </Row>
+                      </Card.Body>
+                    </Button>{" "}
+                  </motion.div>
                 </Card>
               );
             })}
@@ -232,12 +259,7 @@ const AllPlayers = () => {
           closeButton
           id="modal-header"
           className="d-flex justify-content-center"
-        >
-          <Modal.Title className="ms-auto" id="modal-title">
-            {modalData.playerBasic?.firstName.toUpperCase()}{" "}
-            {modalData.playerBasic?.lastName.toUpperCase()}
-          </Modal.Title>
-        </Modal.Header>
+        ></Modal.Header>
         <Modal.Body id="modal-body">
           <SinglePlayerCharts id={modalData.playerBasic?.id} />
         </Modal.Body>
