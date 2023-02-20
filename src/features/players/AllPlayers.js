@@ -102,14 +102,14 @@ const AllPlayers = () => {
           })}
         </DropdownButton>{" "}
       </Row>
-      <Row id="player-row">
+      <Row id="player-row-card">
         {playersDisplayedInfo?.length
           ? playersDisplayedInfo?.map((player) => {
               return (
                 <Card id="player-card" key={player.id}>
                   {" "}
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     <Button
@@ -180,7 +180,7 @@ const AllPlayers = () => {
                 <Card id="player-card" key={player.id}>
                   {" "}
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     <Button
@@ -259,12 +259,7 @@ const AllPlayers = () => {
           closeButton
           id="modal-header"
           className="d-flex justify-content-center"
-        >
-          <Modal.Title className="ms-auto" id="modal-title">
-            {modalData.playerBasic?.firstName.toUpperCase()}{" "}
-            {modalData.playerBasic?.lastName.toUpperCase()}
-          </Modal.Title>
-        </Modal.Header>
+        ></Modal.Header>
         <Modal.Body id="modal-body">
           <SinglePlayerCharts id={modalData.playerBasic?.id} />
         </Modal.Body>

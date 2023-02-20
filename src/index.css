@@ -119,7 +119,7 @@ code {
 
 #games-container {
   min-height: 100vh;
-  background-color: #dddcdb;
+  background-color: #efedeb;
 }
 
 #games-row1 {
@@ -139,6 +139,7 @@ code {
 
 #games-card {
   width: 60%;
+  max-height: 100%;
   padding: 10px;
   background-color: transparent;
 }
@@ -207,6 +208,13 @@ nav {
 
 #player-row2 {
   margin-left: 5%;
+  /* margin-right: 5%;
+  justify-content: space-between; */
+}
+#player-row-card {
+  margin-left: 5%;
+  margin-right: 5%;
+  justify-content: space-between;
 }
 
 .modal.left .modal-dialog {

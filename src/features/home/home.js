@@ -4,12 +4,14 @@ import { Button } from "react-bootstrap";
 import AllGames from "../games/AllGames";
 import Hero from "../hero/Hero";
 import AllPlayers from "../players/AllPlayers";
-
+import { motion } from "framer-motion";
 import { BsArrowUp } from "react-icons/bs";
 
 // import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
-function Section({ children }) {
+function FadeIn({ children }) {
+  // const ref = useRef(null);
+  // const isInView = useInView(ref, { once: true });
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -32,12 +34,12 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Section>
+      <FadeIn>
         <AllGames />
-      </Section>
-      <Section>
+      </FadeIn>
+      <FadeIn>
         <AllPlayers />
-      </Section>
+      </FadeIn>
       <Button
         onClick={() => {
           document.body.scrollTop = 0;
