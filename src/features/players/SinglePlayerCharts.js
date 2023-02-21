@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Card, Col, Container, Nav, Row, Tab, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import LoadingScreen from "../loading/LoadingScreen";
 import {
   fetchSinglePlayerBasicInfo,
   selectSinglePlayerBasicInfo,
@@ -9,7 +10,8 @@ import {
 const SinglePlayerCharts = ({ id }) => {
   const dispatch = useDispatch();
   const playerData = useSelector(selectSinglePlayerBasicInfo);
-
+  const loading = useSelector((state) => state.singlePlayer.loading);
+  console.log("player", loading);
   const { firstName, lastName, imageUrl, seasonPlayerStats } = playerData;
 
   const sortedSeasons =
@@ -24,6 +26,7 @@ const SinglePlayerCharts = ({ id }) => {
 
   return (
     <Container fluid>
+      {loading && <LoadingScreen />}
       {playerData && (
         <Card id="modal-player" className="mx-auto">
           <Card.Body className="mx-auto">

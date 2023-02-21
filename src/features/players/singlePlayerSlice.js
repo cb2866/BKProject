@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   singlePlayerStats: {},
-  singePlayerBasic: {},
+  singlePlayerBasic: {},
   loading: false,
   error: null,
 };
@@ -45,7 +45,7 @@ export const singlePlayerSlice = createSlice({
       })
       .addCase(fetchSinglePlayerBasicInfo.fulfilled, (state, action) => {
         state.loading = false;
-        state.singePlayerBasic = action.payload;
+        state.singlePlayerBasic = action.payload;
       })
       .addCase(fetchSinglePlayerBasicInfo.rejected, (state, action) => {
         state.error = action.error;
@@ -54,7 +54,7 @@ export const singlePlayerSlice = createSlice({
 });
 
 export const selectSinglePlayerBasicInfo = (state) => {
-  return state.singlePlayer.singePlayerBasic;
+  return state.singlePlayer.singlePlayerBasic;
 };
 
 export const selectSinglePlayerStats = (state) => {

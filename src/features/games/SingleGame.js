@@ -12,7 +12,9 @@ import LoadingScreen from "../loading/LoadingScreen";
 const SingleGame = ({ gameId }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.singleGame.loading);
+  console.log(loading);
 
+  
   const { homeTeam, awayTeam, homeTeamScore, awayTeamScore } =
     useSelector(selectSingleGame);
 
