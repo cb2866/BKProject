@@ -28,7 +28,10 @@ function FadeIn({ children }) {
 const Home = () => {
   return (
     <>
-      <Hero />
+      {" "}
+      <FadeIn>
+        <Hero />{" "}
+      </FadeIn>
       <FadeIn>
         <AllGames />
       </FadeIn>
