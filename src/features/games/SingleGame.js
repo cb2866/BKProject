@@ -7,12 +7,15 @@ import {
   selectSingleGame,
   selectSingleGameSpecifics,
 } from "./singleGameSlice";
+import LoadingScreen from "../loading/LoadingScreen";
 
 const SingleGame = ({ gameId }) => {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.singleGame.loading);
 
   const { homeTeam, awayTeam, homeTeamScore, awayTeamScore } =
     useSelector(selectSingleGame);
+
   const gameSpecifics = useSelector(selectSingleGameSpecifics);
 
   //exclude any instances where player time is 0 minutes
@@ -36,58 +39,61 @@ const SingleGame = ({ gameId }) => {
   }, [dispatch, gameId]);
 
   return (
-    <Card style={{ border: "none" }}>
-      <Card.Header style={{ border: "none" }}>
-        {homeTeam} vs {awayTeam}
-      </Card.Header>
-      <Card.Header
-        className="text-muted justify-content-start"
-        style={{ border: "none" }}
-      >
-        <p>
-          Final Score: {homeTeamScore} - {awayTeamScore}
-        </p>
-      </Card.Header>
+    <>
+      {loading && <LoadingScreen />}
+      <Card style={{ border: "none" }}>
+        <Card.Header style={{ border: "none" }}>
+          {homeTeam} vs {awayTeam}
+        </Card.Header>
+        <Card.Header
+          className="text-muted justify-content-start"
+          style={{ border: "none" }}
+        >
+          <p>
+            Final Score: {homeTeamScore} - {awayTeamScore}
+          </p>
+        </Card.Header>
 
-      <Card.Body>
-        <Table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Player</th>
-              <th>Min</th>
-              <th>Pts</th>
-              <th>3PA</th>
-              <th>3PM</th>
-            </tr>
-          </thead>
-          <tbody>
-            {uniqueGameSpecifics ? (
-              uniqueGameSpecifics.map((player, idx) => {
-                return (
-                  <tr key={idx}>
-                    <td>{idx + 1}</td>
-                    <td>
-                      {player.playerFirstName} {player.playerLastName}
-                    </td>
-                    <td>{player.minutesPlayed}</td>
-                    <td>{player.pointsMade}</td>
-                    <td>{player.threePointAttempt}</td>
-                    <td>{player.threePointMade}</td>
-                  </tr>
-                );
-              })
-            ) : (
+        <Card.Body>
+          <Table>
+            <thead>
               <tr>
-                <td colSpan={6} style={{ color: "red", textAlign: "center" }}>
-                  No other game data available at this time.
-                </td>
+                <th>#</th>
+                <th>Player</th>
+                <th>Min</th>
+                <th>Pts</th>
+                <th>3PA</th>
+                <th>3PM</th>
               </tr>
-            )}
-          </tbody>
-        </Table>
-      </Card.Body>
-    </Card>
+            </thead>
+            <tbody>
+              {uniqueGameSpecifics ? (
+                uniqueGameSpecifics.map((player, idx) => {
+                  return (
+                    <tr key={idx}>
+                      <td>{idx + 1}</td>
+                      <td>
+                        {player.playerFirstName} {player.playerLastName}
+                      </td>
+                      <td>{player.minutesPlayed}</td>
+                      <td>{player.pointsMade}</td>
+                      <td>{player.threePointAttempt}</td>
+                      <td>{player.threePointMade}</td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td colSpan={6} style={{ color: "red", textAlign: "center" }}>
+                    No other game data available at this time.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
+        </Card.Body>
+      </Card>
+    </>
   );
 };
 

@@ -94,7 +94,6 @@ code {
   text-align: center;
   color: white;
   font-weight: 200;
-  /* max-width: 500px; */
   font-size: 80%;
   text-shadow: 1px 0px 1px #ccc;
 }
@@ -285,6 +284,6 @@ nav {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: rgba(255, 255, 255, 0.26);
-  border: none;
+  background-color: rgba(129, 125, 125, 0.148);
+  border: rgba(13, 9, 9, 0.74);
 }

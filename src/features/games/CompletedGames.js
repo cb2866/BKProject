@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Card, Modal, Tab, Table, Tabs } from "react-bootstrap";
 import SingleGame from "./SingleGame";
+import LoadingScreen from "../loading/LoadingScreen";
+import { useSelector } from "react-redux";
 
 const CompletedGames = ({ completedGames }) => {
   const octoberGames = completedGames.filter((game) => {
@@ -22,6 +24,8 @@ const CompletedGames = ({ completedGames }) => {
     return game.date.includes("2023-02");
   });
 
+
+ 
   const [isShown, setIsShown] = useState(false);
   const [clickedGameId, setClickedGameId] = useState(null);
 
@@ -205,6 +209,7 @@ const CompletedGames = ({ completedGames }) => {
         >
           <Modal.Header closeButton />
           <Modal.Body style={{ padding: "0" }}>
+           
             <SingleGame gameId={clickedGameId} />
           </Modal.Body>
         </Modal>
