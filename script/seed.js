@@ -10,6 +10,9 @@ async function seed() {
   await db.sync({ force: true });
   console.log("db synced!");
 
+  SeasonPlayerStat.bulkCreate(playerStatsSeed);
+
+  PlayerBasic.bulkCreate(playerBasicSeed);
   // <--------------- creating a record of each Nets game from 2022-23 season------------------->
 
   const response = await axios.get(
@@ -31,10 +34,6 @@ async function seed() {
       })
     )
   );
-
-  SeasonPlayerStat.bulkCreate(playerStatsSeed);
-
-  PlayerBasic.bulkCreate(playerBasicSeed);
 
   // <--------------------pulling in game stats for 2022-2023 season, specific players -------------->
 
