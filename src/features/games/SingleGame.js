@@ -10,12 +10,11 @@ import {
 
 const SingleGame = ({ gameId }) => {
   const dispatch = useDispatch();
-  console.log(gameId);
-  // const gameId = useParams();
-  const { date, homeTeam, awayTeam, homeTeamScore, awayTeamScore } =
+
+  const { homeTeam, awayTeam, homeTeamScore, awayTeamScore } =
     useSelector(selectSingleGame);
   const gameSpecifics = useSelector(selectSingleGameSpecifics);
-  console.log(gameSpecifics);
+
   //exclude any instances where player time is 0 minutes
   const uniqueGameSpecifics =
     gameSpecifics.length &&
@@ -30,12 +29,11 @@ const SingleGame = ({ gameId }) => {
         return b.threePointPercent - a.threePointPercent;
       })
       .filter((player) => player.minutesPlayed !== "00");
-  console.log(uniqueGameSpecifics);
 
   useEffect(() => {
     dispatch(fetchSingleGame(gameId));
     dispatch(fetchSingleGameSpecifics(gameId));
-  }, [dispatch]);
+  }, [dispatch, gameId]);
 
   return (
     <Card style={{ border: "none" }}>

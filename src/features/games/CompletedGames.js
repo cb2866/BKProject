@@ -1,18 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
-  Card,
-  Tab,
+  Card, Modal, Tab,
   Table,
-  Tabs,
-  Modal,
-  OverlayTrigger,
-  Popover,
+  Tabs
 } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import SingleGame from "./SingleGame";
 
 const CompletedGames = ({ completedGames }) => {
-  const navigate = useNavigate();
 
   const octoberGames = completedGames.filter((game) => {
     return game.date.includes("2022-10");

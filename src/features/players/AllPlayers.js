@@ -190,7 +190,6 @@ const AllPlayers = () => {
                         borderColor: "inherit",
                       }}
                       onClick={() => {
-                        console.log("clicked");
                         setModalData(player);
                         setModalShow(true);
                       }}
