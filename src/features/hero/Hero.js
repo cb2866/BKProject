@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <Container fluid id="hero-container">
       <Row id="hero-row">
-        <Col xs={12} id="hero-col">
+        <Col xs={12}>
           <h1 id="hero-header">Shooters Shoot</h1>
           <h3 id="hero-header">Nets Edition</h3>
           <p id="hero-description">
@@ -20,20 +20,28 @@ const Hero = () => {
           </p>
         </Col>
       </Row>
-      <Row className="d-flex justify-content-center">
-        <Col xs={2} className="d-flex justify-content-end">
-          <Button size="sm" variant="light">
+      <Row id="hero-row2">
+        <Col xs={2} style={{ padding: "0px", textAlign: "right" }}>
+          <Button
+            size="sm"
+            variant="light"
+            style={{ marginRight: "4px", marginBottom: "4px" }}
+          >
             <motion.a
               onClick={() => scrollToComponent("games-container")}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              Games{" "}
+              Games
             </motion.a>
           </Button>
-        </Col>
-        <Col xs={2} className="d-flex justify-content-start">
-          <Button size="sm" variant="light">
+          {/* </Col>
+        <Col xs={2} className="ms-auto"> */}
+          <Button
+            size="sm"
+            variant="light"
+            style={{ marginRight: "4px", marginBottom: "4px" }}
+          >
             <motion.a
               onClick={() => scrollToComponent("players-container")}
               whileHover={{ scale: 1.1 }}

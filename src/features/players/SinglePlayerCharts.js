@@ -11,7 +11,6 @@ const SinglePlayerCharts = ({ id }) => {
   const dispatch = useDispatch();
   const playerData = useSelector(selectSinglePlayerBasicInfo);
   const loading = useSelector((state) => state.singlePlayer.loading);
-  console.log("player", loading);
   const { firstName, lastName, imageUrl, seasonPlayerStats } = playerData;
 
   const sortedSeasons =

@@ -11,6 +11,7 @@ async function seed() {
   console.log("db synced!");
 
   // <--------------- creating a record of each Nets game from 2022-23 season------------------->
+
   const response = await axios.get(
     "https://www.balldontlie.io/api/v1/games?seasons%5B%5D=2022&team_ids%5B%5D=3&per_page=100"
   );
@@ -30,11 +31,12 @@ async function seed() {
       })
     )
   );
- 
 
   SeasonPlayerStat.bulkCreate(playerStatsSeed);
 
   PlayerBasic.bulkCreate(playerBasicSeed);
+
+  // <--------------------pulling in game stats for 2022-2023 season, specific players -------------->
 
   const gameResponse1 = await axios.get(
     "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=61&player_ids[]=114&player_ids[]=130&player_ids[]=17896049&player_ids[]=158&player_ids[]=197&player_ids[]=666679&player_ids[]=319&player_ids[]=351&player_ids[]=417&player_ids[]=17553942&player_ids[]=432&player_ids[]=17896048&player_ids[]=470&per_page=100" // "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&season[]=2021&seasons[]=2020"

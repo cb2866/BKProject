@@ -74,17 +74,17 @@ const AllPlayers = () => {
   return (
     <Container fluid id="players-container">
       <Row id="player-row">
-        <h1 id="player-header">Player Standings</h1>
-        <h3 id="player-header">Sort by Season</h3>
-        <p id="section-instructions-left">
-          Player Standings currently features team forwards and guards for whom
-          data is available. Using the <strong>'sort by' </strong>button below,
-          sort players by their three-pointer percentage (season average).
-          <br />
-          <br />
-          Click into a player's card to see more season averages from the past 3
-          seasons.
-        </p>
+        <Col sm={7} className="ms-auto">
+          <h1 id="player-header">Player Standings</h1>
+          <h3 id="player-header">Sort by Season</h3>
+          <p id="section-instructions-left">
+            Player Standings currently features team forwards and guards for
+            whom data is available. Using the <strong>'sort by' </strong>button
+            below, sort players by their three-pointer percentage (season
+            average).
+            <br />
+          </p>
+        </Col>
       </Row>
       <Row id="player-row2">
         <DropdownButton
