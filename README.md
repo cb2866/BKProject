@@ -1,6 +1,6 @@
 # CBM Nets Project
 
-This project focuses on the Brooklyn Nets and their three pointer stats for the 2022-2023 season, with a focus on analyzing the team's performance in shooting three-point shots. The project currently looks at the team's three-point attempts, three-points scored, and percentage of successful shots. The data will be analyzed to identify trends and patterns, such as which players are the most effective at shooting three-pointers, which lineups perform best, and how the team's three-point shooting affects their overall performance. The insights gained from this analysis could be used to inform strategies for future games and help the team optimize their performance in three-point shooting.
+This project focuses on the Brooklyn Nets and their three pointer stats for the current season, with a focus on analyzing the team's performance in shooting three-point shots. The project currently looks at the team's three-point attempts, three-points scored, and percentage of successful shots. The insights gained from this analysis could be used to inform strategies for future games and help the team optimize their performance in three-point shooting.
 
 ## Tech Stack
 
