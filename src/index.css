@@ -91,18 +91,26 @@ code {
 }
 
 #hero-description {
-  text-align: left;
+  text-align: center;
   color: white;
   font-weight: 200;
+  /* max-width: 500px; */
+  font-size: 80%;
+  text-shadow: 1px 0px 1px #ccc;
 }
 
 #hero-header,
+#player-header {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
 #player-header {
   text-align: left;
   color: white;
   font-weight: 600;
 }
-
 #hero-container {
   background-image: url("/public/2.svg");
   background-size: cover;
@@ -115,7 +123,7 @@ code {
   margin-left: 5%;
   margin-right: 5%;
   display: flex;
-  padding-top: 5%;
+  padding-top: 150px;
 }
 
 #players-container {

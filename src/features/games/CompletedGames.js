@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import {
-  Card, Modal, Tab,
-  Table,
-  Tabs
-} from "react-bootstrap";
+import { Card, Modal, Tab, Table, Tabs } from "react-bootstrap";
 import SingleGame from "./SingleGame";
 
 const CompletedGames = ({ completedGames }) => {
-
   const octoberGames = completedGames.filter((game) => {
     return game.date.includes("2022-10");
   });
@@ -31,10 +26,10 @@ const CompletedGames = ({ completedGames }) => {
   const [clickedGameId, setClickedGameId] = useState(null);
 
   return (
-    <Card id="games-card" >
-      <Tabs defaultActiveKey="October" id="games-tab" fill>
-        <Tab eventKey="October" id="games-tab" title="October">
-          <Table id="games-table" size="sm" borderless hover responsive="sm">
+    <Card id="games-card">
+      <Tabs defaultActiveKey="February" id="games-tab" fill>
+        <Tab eventKey="February" title="February">
+          <Table id="games-table" borderless hover size="sm" responsive="sm">
             <thead>
               <tr>
                 <th>Date</th>
@@ -43,8 +38,72 @@ const CompletedGames = ({ completedGames }) => {
               </tr>
             </thead>
             <tbody>
-              {octoberGames.length
-                ? octoberGames.map(
+              {februaryGames.length
+                ? februaryGames.map(
+                    ({ id, gameId, date, awayTeam, homeTeam }) => {
+                      return (
+                        <tr
+                          key={id}
+                          onClick={() => {
+                            setIsShown(true);
+                            setClickedGameId(gameId);
+                          }}
+                        >
+                          <td>{date}</td>
+                          <td>{homeTeam}</td>
+                          <td>{awayTeam}</td>
+                        </tr>
+                      );
+                    }
+                  )
+                : null}
+            </tbody>
+          </Table>
+        </Tab>
+        <Tab eventKey="January" title="January">
+          <Table id="games-table" borderless hover size="sm" responsive="sm">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Home</th>
+                <th>Away</th>
+              </tr>
+            </thead>
+            <tbody>
+              {januaryGames.length
+                ? januaryGames.map(
+                    ({ id, gameId, date, awayTeam, homeTeam }) => {
+                      return (
+                        <tr
+                          key={id}
+                          onClick={() => {
+                            setIsShown(true);
+                            setClickedGameId(gameId);
+                          }}
+                        >
+                          <td>{date}</td>
+                          <td>{homeTeam}</td>
+                          <td>{awayTeam}</td>
+                        </tr>
+                      );
+                    }
+                  )
+                : null}
+            </tbody>
+          </Table>
+        </Tab>
+        <Tab eventKey="December" id="games-tab" title="December">
+          <Table id="games-table" borderless hover size="sm" responsive="sm">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Home</th>
+                <th>Away</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decemberGames.length
+                ? decemberGames.map(
                     ({ id, gameId, date, awayTeam, homeTeam }) => {
                       return (
                         <tr
@@ -104,8 +163,8 @@ const CompletedGames = ({ completedGames }) => {
             </tbody>
           </Table>
         </Tab>
-        <Tab eventKey="December" id="games-tab" title="December">
-          <Table id="games-table" borderless hover size="sm" responsive="sm">
+        <Tab eventKey="October" id="games-tab" title="October">
+          <Table id="games-table" size="sm" borderless hover responsive="sm">
             <thead>
               <tr>
                 <th>Date</th>
@@ -114,72 +173,8 @@ const CompletedGames = ({ completedGames }) => {
               </tr>
             </thead>
             <tbody>
-              {decemberGames.length
-                ? decemberGames.map(
-                    ({ id, gameId, date, awayTeam, homeTeam }) => {
-                      return (
-                        <tr
-                          key={id}
-                          onClick={() => {
-                            setIsShown(true);
-                            setClickedGameId(gameId);
-                          }}
-                        >
-                          <td>{date}</td>
-                          <td>{homeTeam}</td>
-                          <td>{awayTeam}</td>
-                        </tr>
-                      );
-                    }
-                  )
-                : null}
-            </tbody>
-          </Table>
-        </Tab>
-        <Tab eventKey="January" title="January">
-          <Table id="games-table" borderless hover size="sm" responsive="sm">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Home</th>
-                <th>Away</th>
-              </tr>
-            </thead>
-            <tbody>
-              {januaryGames.length
-                ? januaryGames.map(
-                    ({ id, gameId, date, awayTeam, homeTeam }) => {
-                      return (
-                        <tr
-                          key={id}
-                          onClick={() => {
-                            setIsShown(true);
-                            setClickedGameId(gameId);
-                          }}
-                        >
-                          <td>{date}</td>
-                          <td>{homeTeam}</td>
-                          <td>{awayTeam}</td>
-                        </tr>
-                      );
-                    }
-                  )
-                : null}
-            </tbody>
-          </Table>
-        </Tab>
-        <Tab eventKey="February" title="February">
-          <Table id="games-table" borderless hover size="sm" responsive="sm">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Home</th>
-                <th>Away</th>
-              </tr>
-            </thead>
-            <tbody>
-              {februaryGames.length
-                ? februaryGames.map(
+              {octoberGames.length
+                ? octoberGames.map(
                     ({ id, gameId, date, awayTeam, homeTeam }) => {
                       return (
                         <tr
