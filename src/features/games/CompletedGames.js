@@ -24,8 +24,6 @@ const CompletedGames = ({ completedGames }) => {
     return game.date.includes("2023-02");
   });
 
-
- 
   const [isShown, setIsShown] = useState(false);
   const [clickedGameId, setClickedGameId] = useState(null);
 
@@ -203,13 +201,12 @@ const CompletedGames = ({ completedGames }) => {
       {isShown && (
         <Modal
           show={isShown}
-          className="modal left"
+          className="modal right"
           onHide={() => setIsShown(false)}
           size="lg"
         >
           <Modal.Header closeButton />
           <Modal.Body style={{ padding: "0" }}>
-           
             <SingleGame gameId={clickedGameId} />
           </Modal.Body>
         </Modal>

@@ -14,10 +14,6 @@ const Hero = () => {
         <Col xs={12}>
           <h1 id="hero-header">Shooters Shoot</h1>
           <h3 id="hero-header">Nets Edition</h3>
-          <p id="hero-description">
-            This project focuses on the Brooklyn Nets performance in shooting
-            three-point shots.
-          </p>
         </Col>
       </Row>
       <Row id="hero-row2">

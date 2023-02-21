@@ -25,13 +25,10 @@ const AllGames = () => {
           <h3 id="games-header">2022-2023 Season</h3>
 
           <p id="section-instructions-right">
-            {" "}
-            Click on a different month to display games played during that
-            period. For specific game details, click into a row. Information
-            displayed includes final score, as well as player stats, including
-            minutes played, overall points scored.
+            Click into your game of choice to see player rankings based on their
+            3-point percentage.
           </p>
-        </Col>{" "}
+        </Col>
         <Col sm={3} id="nets-logo-col">
           <img id="nets-logo" src="/brooklyn-nets-logo.svg" alt="nets logo" />
         </Col>
