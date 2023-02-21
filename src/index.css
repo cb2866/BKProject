@@ -110,7 +110,7 @@ code {
   font-weight: 600;
 }
 #hero-container {
-  background-image: url("/public/hero.svg");
+  background-image: url("/public/hero.png");
   background-size: cover;
   background-position: center center;
   min-height: 100vh;

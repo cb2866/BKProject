@@ -7,7 +7,6 @@ import LoadingScreen from "../features/loading/LoadingScreen";
 const AppRoutes = () => {
   const loading = useSelector((state) => state.singlePlayer.loading);
 
-
   return (
     <div>
       {loading && <LoadingScreen />}
