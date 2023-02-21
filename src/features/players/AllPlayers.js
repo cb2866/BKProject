@@ -80,7 +80,7 @@ const AllPlayers = () => {
           <p id="section-instructions-left">
             Using the <strong>'sort by' </strong>button below, sort players by
             their season average 3-point percentage or click into their profile
-            to see specific season average information.
+            to see specific season stats.
             <br />
           </p>
         </Col>
